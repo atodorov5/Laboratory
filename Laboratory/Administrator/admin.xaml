@@ -1,0 +1,40 @@
+﻿<Page x:Class="Laboratory.Administrator.admin"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Laboratory.Administrator"
+                Title="admin"
+      >
+    
+  
+    <Grid Height="Auto" Width="Auto">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <DataGrid Margin="10,15,10,144"></DataGrid>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <Button Content="Button"  Height="30" Width="60" Margin="10,218,289.2,10"/>
+
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <Button Content="Button"  Height="30" Width="60" Margin="289,218,10,10"/>
+
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1"></StackPanel>
+        
+        
+        <DataGrid Margin="10,15,10,144"></DataGrid>
+         </Grid>
+    
+    
+
+</Page>
