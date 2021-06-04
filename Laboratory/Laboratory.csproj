@@ -107,6 +107,12 @@
       <DependentUpon>UserWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
+    <Compile Include="Windows\Edittype_Window.xaml.cs">
+      <DependentUpon>Edittype_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Type_Window.xaml.cs">
+      <DependentUpon>Type_Window.xaml</DependentUpon>
+    </Compile>
     <Page Include="Administrator\admin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -124,6 +130,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\UserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Edittype_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Type_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

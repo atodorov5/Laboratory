@@ -23,6 +23,10 @@ namespace Laboratory
         public UserWindow()
         {
             InitializeComponent();
+            if(Properties.Settings.Default.roleID > 1)
+            {
+                adminItem.Visibility = Visibility.Hidden;
+            }
         }
 
         private void MenuItem_Admin(object sender, RoutedEventArgs e)

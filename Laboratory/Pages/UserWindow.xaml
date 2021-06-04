@@ -65,12 +65,12 @@
     </Window.Resources>
 
     <!-- the real app and real menu -->
-    <DockPanel>
+    
 
-        <StackPanel DockPanel.Dock = "Top">
+        <StackPanel >
         <Menu IsMainMenu="True">
             <MenuItem Header="_Меню" Template="{StaticResource VsMenuTop}" >
-                <MenuItem Header="_Администратор" Click="MenuItem_Admin" Template="{StaticResource VsMenuSub}"/>
+                <MenuItem Header="_Администратор" Name="adminItem" Click="MenuItem_Admin" Template="{StaticResource VsMenuSub}"/>
                 <MenuItem Header="_Изход" Click="MenuItem_Close" Template="{StaticResource VsMenuSub}"/>
             </MenuItem>
             <MenuItem Header="_Тест" Template="{StaticResource VsMenuTop}">
@@ -81,10 +81,10 @@
 
 
         </Menu>
-  </StackPanel>
-        <StackPanel DockPanel.Dock = "Bottom">
-            <Frame Name="userMainFrame" Background="Red" NavigationUIVisibility="Hidden" Margin="0,0,-0.4,0"/>
-        </StackPanel>
-
-   </DockPanel>
+ 
+        
+            <Frame Name="userMainFrame"  NavigationUIVisibility="Hidden" Margin="0,0,-0.4,0"/>
+       
+ </StackPanel>
+  
 </Window>
