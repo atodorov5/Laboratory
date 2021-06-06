@@ -31,33 +31,37 @@ namespace Laboratory.Windows
                 MessageBox.Show("Въведете данни!");
             else
             {
-                using (var conn = DBConfig.Connection)
-                {
-                    conn.Open();
-                    MySqlCommand cmd = new MySqlCommand("add_testtype", conn);
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                 using (var conn = DBConfig.Connection)
+                 {
+                     conn.Open();
+                     MySqlCommand cmd = new MySqlCommand("add_testtype", conn);
+                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add(new MySqlParameter("p_name", MySqlDbType.VarChar));
-                    cmd.Parameters[0].Direction = System.Data.ParameterDirection.Input;
-                    cmd.Parameters.Add(new MySqlParameter("p_minV", MySqlDbType.Double));
-                    cmd.Parameters[1].Direction = System.Data.ParameterDirection.Input;
-                    cmd.Parameters.Add(new MySqlParameter("p_maxV", MySqlDbType.Double));
-                    cmd.Parameters[2].Direction = System.Data.ParameterDirection.Input;
-                    cmd.Parameters.Add(new MySqlParameter("p_unit", MySqlDbType.VarChar));
-                    cmd.Parameters[3].Direction = System.Data.ParameterDirection.Input;
-                    cmd.Parameters.Add(new MySqlParameter("p_price", MySqlDbType.Double));
-                    cmd.Parameters[4].Direction = System.Data.ParameterDirection.Input;
+                     cmd.Parameters.Add(new MySqlParameter("p_name", MySqlDbType.VarChar));
+                     cmd.Parameters[0].Direction = System.Data.ParameterDirection.Input;
+                     cmd.Parameters.Add(new MySqlParameter("p_minV", MySqlDbType.Double));
+                     cmd.Parameters[1].Direction = System.Data.ParameterDirection.Input;
+                     cmd.Parameters.Add(new MySqlParameter("p_maxV", MySqlDbType.Double));
+                     cmd.Parameters[2].Direction = System.Data.ParameterDirection.Input;
+                     cmd.Parameters.Add(new MySqlParameter("p_unit", MySqlDbType.VarChar));
+                     cmd.Parameters[3].Direction = System.Data.ParameterDirection.Input;
+                     cmd.Parameters.Add(new MySqlParameter("p_price", MySqlDbType.Double));
+                     cmd.Parameters[4].Direction = System.Data.ParameterDirection.Input;
 
-                    cmd.Parameters[0].Value = test_nameTB.Text;
-                    cmd.Parameters[1].Value = Convert.ToDouble(test_minTB.Text);
-                    cmd.Parameters[2].Value = Convert.ToDouble(test_maxTB.Text);
-                    cmd.Parameters[3].Value = test_valueTB.Text;
-                    cmd.Parameters[4].Value = Convert.ToDouble(test_priceTB.Text);
+                     cmd.Parameters[0].Value = test_nameTB.Text;
+                     cmd.Parameters[1].Value = Convert.ToDouble(test_minTB.Text);
+                     cmd.Parameters[2].Value = Convert.ToDouble(test_maxTB.Text);
+                     cmd.Parameters[3].Value = test_valueTB.Text;
+                     cmd.Parameters[4].Value = Convert.ToDouble(test_priceTB.Text);
 
-                    cmd.ExecuteNonQuery();
+                     cmd.ExecuteNonQuery();
 
-                    MessageBox.Show("Успешно!");
-                }
+                     MessageBox.Show("Успешно!");
+                 }
+
+
+
+                DialogResult = true;
                 this.Close();
             }
         }

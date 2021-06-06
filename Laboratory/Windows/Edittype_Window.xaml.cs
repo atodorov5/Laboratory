@@ -59,7 +59,7 @@ namespace Laboratory.Windows
                         cmd.Parameters[4].Direction = System.Data.ParameterDirection.Input;
                         cmd.Parameters.Add(new MySqlParameter("p_price", MySqlDbType.VarChar));
                         cmd.Parameters[5].Direction = System.Data.ParameterDirection.Input;
-                        cmd.Parameters[0].Value = (int)row["№"];
+                        cmd.Parameters[0].Value = (int)row[0];
                         if (!string.IsNullOrWhiteSpace(test_nameTB.Text))
                             cmd.Parameters[1].Value = test_nameTB.Text;
                         if (!string.IsNullOrWhiteSpace(test_minTB.Text))
@@ -72,6 +72,7 @@ namespace Laboratory.Windows
                             cmd.Parameters[5].Value = test_priceTB.Text;
 
                         cmd.ExecuteNonQuery();
+                        DialogResult = true;
                         this.Close();
                       
 

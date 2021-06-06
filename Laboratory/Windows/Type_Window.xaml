@@ -18,7 +18,7 @@
         <TextBox x:Name="test_valueTB" HorizontalAlignment="Left" Height="23" Margin="126,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186"/>
         <Label Content="Цена" HorizontalAlignment="Left" Margin="9,183,0,0" VerticalAlignment="Top" Width="112"/>
         <TextBox x:Name="test_priceTB" HorizontalAlignment="Left" Height="23" Margin="126,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186"/>
-        <Button Content="Добави" Click="add_type" HorizontalAlignment="Left" Margin="126,248,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button IsEnabled="True" Content="Добави" Click="add_type" HorizontalAlignment="Left" Margin="126,248,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>

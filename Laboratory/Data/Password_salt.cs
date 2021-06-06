@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Laboratory.Data
 {
-    class Password
+    class Password_salt
     {
         public static String CreateSalt(int size)
         {

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Laboratory"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Loaded="Window_Loaded"
        
         Title="Лаборатория" MinHeight="450" MinWidth="800" WindowState="Maximized">
     <Window.Resources>
@@ -69,17 +69,19 @@
 
         <StackPanel >
         <Menu IsMainMenu="True">
+            
             <MenuItem Header="_Меню" Template="{StaticResource VsMenuTop}" >
-                <MenuItem Header="_Администратор" Name="adminItem" Click="MenuItem_Admin" Template="{StaticResource VsMenuSub}"/>
+               
                 <MenuItem Header="_Изход" Click="MenuItem_Close" Template="{StaticResource VsMenuSub}"/>
             </MenuItem>
             <MenuItem Header="_Тест" Template="{StaticResource VsMenuTop}">
                 <MenuItem Header="_Нов тест" Template="{StaticResource VsMenuSub}"/>
                 <MenuItem Header="_Необработени" Template="{StaticResource VsMenuSub}"/>
                 <MenuItem Header="_Проверка" Template="{StaticResource VsMenuSub}"/>
+           
             </MenuItem>
 
-
+            <MenuItem Header="_Администратор" Name="adminItem" Click="MenuItem_Admin" Template="{StaticResource VsMenuTop}"/>
         </Menu>
  
         
