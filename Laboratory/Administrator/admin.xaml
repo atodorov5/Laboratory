@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:Laboratory.Administrator"
      xmlns:Laboratory="clr-namespace:Laboratory" x:Class="Laboratory.Administrator.admin"
      Title="admin"  Loaded="Page_Loaded"
+    
       >
     <Page.Resources>
         <Laboratory:laboratorydbDataSet x:Key="laboratorydbDataSet"/>
@@ -15,7 +16,7 @@
     </Page.Resources>
 
 
-    <Grid VerticalAlignment="Stretch">
+    <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.9*" />
             <ColumnDefinition Width="1.1*" />
@@ -29,7 +30,7 @@
             <Button Click="delete_testtype" Content="Изтрий" Height="30" Width="70" Margin="280,720,10,10"/>
             <DataGrid CanUserAddRows="False" x:Name="testtypeDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,41,10,57" RowDetailsVisibilityMode="VisibleWhenSelected">
                 <DataGrid.Columns>
-                    <DataGridTextColumn x:Name="type_nameColumn" Binding="{Binding type_name}" Header="Изследване/Паказател" Width="2*"/>
+                    <DataGridTextColumn x:Name="type_nameColumn" Binding="{Binding type_name}" Header="Изследване/Показател" Width="2*"/>
                     <DataGridTextColumn x:Name="minValColumn" Binding="{Binding minVal}" Header="МИН" Width="*"/>
                     <DataGridTextColumn x:Name="maxValColumn" Binding="{Binding maxVal}" Header="МАКС" Width="*"/>
                     <DataGridTextColumn x:Name="unitColumn" Binding="{Binding unit}" Header="Мерна единица" Width="*"/>
@@ -77,7 +78,7 @@
                         <DataGridTextColumn x:Name="user_pinColumn" Binding="{Binding user_pin}" Header="ЕГН" Width="*"/>
                         <DataGridTextColumn x:Name="user_addressColumn" Binding="{Binding user_address}" Header="Адрес" Width="*"/>
                         <DataGridTextColumn x:Name="user_phoneColumn" Binding="{Binding user_phone}" Header="Телефон" Width="*"/>
-                        <DataGridTextColumn x:Name="townColumn1" Binding="{Binding town}" Header="Град" Width="*"/>
+                        <DataGridTextColumn x:Name="townColumn1" Binding="{Binding license}" Header="ЛАБ РЦЗ" Width="*"/>
                         <DataGridTextColumn x:Name="roleNameColumn" Binding="{Binding RoleName}" Header="Роля" Width="*"/>
                         <DataGridTextColumn x:Name="active_statusColumn" Binding="{Binding active_status}" Header="Статус" Width="*"/>
                     </DataGrid.Columns>

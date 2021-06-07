@@ -201,10 +201,6 @@ namespace Laboratory.Administrator
             window.ShowDialog();
             updateViewUsers();
 
-           
-
-
-
     }
 
 
@@ -235,6 +231,14 @@ namespace Laboratory.Administrator
 
         private void edit_user(object sender, RoutedEventArgs e)
         {
+
+            DataRowView rowview = retrieve_usersDataGrid.SelectedItem as DataRowView;
+            if (rowview != null)
+            {
+                var edit_User = new Edit_user_Window(rowview);
+                edit_User.ShowDialog();
+                updateViewUsers();
+            }
 
         }
     }

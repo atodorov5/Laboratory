@@ -5,44 +5,116 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Laboratory.Pages"
       xmlns:Laboratory="clr-namespace:Laboratory" x:Class="Laboratory.Pages.Enter_test_Page"
-      mc:Ignorable="d" 
-      d:DesignHeight="759.6"  Loaded="Page_Loaded"
-      Title="Enter_test_Page">
+      mc:Ignorable="d"  Loaded="Page_Loaded"
+      Title="Enter_test_Page" Height="764.8" >
 
     <Page.Resources>
         <Laboratory:laboratorydbDataSet x:Key="laboratorydbDataSet"/>
         <CollectionViewSource x:Key="testtype1ViewSource" Source="{Binding testtype1, Source={StaticResource laboratorydbDataSet}}"/>
+        <CollectionViewSource x:Key="bloodtypeViewSource" Source="{Binding bloodtype, Source={StaticResource laboratorydbDataSet}}"/>
     </Page.Resources>
 
-    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="738" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0" DataContext="{StaticResource testtype1ViewSource}" VerticalAlignment="Stretch">
+        <Grid Grid.Column="0" DataContext="{StaticResource testtype1ViewSource}" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="738">
             <Label Content="Видове тестове" FontSize="14" HorizontalContentAlignment="Center" Margin="10,10,10.4,0" VerticalAlignment="Top"/>
-            <Button Content="Button" Margin="10,44,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="115"/>
-            <Button Content="Button" Margin="0,44,10.4,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="115"/>
-            <Button Content="Button" Margin="10,68,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="115"/>
-            <Button Content="Button" Margin="0,68,10.4,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="115"/>
-            <DataGrid x:Name="testtype1DataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,92,10.4,59" RowDetailsVisibilityMode="VisibleWhenSelected">
-                <DataGrid.Columns>
-                    <DataGridTextColumn x:Name="type_nameColumn" Binding="{Binding type_name}" Header="type name" Width="3*"/>
-                    <DataGridTextColumn x:Name="priceColumn" Binding="{Binding price}" Header="price" Width="*"/>
-                </DataGrid.Columns>
-            </DataGrid>
-            <Button Content="Изчисти избрани" HorizontalAlignment="Left" Margin="10,731,0,0" VerticalAlignment="Top" Width="246" Height="19"/>
+            <Button Click="Button_ClearSelection" Content="Изчисти избрани" Margin="31,0,0,10" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="127"/>
+            <ListView   x:Name="testtype1ListView" ItemsSource="{Binding}"  Margin="10,0,10,37" SelectionMode="Multiple" Height="560" VerticalAlignment="Bottom" >
+                <ListView.ItemContainerStyle>
+                    <Style>
+                        <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
+                        <Setter Property="Control.VerticalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView>
+
+                        <GridViewColumn  x:Name="typeid_Column">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Label Margin="-6,-1"  Content="{Binding idTestType, Mode=OneWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Visibility="Hidden"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <GridViewColumn  x:Name="type_nameColumn" Header="Изследване/Показател" Width="auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Label Margin="-6,-1"  Content="{Binding type_name, Mode=OneWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn x:Name="priceColumn" Header="Цена" Width="auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Label  Margin="-6,-1" Content="{Binding price, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <GroupBox Header="Групи тестове" Height="92" Margin="10,44,10,0" VerticalAlignment="Top">
+                <Grid Margin="0,10,0,6.6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Button Grid.Column="0" Grid.Row="0" Content="Button"  VerticalAlignment="Top" Margin="0,0,41,0"/>
+                    <Button Grid.Column="0" Content="Button"  VerticalAlignment="Top"  Width="auto" Margin="0,26,41,0" Grid.RowSpan="2" />
+                    <Button Grid.Column="1" Grid.Row="0" Content="Button" VerticalAlignment="Top" Width="auto" Margin="0,0,41,0" />
+                    <Button Grid.Column="1" Content="Button"  VerticalAlignment="Top" Width="auto" Margin="0,26,41,0" Grid.RowSpan="2"/>
+                </Grid>
+            </GroupBox>
         </Grid>
 
-        <StackPanel Grid.Column="1" HorizontalAlignment="Stretch">
-            <Label Content="Данни за пациент" HorizontalContentAlignment="Right" Grid.Column="1"  Margin="9.6,10,0,0" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
+        <Grid  Margin="6,10,-0.8,0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" DataContext="{StaticResource bloodtypeViewSource}" Height="718" >
+            <Label Content="Данни за пациент" HorizontalContentAlignment="Center"   Margin="10,10,10.2,0" FontSize="16" VerticalAlignment="Top"/>
 
-            <StackPanel Orientation="Horizontal" Margin="0,47,0,683" HorizontalAlignment="Stretch">
-                <Label Content="EГН:" FontSize="14"  VerticalAlignment="Top" Height="30"/>
-                <TextBox FontSize="14" Height="30"  TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Bottom" Margin="30,0,0,0" VerticalContentAlignment="Center" Width="312"/>
-                <Button Content="Проверка" FontSize="14"   VerticalAlignment="Top" Width="75" Height="30" Margin="30,0,0,0"/>
-            </StackPanel>
-        </StackPanel>
+
+            <Label Content="EГН:" FontSize="14"  VerticalAlignment="Top" Height="29" Margin="10,68,0,0" HorizontalAlignment="Left" Width="37" />
+            <TextBox FontSize="14" Name="user_pinTB" TextWrapping="Wrap" VerticalContentAlignment="Center" Margin="52,74,90.2,0" Height="23" VerticalAlignment="Top"/>
+            <Button Content="Проверка" Click="Button_CheckUser" FontSize="14"   VerticalAlignment="Top" Height="29" Margin="0,71,10.2,0" HorizontalAlignment="Right" Width="67"/>
+
+            <Label Content="Име:" HorizontalAlignment="Left" Margin="20,135,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.722,0.641" Height="29"/>
+            <TextBox x:Name="user_nameTB" FontSize="14" Height="23" Margin="116,140,9.6,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <Label Content="Презиме:" HorizontalAlignment="Left" Margin="20,173,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.722,0.641" Height="29"/>
+            <TextBox x:Name="user_surnameTB" FontSize="14" Height="23" Margin="116,179,9.6,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <Label Content="Фамилия:" HorizontalAlignment="Left" Margin="20,213,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.722,0.641" Height="29"/>
+            <TextBox x:Name="user_lastnameTB" FontSize="14" Height="23" Margin="116,219,9.6,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <TextBox x:Name="user_addressTB" FontSize="14" Height="23" Margin="116,326,9.6,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <GroupBox Header="Пол" HorizontalAlignment="Left" Height="61" Margin="116,254,-68.8,0" VerticalAlignment="Top" Width="226">
+                <StackPanel Orientation="Horizontal" Margin="0,0,-0.4,0.4">
+
+                    <RadioButton Name="maleRB" Content="Мъж" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="18"/>
+                    <RadioButton Name="femaleRB"  Content="Жена" HorizontalAlignment="Left" Margin="77,10,0,0" VerticalAlignment="Top" Height="18"/>
+                </StackPanel>
+            </GroupBox>
+            <Label Content="Кръвна група:" HorizontalAlignment="Left" Margin="20,368,0,0" RenderTransformOrigin="0.722,0.641" Height="29" VerticalAlignment="Top"/>
+            <ComboBox x:Name="bloodtypeComboBox" DisplayMemberPath="type" ItemsSource="{Binding}" Margin="116,368,9.2,0" SelectedValuePath="idBloodType" Height="22" VerticalAlignment="Top">
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel/>
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </ComboBox>
+            <Button Content="Запази" Click="Button_save_test" FontSize="20" Margin="0,0,10.2,10" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <Label Content="Адрес:" HorizontalAlignment="Left" Margin="20,326,0,367" RenderTransformOrigin="0.534,0.512" Width="53"/>
+            <Label Content="Направление:" HorizontalAlignment="Left" Margin="20,414,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.722,0.641" Height="29"/>
+            <TextBox x:Name="ref_numberTB" FontSize="14" Height="23" Margin="114,416,9.4,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
+
+
+        </Grid>
     </Grid>
 </Page>

@@ -9,6 +9,6 @@ namespace Laboratory
     class User
     {
 
-        public string name;
+        
     }
 }

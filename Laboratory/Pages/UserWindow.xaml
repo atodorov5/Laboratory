@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Laboratory"
         mc:Ignorable="d" Loaded="Window_Loaded"
-       
+       VerticalAlignment="Stretch"
         Title="Лаборатория" MinHeight="450" MinWidth="800" WindowState="Maximized">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="btv" />
@@ -65,28 +65,28 @@
     </Window.Resources>
 
     <!-- the real app and real menu -->
-    
 
-        <StackPanel >
+
+    <StackPanel Margin="0,0,-0.4,-0.4" Height="auto" VerticalAlignment="Stretch">
         <Menu IsMainMenu="True">
-            
+
             <MenuItem Header="_Меню" Template="{StaticResource VsMenuTop}" >
-               
+
                 <MenuItem Header="_Изход" Click="MenuItem_Close" Template="{StaticResource VsMenuSub}"/>
             </MenuItem>
             <MenuItem Header="_Тест" Template="{StaticResource VsMenuTop}">
-                <MenuItem Header="_Нов тест" Template="{StaticResource VsMenuSub}"/>
+                <MenuItem Header="_Нов тест" Click="MenuItem_NewTest" Template="{StaticResource VsMenuSub}"/>
                 <MenuItem Header="_Необработени" Template="{StaticResource VsMenuSub}"/>
                 <MenuItem Header="_Проверка" Template="{StaticResource VsMenuSub}"/>
-           
+
             </MenuItem>
 
             <MenuItem Header="_Администратор" Name="adminItem" Click="MenuItem_Admin" Template="{StaticResource VsMenuTop}"/>
         </Menu>
- 
-        
-            <Frame Name="userMainFrame"  NavigationUIVisibility="Hidden" Margin="0,0,-0.4,0"/>
-       
- </StackPanel>
-  
+
+
+        <Frame Name="userMainFrame" VerticalAlignment="Stretch" NavigationUIVisibility="Hidden" Margin="0,0,0,0"/>
+
+    </StackPanel>
+
 </Window>

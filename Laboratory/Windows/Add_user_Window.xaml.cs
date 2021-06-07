@@ -26,6 +26,7 @@ namespace Laboratory.Windows
         public Add_user_Window()
         {
             InitializeComponent();
+            labCB.SelectedIndex = 2;
         }
 
 
