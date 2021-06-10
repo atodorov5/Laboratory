@@ -56,5 +56,15 @@ namespace Laboratory
         {
             userMainFrame.Content = new Enter_test_Page();
         }
+
+        private void MenuItem_pending(object sender, RoutedEventArgs e)
+        {
+            userMainFrame.Content = new Fill_test_Page();
+        }
+
+        private void MenuItem_checkTest(object sender, RoutedEventArgs e)
+        {
+            userMainFrame.Content = new Check_test_Page();
+        }
     }
 }

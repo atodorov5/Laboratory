@@ -116,8 +116,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>laboratorydbDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Check_test_Page.xaml.cs">
+      <DependentUpon>Check_test_Page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Enter_test_Page.xaml.cs">
       <DependentUpon>Enter_test_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Fill_test_Page.xaml.cs">
+      <DependentUpon>Fill_test_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Test_values_Page.xaml.cs">
+      <DependentUpon>Test_values_Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\UserWindow.xaml.cs">
       <DependentUpon>UserWindow.xaml</DependentUpon>
@@ -145,7 +154,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Check_test_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Enter_test_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Fill_test_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -161,6 +178,10 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\Test_values_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\UserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -224,12 +245,13 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Resources\Images\printer-512.webp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\Images\" />
+    <Resource Include="Resources\Images\printer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

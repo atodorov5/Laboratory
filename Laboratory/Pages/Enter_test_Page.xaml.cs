@@ -93,14 +93,14 @@ namespace Laboratory.Pages
             var pwd = new Password().LengthRequired(4).IncludeLowercase().IncludeNumeric();
             var result = pwd.Next();
             int? testid;
-            testTableAdapter.Insert(user_nameTB.Text, user_surnameTB.Text, user_lastnameTB.Text, user_pinTB.Text, 1, user_addressTB.Text, bloodtypeComboBox.SelectedIndex, 1, ref_numberTB.Text, result, out testid);
+            testTableAdapter.Insert(user_nameTB.Text, user_surnameTB.Text, user_lastnameTB.Text, user_pinTB.Text, 1, user_addressTB.Text, bloodtypeComboBox.SelectedIndex, Properties.Settings.Default.userID, ref_numberTB.Text, result, out testid);
             
 
             Laboratory.laboratorydbDataSetTableAdapters.QueriesTableAdapter queryTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.QueriesTableAdapter();
 
             foreach (DataRowView item in testtype1ListView.SelectedItems)
             {
-                queryTableAdapter.insertResult(null, testid, (int)item["idTestType"]);
+                queryTableAdapter.insertResult(testid, (int)item["idTestType"]);
             }
                   
 

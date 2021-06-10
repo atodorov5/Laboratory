@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Laboratory.Administrator"
      xmlns:Laboratory="clr-namespace:Laboratory" x:Class="Laboratory.Administrator.admin"
-     Title="admin"  Loaded="Page_Loaded"
+     Title="admin"  Loaded="Page_Loaded" Height="772"
     
       >
     <Page.Resources>
@@ -25,9 +25,9 @@
 
         <Grid Grid.Row="0" Grid.Column="0" DataContext="{StaticResource testtype1ViewSource}"  >
             <Label x:Name="tty" Content="Тестове" HorizontalAlignment="Center" FontSize="20" Margin="139,0,139,724"/>
-            <Button Click="edit_testtype" Content="Редактирай" Height="30" Width="70" Margin="145,720,145,10"/>
-            <Button Click="add_testtype" Content="Добави" Height="30" Width="70" Margin="10,720,280,10"/>
-            <Button Click="delete_testtype" Content="Изтрий" Height="30" Width="70" Margin="280,720,10,10"/>
+            <Button Click="edit_testtype" Content="Редактирай" Height="30" Width="70" Margin="145,720,145,22"/>
+            <Button Click="add_testtype" Content="Добави" Height="30" Width="70" Margin="10,720,280,22"/>
+            <Button Click="delete_testtype" Content="Изтрий" Height="30" Width="70" Margin="280,720,10,22"/>
             <DataGrid CanUserAddRows="False" x:Name="testtypeDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,41,10,57" RowDetailsVisibilityMode="VisibleWhenSelected">
                 <DataGrid.Columns>
                     <DataGridTextColumn x:Name="type_nameColumn" Binding="{Binding type_name}" Header="Изследване/Показател" Width="2*"/>
@@ -65,13 +65,13 @@
             </Grid>
 
             <Grid Grid.Row="1" DataContext="{StaticResource retrieve_usersViewSource}">
-                <Label Content="Профили" HorizontalAlignment="Center" FontSize="20" Margin="132,0,132,365"/>
-                <Button Click="edit_user" Content="Редактирай" Height="30" Width="70" Margin="145,340,145,9.2" />
-                <Button Click="delete_user" Content="Изтрий" Height="30" Width="70" Margin="280,339,10,10.2"/>
-                <Button Click="add_user" Content="Добави" Height="30" Width="70" Margin="10,339,280,10.2" />
-                <DataGrid x:Name="retrieve_usersDataGrid" CanUserAddRows="False" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,38,10,56.6" RowDetailsVisibilityMode="VisibleWhenSelected">
+                <Label Content="Профили" HorizontalAlignment="Center" FontSize="20" Margin="132,0,132,348.6"/>
+                <Button Click="edit_user" Content="Редактирай" Height="30" Width="70" Margin="145,335,145,20.6" />
+                <Button Click="delete_user" Content="Изтрий" Height="30" Width="70" Margin="280,334,10,21.6"/>
+                <Button Click="add_user" Content="Добави" Height="30" Width="70" Margin="10,334,280,21.6" />
+                <DataGrid x:Name="retrieve_usersDataGrid" CanUserAddRows="False" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,42,10,56.6" RowDetailsVisibilityMode="VisibleWhenSelected">
                     <DataGrid.Columns>
-                        
+
                         <DataGridTextColumn x:Name="nameColumn" Binding="{Binding name}" Header="Име" Width="*"/>
                         <DataGridTextColumn x:Name="surnameColumn" Binding="{Binding surname}" Header="Презиме" Width="*"/>
                         <DataGridTextColumn x:Name="lastnameColumn" Binding="{Binding lastname}" Header="Фамилия" Width="*"/>
@@ -79,7 +79,7 @@
                         <DataGridTextColumn x:Name="user_addressColumn" Binding="{Binding user_address}" Header="Адрес" Width="*"/>
                         <DataGridTextColumn x:Name="user_phoneColumn" Binding="{Binding user_phone}" Header="Телефон" Width="*"/>
                         <DataGridTextColumn x:Name="townColumn1" Binding="{Binding license}" Header="ЛАБ РЦЗ" Width="*"/>
-                        <DataGridTextColumn x:Name="roleNameColumn" Binding="{Binding RoleName}" Header="Роля" Width="*"/>
+                        <DataGridTextColumn x:Name="roleNameColumn" Binding="{Binding RoleName}" Header="Роля" Width="*" />
                         <DataGridTextColumn x:Name="active_statusColumn" Binding="{Binding active_status}" Header="Статус" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
