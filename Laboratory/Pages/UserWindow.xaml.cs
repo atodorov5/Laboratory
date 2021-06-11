@@ -24,7 +24,7 @@ namespace Laboratory
         public UserWindow()
         {
             InitializeComponent();
-            if(Properties.Settings.Default.roleID > 1)
+            if(Properties.Settings.Default.roleID != 1)
             {
                 adminItem.Visibility = Visibility.Hidden;
             }
@@ -32,7 +32,7 @@ namespace Laboratory
 
         private void MenuItem_Admin(object sender, RoutedEventArgs e)
         {
-            if(Properties.Settings.Default.userID==1)
+            if(Properties.Settings.Default.roleID==1)
             userMainFrame.Content = new admin();
             else
                 MessageBox.Show("Нямате права за достъп");

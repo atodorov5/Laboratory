@@ -58,17 +58,17 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="minValColumn1" Header="min Val" Width="100">
+                    <GridViewColumn x:Name="minValColumn1" Header="min Val" Width="50">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Label  Content="{Binding minVal, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                <Label  Content="{Binding min_value, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="maxValColumn1" Header="max Val" Width="100">
+                    <GridViewColumn x:Name="maxValColumn1" Header="max Val" Width="50">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Margin="-6,-1" Content="{Binding maxVal, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                <Label Margin="-6,-1" Content="{Binding max_value, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

@@ -31,32 +31,27 @@ namespace Laboratory.Windows
                 MessageBox.Show("Въведете данни!");
             else
             {
-                 using (var conn = DBConfig.Connection)
-                 {
-                     conn.Open();
-                     MySqlCommand cmd = new MySqlCommand("add_testtype", conn);
-                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                int? testtypeID;
+                
 
-                     cmd.Parameters.Add(new MySqlParameter("p_name", MySqlDbType.VarChar));
-                     cmd.Parameters[0].Direction = System.Data.ParameterDirection.Input;
-                     cmd.Parameters.Add(new MySqlParameter("p_minV", MySqlDbType.Double));
-                     cmd.Parameters[1].Direction = System.Data.ParameterDirection.Input;
-                     cmd.Parameters.Add(new MySqlParameter("p_maxV", MySqlDbType.Double));
-                     cmd.Parameters[2].Direction = System.Data.ParameterDirection.Input;
-                     cmd.Parameters.Add(new MySqlParameter("p_unit", MySqlDbType.VarChar));
-                     cmd.Parameters[3].Direction = System.Data.ParameterDirection.Input;
-                     cmd.Parameters.Add(new MySqlParameter("p_price", MySqlDbType.Double));
-                     cmd.Parameters[4].Direction = System.Data.ParameterDirection.Input;
+                Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter testTypeTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter();
+                testTypeTableAdapter.add_testtype(test_nameTB.Text, test_valueTB.Text,Convert.ToDouble( test_priceTB.Text), out testtypeID);
 
-                     cmd.Parameters[0].Value = test_nameTB.Text;
-                     cmd.Parameters[1].Value = Convert.ToDouble(test_minTB.Text);
-                     cmd.Parameters[2].Value = Convert.ToDouble(test_maxTB.Text);
-                     cmd.Parameters[3].Value = test_valueTB.Text;
-                     cmd.Parameters[4].Value = Convert.ToDouble(test_priceTB.Text);
 
-                     cmd.ExecuteNonQuery();
+                Laboratory.laboratorydbDataSetTableAdapters.QueriesTableAdapter queryTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.QueriesTableAdapter();
+                if ((bool)gender_checkBox.IsChecked)
+                {
+                    queryTableAdapter.add_ref_value("0", Convert.ToDouble(test_minTB.Text), Convert.ToDouble(test_maxTB.Text), testtypeID);
+                    queryTableAdapter.add_ref_value("1", Convert.ToDouble(test_min2TB.Text), Convert.ToDouble(test_max2TB.Text), testtypeID);
+                }
+                else
+                {
+                    queryTableAdapter.add_ref_value("x", Convert.ToDouble(test_minTB.Text), Convert.ToDouble(test_maxTB.Text), testtypeID);
+                }
 
-                     MessageBox.Show("Успешно!");
+
+
+                    MessageBox.Show("Успешно!");
                  }
 
 
@@ -64,6 +59,8 @@ namespace Laboratory.Windows
                 DialogResult = true;
                 this.Close();
             }
-        }
+        
+
+        
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -72,11 +73,12 @@ namespace Laboratory.Pages
 
             Grid g = new Grid();
             Frame f = new Frame();
-            f.Content = new Test_values_Page(item, tabctrl);
+            f.Content = new Test_values_Page(item, tabctrl, retrieve_testListView);
             g.Children.Add(f);
             newTabItem.Content = g;
             
             tabctrl.Items.Add(newTabItem);
+
 
 
             
@@ -91,5 +93,6 @@ namespace Laboratory.Pages
             tabctrl.Items.Refresh();
 
         }
+
     }
 }

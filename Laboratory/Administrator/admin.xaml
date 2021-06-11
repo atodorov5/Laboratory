@@ -11,7 +11,7 @@
     <Page.Resources>
         <Laboratory:laboratorydbDataSet x:Key="laboratorydbDataSet"/>
         <CollectionViewSource x:Key="clinicbranchViewSource" Source="{Binding clinicbranch, Source={StaticResource laboratorydbDataSet}}"/>
-        <CollectionViewSource x:Key="testtype1ViewSource" Source="{Binding testtype1, Source={StaticResource laboratorydbDataSet}}"/>
+        <CollectionViewSource x:Key="testtypeViewSource" Source="{Binding testtype, Source={StaticResource laboratorydbDataSet}}"/>
         <CollectionViewSource x:Key="retrieve_usersViewSource" Source="{Binding retrieve_users, Source={StaticResource laboratorydbDataSet}}"/>
     </Page.Resources>
 
@@ -23,7 +23,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <Grid Grid.Row="0" Grid.Column="0" DataContext="{StaticResource testtype1ViewSource}"  >
+        <Grid Grid.Row="0" Grid.Column="0" DataContext="{StaticResource testtypeViewSource}"  >
             <Label x:Name="tty" Content="Тестове" HorizontalAlignment="Center" FontSize="20" Margin="139,0,139,724"/>
             <Button Click="edit_testtype" Content="Редактирай" Height="30" Width="70" Margin="145,720,145,22"/>
             <Button Click="add_testtype" Content="Добави" Height="30" Width="70" Margin="10,720,280,22"/>
@@ -31,8 +31,7 @@
             <DataGrid CanUserAddRows="False" x:Name="testtypeDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,41,10,57" RowDetailsVisibilityMode="VisibleWhenSelected">
                 <DataGrid.Columns>
                     <DataGridTextColumn x:Name="type_nameColumn" Binding="{Binding type_name}" Header="Изследване/Показател" Width="2*"/>
-                    <DataGridTextColumn x:Name="minValColumn" Binding="{Binding minVal}" Header="МИН" Width="*"/>
-                    <DataGridTextColumn x:Name="maxValColumn" Binding="{Binding maxVal}" Header="МАКС" Width="*"/>
+                   
                     <DataGridTextColumn x:Name="unitColumn" Binding="{Binding unit}" Header="Мерна единица" Width="*"/>
                     <DataGridTextColumn x:Name="priceColumn" Binding="{Binding price}" Header="Цена" Width="*"/>
                 </DataGrid.Columns>

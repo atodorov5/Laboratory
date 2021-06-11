@@ -32,9 +32,9 @@ namespace Laboratory.Pages
 
             Laboratory.laboratorydbDataSet laboratoryDataSet = ((Laboratory.laboratorydbDataSet)(this.FindResource("laboratorydbDataSet")));
 
-            Laboratory.laboratorydbDataSetTableAdapters.testtype1TableAdapter testTypeTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.testtype1TableAdapter();
-            testTypeTableAdapter.Fill(laboratoryDataSet.testtype1);
-            System.Windows.Data.CollectionViewSource testtype1ViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("testtype1ViewSource")));
+            Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter testTypeTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter();
+            testTypeTableAdapter.Fill(laboratoryDataSet.testtype);
+            System.Windows.Data.CollectionViewSource testtype1ViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("testtypeViewSource")));
             testtype1ViewSource.View.MoveCurrentToFirst();
 
             Laboratory.laboratorydbDataSetTableAdapters.bloodtypeTableAdapter bloodTypeTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.bloodtypeTableAdapter();
@@ -51,7 +51,7 @@ namespace Laboratory.Pages
 
         private void Button_ClearSelection(object sender, RoutedEventArgs e)
         {
-            testtype1ListView.UnselectAll();
+            testtypeListView.UnselectAll();
         }
 
         private void Button_CheckUser(object sender, RoutedEventArgs e)
@@ -85,25 +85,53 @@ namespace Laboratory.Pages
 
         }
 
+        private void clean_controls()
+        {
+            foreach (Control ctl in patient_infoDG.Children)
+            {
+               
+                if (ctl.GetType() == typeof(TextBox))
+                    ((TextBox)ctl).Text = String.Empty;
+                if (ctl.GetType() == typeof(CheckBox))
+                    ((CheckBox)ctl).IsChecked = false;
+                if (ctl.GetType() == typeof(ComboBox))
+                    ((ComboBox)ctl).SelectedIndex = -1;
+            }
+        }
+
         private void Button_save_test(object sender, RoutedEventArgs e)
         {
-            //Laboratory.laboratorydbDataSet laboratoryDataSet = ((Laboratory.laboratorydbDataSet)(this.FindResource("laboratorydbDataSet")));
-
-            Laboratory.laboratorydbDataSetTableAdapters.retrieve_testTableAdapter testTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.retrieve_testTableAdapter();
-            var pwd = new Password().LengthRequired(4).IncludeLowercase().IncludeNumeric();
-            var result = pwd.Next();
-            int? testid;
-            testTableAdapter.Insert(user_nameTB.Text, user_surnameTB.Text, user_lastnameTB.Text, user_pinTB.Text, 1, user_addressTB.Text, bloodtypeComboBox.SelectedIndex, Properties.Settings.Default.userID, ref_numberTB.Text, result, out testid);
-            
-
-            Laboratory.laboratorydbDataSetTableAdapters.QueriesTableAdapter queryTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.QueriesTableAdapter();
-
-            foreach (DataRowView item in testtype1ListView.SelectedItems)
+            if (testtypeListView.SelectedItems != null)
             {
-                queryTableAdapter.insertResult(testid, (int)item["idTestType"]);
-            }
-                  
 
+                Laboratory.laboratorydbDataSetTableAdapters.retrieve_testTableAdapter testTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.retrieve_testTableAdapter();
+                var pwd = new Password().LengthRequired(4).IncludeLowercase().IncludeNumeric();
+                var result = pwd.Next();
+                int? testid;
+                double price = 0;
+                foreach (DataRowView item in testtypeListView.SelectedItems)
+                {
+                    price += (double)item["price"];
+                }
+
+                testTableAdapter.Insert(user_nameTB.Text, user_surnameTB.Text, user_lastnameTB.Text, user_pinTB.Text, 1, user_addressTB.Text, bloodtypeComboBox.SelectedIndex, Properties.Settings.Default.userID, ref_numberTB.Text, result, price, out testid);
+
+
+                Laboratory.laboratorydbDataSetTableAdapters.QueriesTableAdapter queryTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.QueriesTableAdapter();
+
+                foreach (DataRowView item in testtypeListView.SelectedItems)
+                {
+                    queryTableAdapter.insertResult(testid, (int)item["idTestType"]);
+                }
+
+                MessageBox.Show("Успешно въвеждане!");
+                clean_controls();
+            }
+            else
+            {
+                MessageBox.Show("Изберете ТЕСТ!");
+            }
+        
         }
     }
 

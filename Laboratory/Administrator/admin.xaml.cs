@@ -57,7 +57,7 @@ namespace Laboratory.Administrator
 
         private void updateViewTestType()
         {
-            Laboratory.laboratorydbDataSetTableAdapters.testtype1TableAdapter bloodlabDataSetselect_typeTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.testtype1TableAdapter();
+            Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter bloodlabDataSetselect_typeTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter();
             testtypeDataGrid.ItemsSource = null;
             testtypeDataGrid.ItemsSource = bloodlabDataSetselect_typeTableAdapter.GetData();
         }
@@ -106,7 +106,7 @@ namespace Laboratory.Administrator
 
             if (rowview != null)
             {
-                Laboratory.laboratorydbDataSetTableAdapters.testtype1TableAdapter testTypeTA = new Laboratory.laboratorydbDataSetTableAdapters.testtype1TableAdapter();
+                Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter testTypeTA = new Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter();
                 DataRowView row = (DataRowView)testtypeDataGrid.SelectedItems[0];
                 testTypeTA.delete_testtype((int)row[0]);
 
@@ -217,10 +217,10 @@ namespace Laboratory.Administrator
             clinicbranchViewSource.View.MoveCurrentToFirst();
 
             // Load data into the table bloodtype. You can modify this code as needed
-            Laboratory.laboratorydbDataSetTableAdapters.testtype1TableAdapter testTypeTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.testtype1TableAdapter();
-            testTypeTableAdapter.Fill(laboratoryDataSet.testtype1);
-            System.Windows.Data.CollectionViewSource testtype1ViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("testtype1ViewSource")));
-            testtype1ViewSource.View.MoveCurrentToFirst();
+            Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter testTypeTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter();
+            testTypeTableAdapter.Fill(laboratoryDataSet.testtype);
+            System.Windows.Data.CollectionViewSource testtypeViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("testtypeViewSource")));
+            testtypeViewSource.View.MoveCurrentToFirst();
 
             // Load data into the table bloodtype. You can modify this code as needed
             Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter retrieve_UsersTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter();

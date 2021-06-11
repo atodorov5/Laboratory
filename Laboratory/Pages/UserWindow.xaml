@@ -14,11 +14,11 @@
         <ControlTemplate x:Key="VsMenuTop" TargetType="MenuItem">
             <StackPanel TextBlock.FontSize="15px" Height="40">
                 <!-- label, icons, etc. -->
-                <Label Content="{TemplateBinding Header}" Margin="5" Foreground="White" />
+                <Label Content="{TemplateBinding Header}" Margin="5" Foreground="Black" />
 
                 <!-- sub items -->
                 <Popup IsOpen="{TemplateBinding IsSubmenuOpen}" AllowsTransparency="True" Focusable="False">
-                    <Border BorderThickness="1" Background="White" BorderBrush="red">
+                    <Border BorderThickness="1" Background="White" BorderBrush="#F0BC5E">
                         <StackPanel IsItemsHost="True" />
                     </Border>
                 </Popup>
@@ -26,7 +26,7 @@
                     <Style TargetType="StackPanel">
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver"  Value="True">
-                                <Setter Property="Background" Value="DarkRed" />
+                                <Setter Property="Background" Value="#FFEDCB" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -51,14 +51,14 @@
             </DockPanel>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsHighlighted" Value="True">
-                    <Setter Property="Background" TargetName="panel" Value="#FFF1EB" />
+                    <Setter Property="Background" TargetName="panel" Value="#FFEDCB" />
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
 
         <!-- some base stuff -->
         <Style TargetType="Menu">
-            <Setter Property="Background" Value="#FF6E6E" />
+            <Setter Property="Background" Value="#F0BC5E" />
             <Setter Property="Height" Value="40px" />
         </Style>
 

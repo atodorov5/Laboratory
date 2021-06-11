@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,8 @@ namespace Laboratory.Pages
     {
         DataRowView row;
         TabControl tabctrl;
-        public Test_values_Page(DataRowView row,TabControl tabctrl)
+        ListView list;
+        public Test_values_Page(DataRowView row,TabControl tabctrl, ListView ls)
         {
             InitializeComponent();
             this.row = row;
@@ -32,6 +34,7 @@ namespace Laboratory.Pages
             select_result_byTestIDListView.UnselectAll();
             ref_numbTV.Content = row["refNumber"].ToString();
             this.tabctrl = tabctrl;
+            this.list = ls;
         }
 
 
@@ -56,8 +59,8 @@ namespace Laboratory.Pages
             for (int i = 0; i < count; i++)
             {
                 DataRowView item = (DataRowView)select_result_byTestIDListView.Items[i];
-                
-                queryTableAdapter.enter_test_result(item[0].ToString(), (int)item[1],(int)item[3]);
+
+                queryTableAdapter.enter_test_result(item[0].ToString(), (int)item[10],(int)item[11]);
             }
 
             queryTableAdapter.set_test_status((int)row["idTest"]);
@@ -68,6 +71,10 @@ namespace Laboratory.Pages
             {
                 tabctrl.Items.Remove(tabctrl.SelectedItem);
                 tabctrl.Items.Refresh();
+
+                Laboratory.laboratorydbDataSetTableAdapters.retrieve_testTableAdapter testTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.retrieve_testTableAdapter();
+                list.ItemsSource =  testTableAdapter.GetPendingTests();
+
             }
             else
             {

@@ -5,20 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Laboratory.Windows"
         mc:Ignorable="d"
-        Title="Добавяне на тест" Height="323" Width="331">
+        Title="Добавяне на тест" Height="469.98" Width="331">
     <Grid>
+        <Grid.Resources>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        </Grid.Resources>
+        
         <Label Content="Видове тестове" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="10,10,4.8,0" VerticalAlignment="Top" Width="310"/>
-        <Label Content="Име" HorizontalAlignment="Left" Margin="9,38,0,0" VerticalAlignment="Top" Width="112"/>
+        <Label Content="Показател" HorizontalAlignment="Left" Margin="9,38,0,0" VerticalAlignment="Top" Width="112"/>
         <TextBox Name="test_nameTB" HorizontalAlignment="Left" Height="23" Margin="126,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186"/>
-        <Label Content="Мин. стойност" HorizontalAlignment="Left" Margin="9,75,0,0" VerticalAlignment="Top" Width="112"/>
-        <TextBox x:Name="test_minTB" HorizontalAlignment="Left" Height="23" Margin="126,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186"/>
-        <Label Content="Макс. стойност" HorizontalAlignment="Left" Margin="9,114,0,0" VerticalAlignment="Top" Width="112"/>
-        <TextBox Name="test_maxTB" HorizontalAlignment="Left" Height="23" Margin="126,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186"/>
-        <Label Content="Мерна единица" HorizontalAlignment="Left" Margin="9,149,0,0" VerticalAlignment="Top" Width="112"/>
-        <TextBox x:Name="test_valueTB" HorizontalAlignment="Left" Height="23" Margin="126,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186"/>
-        <Label Content="Цена" HorizontalAlignment="Left" Margin="9,183,0,0" VerticalAlignment="Top" Width="112"/>
-        <TextBox x:Name="test_priceTB" HorizontalAlignment="Left" Height="23" Margin="126,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186"/>
-        <Button IsEnabled="True" Content="Добави" Click="add_type" HorizontalAlignment="Left" Margin="126,248,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Мин. стойност" HorizontalAlignment="Left" Margin="9,161,0,0" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="test_minTB" HorizontalAlignment="Left" Height="23" Margin="126,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186"/>
+        <Label Content="Макс. стойност" HorizontalAlignment="Left" Margin="9,198,0,0" VerticalAlignment="Top" Width="112"/>
+        <TextBox Name="test_maxTB" HorizontalAlignment="Left" Height="23" Margin="126,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186"/>
+        <Label Content="Мин. стойност Ж" Visibility="{Binding ElementName=gender_checkBox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" HorizontalAlignment="Left" Margin="9,233,0,0" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="test_min2TB" Visibility="{Binding ElementName=gender_checkBox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" HorizontalAlignment="Left" Height="23" Margin="126,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186"/>
+        <Button IsEnabled="True" Content="Добави" Click="add_type" HorizontalAlignment="Left" Margin="126,390,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Макс. стойност Ж" Visibility="{Binding ElementName=gender_checkBox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" HorizontalAlignment="Left" Margin="9,269,0,0" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="test_max2TB"  Visibility="{Binding ElementName=gender_checkBox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}"  HorizontalAlignment="Left" Height="23" Margin="126,271,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186"/>
+        <Label Content="Мерна единица" HorizontalAlignment="Left" Margin="9,72,0,0" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="test_valueTB" HorizontalAlignment="Left" Height="23" Margin="126,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186"/>
+        <Label Content="Цена" HorizontalAlignment="Left" Margin="9,106,0,0" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="test_priceTB" HorizontalAlignment="Left" Height="23" Margin="126,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186"/>
+        <CheckBox Content="Различни стойности М/Ж" Name="gender_checkBox"  HorizontalAlignment="Left" Margin="126,141,0,0" VerticalAlignment="Top" Width="186"/>
 
     </Grid>
 </Window>
