@@ -35,7 +35,7 @@ namespace Laboratory.Windows
                 
 
                 Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter testTypeTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter();
-                testTypeTableAdapter.add_testtype(test_nameTB.Text, test_valueTB.Text,Convert.ToDouble( test_priceTB.Text), out testtypeID);
+                testTypeTableAdapter.add_testtype(test_nameTB.Text, test_valueTB.Text,Convert.ToDouble( test_priceTB.Text),(int) type_groupComboBox.SelectedValue, out testtypeID);
 
 
                 Laboratory.laboratorydbDataSetTableAdapters.QueriesTableAdapter queryTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.QueriesTableAdapter();
@@ -59,8 +59,16 @@ namespace Laboratory.Windows
                 DialogResult = true;
                 this.Close();
             }
-        
 
-        
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            Laboratory.laboratorydbDataSet laboratorydbDataSet = ((Laboratory.laboratorydbDataSet)(this.FindResource("laboratorydbDataSet")));
+            // Load data into the table type_group. You can modify this code as needed.
+            Laboratory.laboratorydbDataSetTableAdapters.type_groupTableAdapter laboratorydbDataSettype_groupTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.type_groupTableAdapter();
+            laboratorydbDataSettype_groupTableAdapter.Fill(laboratorydbDataSet.type_group);
+            System.Windows.Data.CollectionViewSource type_groupViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("type_groupViewSource")));
+            type_groupViewSource.View.MoveCurrentToFirst();
+        }
     }
 }

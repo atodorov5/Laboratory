@@ -66,5 +66,11 @@ namespace Laboratory
         {
             userMainFrame.Content = new Check_test_Page();
         }
+
+        private void MenuItem_Edit_Pwrd(object sender, RoutedEventArgs e)
+        {
+            userMainFrame.Content = new Edit_profile_Page();
+
+        }
     }
 }

@@ -29,37 +29,32 @@ namespace Laboratory
 
         private void login(object sender, RoutedEventArgs e)
         {
-          /* UserWindow userW = new UserWindow();
-            userW.Show();
-            this.Close();
 
-            */
-            
             using (var conn = DBConfig.Connection)
             {
                 string salt = "", hashedpass = "";
-                int roleID=-1,userid=-1;
+                int roleID = -1, userid = -1;
                 try
                 {
                     if (usernameTB.Text != "")
                     {
 
 
-                       conn.Open();
-                        
-                       var cmd = conn.CreateCommand();
-                       cmd.CommandText = "select idUser,Roles_idRoles,hashedPassWrd,salt from lab_user where username = @username";
-                       cmd.Parameters.AddWithValue("@username", usernameTB.Text);
-                       var reader = cmd.ExecuteReader();
-                     while (reader.Read())
-                            {
-                                // here could be problems if database value is null
-                                hashedpass = reader["hashedPassWrd"].ToString();
-                                salt = reader["salt"].ToString();
-                                roleID =(int) reader["Roles_idRoles"];
-                                 userid =(int) reader["idUser"];
-                            }
-                        
+                        conn.Open();
+
+                        var cmd = conn.CreateCommand();
+                        cmd.CommandText = "select idUser,Roles_idRoles,hashedPassWrd,salt from lab_user where username = @username";
+                        cmd.Parameters.AddWithValue("@username", usernameTB.Text);
+                        var reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            // here could be problems if database value is null
+                            hashedpass = reader["hashedPassWrd"].ToString();
+                            salt = reader["salt"].ToString();
+                            roleID = (int)reader["Roles_idRoles"];
+                            userid = (int)reader["idUser"];
+                        }
+
 
 
                         conn.Close();
@@ -71,7 +66,7 @@ namespace Laboratory
                             Properties.Settings.Default.roleID = roleID;
                             Properties.Settings.Default.userID = userid;
                             Properties.Settings.Default.Save();
-                           UserWindow userW = new UserWindow();
+                            UserWindow userW = new UserWindow();
                             userW.Show();
                             this.Close();
 
@@ -93,8 +88,54 @@ namespace Laboratory
                 }
 
             }
-            
-             
+
+
+
+        }
+
+        private void login2(object sender, RoutedEventArgs e)
+        {
+
+
+            string salt = "", hashedpass = "";
+            int? roleID = -1, userid = -1 , labID=-1;
+
+
+            if (usernameTB.Text != "")
+            {
+
+                Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter retrieve_UsersTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter();
+                retrieve_UsersTableAdapter.login_procedure(usernameTB.Text,out hashedpass, out salt,out roleID, out userid, out labID);
+
+
+                if (Password_salt.GenerateSHA256Hash(passwordTB.Password.ToString(), salt) == hashedpass)
+                {
+                    //GlobalInfo.CurrentUser = new UserInfo((int)cmd.Parameters["o_id"].Value);   //DA SE PROVERI
+                    Properties.Settings.Default.user = usernameTB.Text;
+                    Properties.Settings.Default.roleID = (int)roleID;
+                    Properties.Settings.Default.userID = (int)userid;
+                    Properties.Settings.Default.labID = (int)labID;
+                    Properties.Settings.Default.Save();
+                    UserWindow userW = new UserWindow();
+                    userW.Show();
+                    this.Close();
+
+                }
+                else
+                {
+                    loginError.Content = "Грешно потребителско име или парола!";
+                }
+
+            }
+            else
+                loginError.Content = "Грешно потребителско име или парола!";
+
+
+
+
+
+
+
 
         }
 

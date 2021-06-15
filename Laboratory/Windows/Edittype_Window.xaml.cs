@@ -26,12 +26,7 @@ namespace Laboratory.Windows
         {
             InitializeComponent();
             this.row = drv;
-           
-                test_nameTB.Text = drv.Row.ItemArray[1].ToString();
-                test_maxTB.Text = drv.Row.ItemArray[3].ToString();
-                test_minTB.Text = drv.Row.ItemArray[2].ToString();
-                test_valueTB.Text = drv.Row.ItemArray[4].ToString();
-                test_priceTB.Text = drv.Row.ItemArray[5].ToString();
+
             
         }
 
@@ -40,53 +35,43 @@ namespace Laboratory.Windows
             
             if (row != null)
             {
-                using (var conn = DBConfig.Connection)
-                {
-                    try
-                    {
-                        conn.Open();
-                        MySqlCommand cmd = new MySqlCommand("edit_testype", conn);
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add(new MySqlParameter("p_testTypeID", MySqlDbType.Int32));
-                        cmd.Parameters[0].Direction = System.Data.ParameterDirection.Input;
-                        cmd.Parameters.Add(new MySqlParameter("p_name", MySqlDbType.VarChar));
-                        cmd.Parameters[1].Direction = System.Data.ParameterDirection.Input;
-                        cmd.Parameters.Add(new MySqlParameter("p_minValue", MySqlDbType.VarChar));
-                        cmd.Parameters[2].Direction = System.Data.ParameterDirection.Input;
-                        cmd.Parameters.Add(new MySqlParameter("p_maxValue", MySqlDbType.VarChar));
-                        cmd.Parameters[3].Direction = System.Data.ParameterDirection.Input;
-                        cmd.Parameters.Add(new MySqlParameter("p_unit", MySqlDbType.VarChar));
-                        cmd.Parameters[4].Direction = System.Data.ParameterDirection.Input;
-                        cmd.Parameters.Add(new MySqlParameter("p_price", MySqlDbType.VarChar));
-                        cmd.Parameters[5].Direction = System.Data.ParameterDirection.Input;
-                        cmd.Parameters[0].Value = (int)row[0];
-                        if (!string.IsNullOrWhiteSpace(test_nameTB.Text))
-                            cmd.Parameters[1].Value = test_nameTB.Text;
-                        if (!string.IsNullOrWhiteSpace(test_minTB.Text))
-                            cmd.Parameters[2].Value = test_minTB.Text;
-                        if (!string.IsNullOrWhiteSpace(test_nameTB.Text))
-                            cmd.Parameters[3].Value = test_maxTB.Text;
-                        if (!string.IsNullOrWhiteSpace(test_valueTB.Text))
-                            cmd.Parameters[4].Value = test_valueTB.Text;
-                        if (!string.IsNullOrWhiteSpace(test_priceTB.Text))
-                            cmd.Parameters[5].Value = test_priceTB.Text;
+               
 
-                        cmd.ExecuteNonQuery();
-                        DialogResult = true;
-                        this.Close();
-                      
-
-                    }
-                    catch (MySqlException ex)
-                    {
-                        MessageBox.Show("Грешка " + ex);
-                    }
-
-                }
             }
             else
                 MessageBox.Show("Изберете клиника!");
         
     }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+
+            Laboratory.laboratorydbDataSet laboratorydbDataSet = ((Laboratory.laboratorydbDataSet)(this.FindResource("laboratorydbDataSet")));
+            // Load data into the table type_group. You can modify this code as needed.
+            Laboratory.laboratorydbDataSetTableAdapters.type_groupTableAdapter laboratorydbDataSettype_groupTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.type_groupTableAdapter();
+            laboratorydbDataSettype_groupTableAdapter.Fill(laboratorydbDataSet.type_group);
+            System.Windows.Data.CollectionViewSource type_groupViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("type_groupViewSource")));
+            type_groupViewSource.View.MoveCurrentToFirst();
+
+
+
+            test_nameTB.Text = row[1].ToString();
+            test_valueTB.Text = row[2].ToString();
+            test_priceTB.Text = row[3].ToString();
+            type_groupComboBox.SelectedValue = (int)row[5];
+        }
+
+        private void Button_Edit(object sender, RoutedEventArgs e)
+        {
+
+            Laboratory.laboratorydbDataSet laboratorydbDataSet = ((Laboratory.laboratorydbDataSet)(this.FindResource("laboratorydbDataSet")));
+            // Load data into the table type_group. You can modify this code as needed.
+            Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter laboratorydbDataSettype_groupTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter();
+            laboratorydbDataSettype_groupTableAdapter.edit_testype((int)row[0],test_nameTB.Text,test_valueTB.Text,test_priceTB.Text,(int)type_groupComboBox.SelectedValue);
+
+            this.Close();
+        
+        }
     }
 }

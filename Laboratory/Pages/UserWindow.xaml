@@ -71,8 +71,9 @@
         <Menu IsMainMenu="True">
 
             <MenuItem Header="_Меню" Template="{StaticResource VsMenuTop}" >
-
+                <MenuItem Header="_Редактиране на профил" Click="MenuItem_Edit_Pwrd" Template="{StaticResource VsMenuSub}"/>
                 <MenuItem Header="_Изход" Click="MenuItem_Close" Template="{StaticResource VsMenuSub}"/>
+               
             </MenuItem>
             <MenuItem Header="_Тест" Template="{StaticResource VsMenuTop}">
                 <MenuItem Header="_Нов тест" Click="MenuItem_NewTest" Template="{StaticResource VsMenuSub}"/>

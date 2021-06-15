@@ -66,5 +66,17 @@ namespace Laboratory.Properties {
                 return ((string)(this["laboratorydbConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int labID {
+            get {
+                return ((int)(this["labID"]));
+            }
+            set {
+                this["labID"] = value;
+            }
+        }
     }
 }

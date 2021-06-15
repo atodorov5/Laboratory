@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Laboratory.Windows;
 
 namespace Laboratory.Pages
 {
@@ -25,6 +26,7 @@ namespace Laboratory.Pages
         public Enter_test_Page()
         {
             InitializeComponent();
+            testtypeListView.UnselectAll();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -101,7 +103,7 @@ namespace Laboratory.Pages
 
         private void Button_save_test(object sender, RoutedEventArgs e)
         {
-            if (testtypeListView.SelectedItems != null)
+            if (testtypeListView.SelectedItems.Count > 0 && user_pinTB.Text!="")
             {
 
                 Laboratory.laboratorydbDataSetTableAdapters.retrieve_testTableAdapter testTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.retrieve_testTableAdapter();
@@ -113,6 +115,7 @@ namespace Laboratory.Pages
                 {
                     price += (double)item["price"];
                 }
+                price = Math.Round(price, 2);
 
                 testTableAdapter.Insert(user_nameTB.Text, user_surnameTB.Text, user_lastnameTB.Text, user_pinTB.Text, 1, user_addressTB.Text, bloodtypeComboBox.SelectedIndex, Properties.Settings.Default.userID, ref_numberTB.Text, result, price, out testid);
 
@@ -124,7 +127,9 @@ namespace Laboratory.Pages
                     queryTableAdapter.insertResult(testid, (int)item["idTestType"]);
                 }
 
-                MessageBox.Show("Успешно въвеждане!");
+                //MessageBox.Show("Успешно въвеждане!");
+                Test_label_Window test_Label_Window = new Test_label_Window((int)testid, price);
+                test_Label_Window.Show();
                 clean_controls();
             }
             else
@@ -132,6 +137,22 @@ namespace Laboratory.Pages
                 MessageBox.Show("Изберете ТЕСТ!");
             }
         
+        }
+
+        private void Button_PKK(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            
+            foreach (DataRowView item in testtypeListView.Items)
+            {
+                Laboratory.laboratorydbDataSetTableAdapters.type_groupTableAdapter groupTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.type_groupTableAdapter();
+                int group_id = (int)groupTableAdapter.get_test_by_group(button.Content.ToString());
+
+                if ((int)item[4] == group_id)
+                {
+                    testtypeListView.SelectedItems.Add(item);
+                }
+            }
         }
     }
 

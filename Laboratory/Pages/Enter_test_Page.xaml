@@ -23,7 +23,7 @@
 
         <Grid Grid.Column="0" DataContext="{StaticResource testtypeViewSource}" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="738">
             <Label Content="Видове тестове" FontSize="14" HorizontalContentAlignment="Center" Margin="10,10,10.4,0" VerticalAlignment="Top"/>
-            <Button Click="Button_ClearSelection" Content="Изчисти избрани" Margin="31,0,0,10" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="127"/>
+            <Button Click="Button_ClearSelection" Content="Изчисти избрани" Margin="31,0,43.2,0"  VerticalAlignment="Bottom"  Style="{StaticResource GelButton}" Height="24"/>
             <GroupBox Header="Групи тестове" Height="139" Margin="10,44,10.4,0" VerticalAlignment="Top">
                 <Grid Margin="0,10,0,0">
                     <Grid.ColumnDefinitions>
@@ -35,17 +35,17 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Button Grid.Column="0" Grid.Row="0" Content="ПКК"  VerticalAlignment="Top" Margin="0,0,5,0"/>
-                    <Button Grid.Column="0" Content="Биохимия"  VerticalAlignment="Top"  Width="auto" Margin="0,0,5,0" Grid.Row="1" />
-                    <Button Grid.Column="1" Grid.Row="0" Content="Коагулация" VerticalAlignment="Top" Width="auto" Margin="5,0,0,0" />
-                    <Button Grid.Column="1" Content="Йонограма"  VerticalAlignment="Top" Width="auto" Margin="5,0,0,0" Grid.Row="1"/>
-                
-                    <Button Grid.Column="0" Content="Хормони"   VerticalAlignment="Top" Width="auto" Margin="0,0,5,0" Grid.Row="3"/>
-                    
-                    <Button Grid.Column="1" Content="Туморни маркери"  VerticalAlignment="Top" Width="auto" Margin="5,0,0,0" Grid.Row="3"/>
+                    <Button Grid.Column="0"  Grid.Row="0" Click="Button_PKK" Content="ПКК"  VerticalAlignment="Top" Margin="0,0,5.2,0"  Style="{StaticResource GelButton}" Height="26"/>
+                    <Button Grid.Column="0" Content="Биохимия" Click="Button_PKK" VerticalAlignment="Top"  Width="auto" Margin="0,0,5.4,0" Grid.Row="1"  Style="{StaticResource GelButton}" Height="26"/>
+                    <Button Grid.Column="1" Grid.Row="0" Content="Коагулация" VerticalAlignment="Top" Width="auto" Margin="4.8,0,0.2,0"  Style="{StaticResource GelButton}" Height="26"/>
+                    <Button Grid.Column="1" Content="Йонограма"  VerticalAlignment="Top" Width="auto" Margin="4.8,0,0.2,0" Grid.Row="1"  Style="{StaticResource GelButton}" Height="26"/>
+
+                    <Button Grid.Column="0" Content="Хормони"   VerticalAlignment="Top" Width="auto" Margin="0,0,5,0" Grid.Row="3" Style="{StaticResource GelButton}"/>
+
+                    <Button Grid.Column="1" Content="Туморни маркери"  VerticalAlignment="Top" Width="auto" Margin="5,0,0,0" Grid.Row="3" Style="{StaticResource GelButton}"/>
                 </Grid>
             </GroupBox>
-            <ListView x:Name="testtypeListView" ItemsSource="{Binding}" Margin="10,188,10.4,52" SelectionMode="Multiple">
+            <ListView x:Name="testtypeListView" ItemsSource="{Binding}" Margin="10,188,10.4,52" SelectionMode="Multiple" SelectedValuePath="type_name">
                 <ListView.ItemContainerStyle>
                     <Style>
                         <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
@@ -54,40 +54,27 @@
                 </ListView.ItemContainerStyle>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn x:Name="idTestTypeColumn" Header="ИД" Width="40">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Label Margin="6,-1,-6,-1" Content="{Binding idTestType, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn x:Name="type_nameColumn" Header="Показател" Width="120">
+                        <GridViewColumn x:Name="type_nameColumn" Header="Показател" Width="Auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <Label Margin="-6,-1" Content="{Binding type_name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn x:Name="unitColumn" Header="Единици" Width="80">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Label Margin="-6,-1" Content="{Binding unit, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
+
 
                     </GridView>
                 </ListView.View>
             </ListView>
         </Grid>
 
-        <Grid  Margin="6,10,-0.8,0" Grid.Column="1" Name="patient_infoDG" HorizontalAlignment="Stretch" VerticalAlignment="Top" DataContext="{StaticResource bloodtypeViewSource}"  >
+        <Grid  Margin="6.4,10,-0.8,0" Grid.Column="1" Name="patient_infoDG" HorizontalAlignment="Stretch" VerticalAlignment="Top" DataContext="{StaticResource bloodtypeViewSource}" Height="745"  >
             <Label Content="Данни за пациент" HorizontalContentAlignment="Center"   Margin="10,10,10.2,0" FontSize="16" VerticalAlignment="Top"/>
 
 
             <Label Content="EГН:" FontSize="14"  VerticalAlignment="Top" Height="29" Margin="10,68,0,0" HorizontalAlignment="Left" Width="37" />
             <TextBox FontSize="14" Name="user_pinTB" TextWrapping="Wrap" VerticalContentAlignment="Center" Margin="52,74,90.2,0" Height="23" VerticalAlignment="Top"/>
-            <Button Content="Проверка" Click="Button_CheckUser" FontSize="14"   VerticalAlignment="Top" Height="29" Margin="0,71,10.2,0" HorizontalAlignment="Right" Width="67"/>
+            <Button Content="Проверка" Click="Button_CheckUser" FontSize="14"   VerticalAlignment="Top"  Margin="0,71,10.2,0" HorizontalAlignment="Right" Width="67"  Style="{StaticResource GelButton}"/>
 
             <Label Content="Име:" HorizontalAlignment="Left" Margin="20,135,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.722,0.641" Height="29"/>
             <TextBox x:Name="user_nameTB" FontSize="14" Height="23" Margin="116,140,9.6,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
@@ -111,7 +98,7 @@
                     </ItemsPanelTemplate>
                 </ComboBox.ItemsPanel>
             </ComboBox>
-            <Button Content="Запази" Click="Button_save_test" FontSize="20" Margin="0,0,10.2,10" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <Button Content="Запази" Click="Button_save_test"  Margin="0,465,9.8,0" VerticalAlignment="Top"  Style="{StaticResource GelButton}" HorizontalAlignment="Right" />
             <Label Content="Адрес:" HorizontalAlignment="Left" Margin="20,326,0,367" RenderTransformOrigin="0.534,0.512" Width="53"/>
             <Label Content="Направление:" HorizontalAlignment="Left" Margin="20,414,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.722,0.641" Height="29"/>
             <TextBox x:Name="ref_numberTB" FontSize="14" Height="23" Margin="114,416,9.4,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>

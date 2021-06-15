@@ -5,57 +5,100 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Laboratory.Pages"
       xmlns:Laboratory="clr-namespace:Laboratory" x:Class="Laboratory.Pages.Check_test_Page"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      mc:Ignorable="d" Loaded="Page_Loaded"
+      d:DesignHeight="800" d:DesignWidth="1500"
       Title="Check_test_Page">
 
     <Page.Resources>
         <Laboratory:laboratorydbDataSet x:Key="laboratorydbDataSet"/>
         <CollectionViewSource x:Key="select_result_byTestIDViewSource" Source="{Binding select_result_byTestID, Source={StaticResource laboratorydbDataSet}}"/>
+        <CollectionViewSource x:Key="clinicViewSource" Source="{Binding clinicbranch, Source={StaticResource laboratorydbDataSet}}"/>
+
+
+        <Style TargetType="{x:Type Grid}">
+            <Style.Resources>
+                <Style TargetType="{x:Type Label}">
+                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="FontSize" Value="18" />
+                </Style>
+            </Style.Resources>
+        </Style>
     </Page.Resources>
-
-    <Grid Margin="0,0,0,-0.4" DataContext="{StaticResource select_result_byTestIDViewSource}">
-        <Label Content="Проверка на резултати" FontSize="20" HorizontalContentAlignment="Center" Margin="10,10,10,0" VerticalAlignment="Top"/>
-        <Label Content="Тест ИД" HorizontalAlignment="Left" Margin="40,60,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="test_idTB" Height="27" Margin="102,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="175" FontSize="16" VerticalContentAlignment="Center"/>
-        <Button Content="Проверка" Click="Button_Check_Test" Margin="293,59,0,0" VerticalAlignment="Top" Height="26" HorizontalAlignment="Left" Width="105"/>
-        <Button Margin="0,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75">
-            <Image Source="C:\Users\atodo\source\repos\Laboratory\Laboratory\Resources\Images\printer.png"/>
-        </Button>
-        <Label Content="Пациент:" HorizontalAlignment="Left" Margin="43,103,0,0" VerticalAlignment="Top"/>
-        <Label Name="name_label" HorizontalAlignment="Left" Margin="102,103,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.543" Width="220">
-            <Label.Content>
-                <TextBlock>
-                    <TextBlock.Text>
-                        <MultiBinding StringFormat="{}{0} {1} {2}">
-                            <Binding Path="p_name" />
-                            <Binding Path="p_surname" />
-                            <Binding Path="p_lastname" />
-                        </MultiBinding>
-                    </TextBlock.Text>
-                </TextBlock>
-            </Label.Content>
-        </Label>
-        <Label Content="ЕГН:" HorizontalAlignment="Left" Margin="327,103,0,0" VerticalAlignment="Top"/>
-        <Label Content="{Binding pin}" Name="pin_label" HorizontalAlignment="Left" Margin="366,103,0,0" VerticalAlignment="Top" Height="26" />
-        <DataGrid x:Name="select_result_byTestIDDataGrid" CanUserAddRows="False" IsReadOnly="True" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,152,10,10" RowDetailsVisibilityMode="VisibleWhenSelected">
-            <DataGrid.Columns>
-
-                <DataGridTextColumn x:Name="type_nameColumn" Binding="{Binding type_name}" Header="Изследване/Показател" Width="*"/>
-                <DataGridTextColumn x:Name="result_valueColumn" Binding="{Binding result_value}" Header="Резултат" Width="*"/>
-                <DataGridTextColumn x:Name="unitColumn" Binding="{Binding unit}" Header="Единици" Width="*"/>
+    <Grid>
+        <Grid Margin="0,0,0,-0.4" >
+            <Label Content="Проверка на резултати" FontSize="20" HorizontalContentAlignment="Center" Margin="10,12,10,0" VerticalAlignment="Top"/>
+            <Label Content="Тест ИД" HorizontalAlignment="Left" Margin="102,62,0,0" VerticalAlignment="Top"/>
+            <TextBox Name="test_idTB" Height="27" Margin="182,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="175" FontSize="16" VerticalContentAlignment="Center"/>
+            <Button Content="Проверка" Click="Button_Check_Test" Style="{StaticResource GelButton}" Margin="372,65,0,0" VerticalAlignment="Top" Height="26" HorizontalAlignment="Left" Width="105"/>
+            <Button Click="Button_Print" Style="{StaticResource GelButton}" Margin="0,10,47,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" Height="75">
+                <Image Source="C:\Users\atodo\source\repos\Laboratory\Laboratory\Resources\Images\printer.png"/>
+            </Button>
 
 
-                <DataGridTextColumn x:Name="min_valueColumn" Binding="{Binding min_value}" Header="Реф. стойност ОТ" Width="*"/>
-                <DataGridTextColumn x:Name="max_valueColumn" Binding="{Binding max_value}" Header="Реф. стойност ДО" Width="*"/>
-                <DataGridTextColumn x:Name="status" Binding="{Binding stat}" Header="H/L" Width="*"/>
+        </Grid>
 
-         
-            </DataGrid.Columns>
-        </DataGrid>
-        
-        <Label Content="Дата:" HorizontalAlignment="Left" Margin="518,103,0,0" VerticalAlignment="Top"/>
-        <Label Content="{Binding testDate}" x:Name="pin_label_Copy" HorizontalAlignment="Left" Margin="557,103,0,0" VerticalAlignment="Top" Height="26" />
+        <Grid Name="printDG" Margin="-1,-2,1,3" DataContext="{StaticResource select_result_byTestIDViewSource}">
+            <StackPanel Orientation="Vertical" Margin="102,113,101,619.4">
+                <Label Content="Лаборатории Ина"/>
+                <StackPanel Orientation="Horizontal" DataContext="{StaticResource clinicViewSource}">
+                    <Label Content="Адрес:"/>
+                    <Label Content="{Binding town}" Margin="0,0,0,0"></Label>
+                    <Label Content="{Binding lab_address}" Margin="0,0,200,0"></Label>
+                    <Label>РЦЗ Номер:</Label>
+                    <Label Content="{Binding license}" Margin="0,0,200,0"/>
+                    <Label>Телефон:</Label>
+                    <Label Content="{Binding phonenumber}" Margin="0,0,200,0"></Label>
+                </StackPanel>
+
+            </StackPanel>
+            <Separator Margin="104,181,99,595"/>
+            
+            <StackPanel Orientation="Horizontal" Margin="105,199,101,560">
+                <Label Content="Пациент:" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
+                <Label Name="name_label" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.543" Width="250">
+                    <Label.Content>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1} {2}">
+                                    <Binding Path="p_name" />
+                                    <Binding Path="p_surname" />
+                                    <Binding Path="p_lastname" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </Label.Content>
+                </Label>
+                <Label Content="Адрес" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
+                <Label Content="{Binding address}" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="250" Height="34"/>
+                <Label Content="ЕГН:" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
+                <Label Content="{Binding pin}" Name="pin_label" HorizontalAlignment="Left" Margin="0,0,100,0" VerticalAlignment="Top" Height="31" />
+                <Label Content="Дата:" HorizontalAlignment="Left" Margin="320,0,0,0" VerticalAlignment="Top"/>
+                <Label Content="{Binding testDate}" x:Name="pin_label_Copy" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Top" Height="34" />
+
+            </StackPanel>
+                <DataGrid x:Name="select_result_byTestIDDataGrid" FontSize="16" CanUserAddRows="False" IsReadOnly="True" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="102,244,98,279" RowDetailsVisibilityMode="VisibleWhenSelected">
+                <DataGrid.Columns >
+
+                    <DataGridTextColumn x:Name="type_nameColumn" Binding="{Binding type_name}" Header="Изследване/Показател" Width="*"/>
+                    <DataGridTextColumn x:Name="result_valueColumn" Binding="{Binding result_value}" Header="Резултат" Width="*"/>
+                    <DataGridTextColumn x:Name="unitColumn" Binding="{Binding unit}" Header="Единици" Width="*"/>
+                    <DataGridTextColumn x:Name="min_valueColumn" Binding="{Binding min_value}" Header="Реф. стойност ОТ" Width="*"/>
+                    <DataGridTextColumn x:Name="max_valueColumn" Binding="{Binding max_value}" Header="Реф. стойност ДО" Width="*"/>
+                    <DataGridTextColumn x:Name="status" Binding="{Binding stat}" Header="H/L" Width="*"/>
+                    <DataGridTextColumn x:Name="group" Binding="{Binding group_name}" Header="Група" Width="*"/>
+
+
+                </DataGrid.Columns>
+            </DataGrid>
+
+           
+            <StackPanel Orientation="Vertical" Margin="105,0,98,159" Height="115" VerticalAlignment="Bottom">
+                <Label Content="* Пояснение" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label Content="H (high) - Резултат над горната референтна граница" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label Content="L (low) - Резултат под долната референтна граница" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+            </StackPanel>
+
+        </Grid>
 
     </Grid>
 </Page>
