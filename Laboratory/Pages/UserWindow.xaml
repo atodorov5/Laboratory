@@ -73,16 +73,15 @@
             <MenuItem Header="_Меню" Template="{StaticResource VsMenuTop}" >
                 <MenuItem Header="_Редактиране на профил" Click="MenuItem_Edit_Pwrd" Template="{StaticResource VsMenuSub}"/>
                 <MenuItem Header="_Изход" Click="MenuItem_Close" Template="{StaticResource VsMenuSub}"/>
-               
-            </MenuItem>
-            <MenuItem Header="_Тест" Template="{StaticResource VsMenuTop}">
-                <MenuItem Header="_Нов тест" Click="MenuItem_NewTest" Template="{StaticResource VsMenuSub}"/>
-                <MenuItem Header="_Необработени" Click="MenuItem_pending" Template="{StaticResource VsMenuSub}"/>
-                <MenuItem Header="_Проверка" Click="MenuItem_checkTest" Template="{StaticResource VsMenuSub}"/>
-
+                <MenuItem Header="_Администратор" Name="adminItem" Click="MenuItem_Admin" Template="{StaticResource VsMenuSub}"/>
             </MenuItem>
 
-            <MenuItem Header="_Администратор" Name="adminItem" Click="MenuItem_Admin" Template="{StaticResource VsMenuTop}"/>
+            <MenuItem Header="_Нов тест" Click="MenuItem_NewTest" Template="{StaticResource VsMenuTop}"/>
+            <MenuItem Header="_Необработени" Click="MenuItem_pending" Template="{StaticResource VsMenuTop}"/>
+            <MenuItem Header="_Проверка" Click="MenuItem_checkTest" Template="{StaticResource VsMenuTop}"/>
+
+
+            
         </Menu>
 
 

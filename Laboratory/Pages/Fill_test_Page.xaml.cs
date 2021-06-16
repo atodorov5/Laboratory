@@ -15,7 +15,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 using Laboratory.Pages;
+using MySql.Data.MySqlClient;
 
 namespace Laboratory.Pages
 {
@@ -24,7 +26,7 @@ namespace Laboratory.Pages
     /// </summary>
     public partial class Fill_test_Page : Page
     {
-
+       
         public Fill_test_Page()
         {
             InitializeComponent();
@@ -45,28 +47,30 @@ namespace Laboratory.Pages
 
         private void txtData_TextChanged(object sender, TextChangedEventArgs e)
         {
+
+
         }
 
 
-     
+
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-
             Laboratory.laboratorydbDataSet laboratorydbDataSet = ((Laboratory.laboratorydbDataSet)(this.FindResource("laboratorydbDataSet")));
             // Load data into the table clinicbranch. You can modify this code as needed.
             Laboratory.laboratorydbDataSetTableAdapters.retrieve_testTableAdapter testTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.retrieve_testTableAdapter();
             testTableAdapter.FillPendingTests(laboratorydbDataSet.retrieve_test);
             System.Windows.Data.CollectionViewSource testViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("retrieve_testViewSource")));
             testViewSource.View.MoveCurrentToFirst();
+           
+            
         }
-
         private void newtab_test_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            DataRowView item = (DataRowView)retrieve_testListView.SelectedItem;
+            Test item = (Test)retrieve_testListView.SelectedItem;
             TabItem newTabItem = new TabItem
             {
-                Header = "ТЕСТ-Реф.№" + item["idTest"].ToString(),
+                Header = "ТЕСТ-Реф.№" + item.idTest,
                 Name = "Test"
             };
             
@@ -89,7 +93,9 @@ namespace Laboratory.Pages
 
         private void Button_Close(object sender, RoutedEventArgs e)
         {
-            tabctrl.Items.Remove(tabctrl.SelectedItem);
+            TabItem tab = (TabItem)tabctrl.SelectedItem;
+            tab.Template = null;
+            tabctrl.Items.Remove(tab);
             tabctrl.Items.Refresh();
 
         }

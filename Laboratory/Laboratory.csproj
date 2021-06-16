@@ -156,6 +156,8 @@
     <Compile Include="Pages\UserWindow.xaml.cs">
       <DependentUpon>UserWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Test.cs" />
+    <Compile Include="TestColection.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Windows\Add_clinic_Window.xaml.cs">
       <DependentUpon>Add_clinic_Window.xaml</DependentUpon>

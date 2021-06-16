@@ -127,7 +127,6 @@ namespace Laboratory.Pages
                     queryTableAdapter.insertResult(testid, (int)item["idTestType"]);
                 }
 
-                //MessageBox.Show("Успешно въвеждане!");
                 Test_label_Window test_Label_Window = new Test_label_Window((int)testid, price);
                 test_Label_Window.Show();
                 clean_controls();

@@ -7,11 +7,13 @@
       xmlns:Laboratory="clr-namespace:Laboratory" x:Class="Laboratory.Pages.Fill_test_Page"
       mc:Ignorable="d" Loaded="Page_Loaded" Height="764.8"
       d:DesignHeight="764.8" d:DesignWidth="800"
+      xmlns:l="clr-namespace:Laboratory"
       Title="Необработени тестове">
 
     <Page.Resources>
         <Laboratory:laboratorydbDataSet x:Key="laboratorydbDataSet"/>
         <CollectionViewSource x:Key="retrieve_testViewSource" Source="{Binding retrieve_test, Source={StaticResource laboratorydbDataSet}}"/>
+        <l:TestColection x:Key="ViewModel"/>
     </Page.Resources>
 
     <Grid>
@@ -19,9 +21,10 @@
             <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" DataContext="{StaticResource retrieve_testViewSource}">
+        <Grid Grid.Column="0" DataContext="{StaticResource ViewModel}">
             <Label Content="Необработени Тестове" HorizontalContentAlignment="Center" Height="24" VerticalAlignment="Top"/>
-            <ListView x:Name="retrieve_testListView" IsTextSearchEnabled="True"  TextSearch.TextPath="refNumber" TextSearch.Text="text_filterTB"  ItemsSource="{Binding}" Margin="10,61,10,9.8" SelectionMode="Single" MouseDoubleClick="newtab_test_MouseDoubleClick">
+            <ListView x:Name="retrieve_testListView" IsTextSearchEnabled="True"  TextSearch.TextPath="refNumber" TextSearch.Text="text_filterTB"  ItemsSource="{Binding Collection}" Margin="10,61,10,9.8" SelectionMode="Single" MouseDoubleClick="newtab_test_MouseDoubleClick">
+               
                 <ListView.ItemContainerStyle>
                     <Style>
                         <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
@@ -30,7 +33,7 @@
                 </ListView.ItemContainerStyle>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn x:Name="idTestColumn" Header="ИД Тест" Width="Auto">
+                        <GridViewColumn x:Name="idTestColumn" Header="ИД Изследване" Width="Auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <Label Margin="6,-1,-6,-1" Content="{Binding idTest, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
@@ -47,19 +50,15 @@
                         <GridViewColumn x:Name="refNumberColumn" Header="Направление" Width="Auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Label Margin="-6,-1" Content="{Binding refNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    <Label Margin="-6,-1" Content="{Binding refnumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-
-
-
-
                     </GridView>
                 </ListView.View>
             </ListView>
-            <TextBox HorizontalAlignment="Left" Name="text_filterTB" TextChanged="txtData_TextChanged" Height="23" Margin="97,33,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="193"/>
-            <Label Content="Номер тест" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="100" Height="27"/>
+            <TextBox HorizontalAlignment="Left" Name="text_filterTB"  Height="23" Margin="97,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="193" Text="{Binding Path=Filter, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Content="Номер тест" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="82" Height="27"/>
         </Grid>
         <Grid Grid.Column="1">
             <TabControl x:Name="tabctrl" VerticalAlignment="Stretch"  HorizontalContentAlignment="Stretch" Margin="10,37,10,9.8">

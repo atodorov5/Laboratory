@@ -17,6 +17,7 @@
         <StackPanel Grid.Column="0">
             <Label Content="Label"/>
             <Label Content="Label"/>
+            
         </StackPanel>
         <StackPanel Grid.Column="1"  >
             <StackPanel.Style>

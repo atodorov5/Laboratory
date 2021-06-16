@@ -40,7 +40,7 @@ namespace Laboratory.Administrator
         {
             Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter bloodlabDataSetselect_typeTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter();
             retrieve_usersDataGrid.ItemsSource = null;
-            retrieve_usersDataGrid.ItemsSource = bloodlabDataSetselect_typeTableAdapter.GetData();
+            retrieve_usersDataGrid.ItemsSource = bloodlabDataSetselect_typeTableAdapter.GetData(Properties.Settings.Default.labID);
         }
 
         private void updateViewGroups()
@@ -127,7 +127,7 @@ namespace Laboratory.Administrator
 
             // Load data into the table bloodtype. You can modify this code as needed
             Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter retrieve_UsersTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter();
-            retrieve_UsersTableAdapter.Fill(laboratoryDataSet.retrieve_users);
+            retrieve_UsersTableAdapter.Fill(laboratoryDataSet.retrieve_users,Properties.Settings.Default.labID);
             System.Windows.Data.CollectionViewSource retrieve_usersViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("retrieve_usersViewSource")));
             retrieve_usersViewSource.View.MoveCurrentToFirst();
 

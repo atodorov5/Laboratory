@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
@@ -22,17 +23,17 @@ namespace Laboratory.Pages
     /// </summary>
     public partial class Test_values_Page : Page
     {
-        DataRowView row;
+        Test test;
         TabControl tabctrl;
         ListView list;
-        public Test_values_Page(DataRowView row,TabControl tabctrl, ListView ls)
+        public Test_values_Page(Test row,TabControl tabctrl, ListView ls)
         {
             InitializeComponent();
-            this.row = row;
-            name_label.Content = row["p_name"].ToString() + " " + row["p_surname"].ToString() + " " + row["p_lastname"].ToString();
-            pin_label.Content = row["pin"].ToString();
+            this.test = row;
+            name_label.Content = row.getFullName();
+            pin_label.Content = row.pin;
             select_result_byTestIDListView.UnselectAll();
-            ref_numbTV.Content = row["refNumber"].ToString();
+            ref_numbTV.Content = row.refnumber;
             this.tabctrl = tabctrl;
             this.list = ls;
         }
@@ -44,7 +45,7 @@ namespace Laboratory.Pages
             Laboratory.laboratorydbDataSet laboratorydbDataSet = ((Laboratory.laboratorydbDataSet)(this.FindResource("laboratorydbDataSet")));
             // Load data into the table clinicbranch. You can modify this code as needed.
             Laboratory.laboratorydbDataSetTableAdapters.select_result_byTestIDTableAdapter resultTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.select_result_byTestIDTableAdapter();
-            resultTableAdapter.Fill(laboratorydbDataSet.select_result_byTestID, (int)row["idTest"]);
+            resultTableAdapter.Fill(laboratorydbDataSet.select_result_byTestID, test.idTest,0);
             System.Windows.Data.CollectionViewSource resultViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("select_result_byTestIDViewSource")));
             resultViewSource.View.MoveCurrentToFirst();
         }
@@ -63,24 +64,25 @@ namespace Laboratory.Pages
                 queryTableAdapter.enter_test_result(item[0].ToString(), (int)item[10],(int)item[11]);
             }
 
-            queryTableAdapter.set_test_status((int)row["idTest"]);
+            queryTableAdapter.set_test_status(test.idTest);
 
 
 
             if (MessageBox.Show("Резултатите са запазени", "Question", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
             {
-                tabctrl.Items.Remove(tabctrl.SelectedItem);
-                tabctrl.Items.Refresh();
-
-                Laboratory.laboratorydbDataSetTableAdapters.retrieve_testTableAdapter testTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.retrieve_testTableAdapter();
-                list.ItemsSource =  testTableAdapter.GetPendingTests();
-
+                
+                                
+                TestColection col3 = new TestColection();
+                list.ItemsSource = col3.fillColection();
             }
             else
             {
                 
             }
-            
+
+            tabctrl.Items.Remove(tabctrl.SelectedItem);
+            tabctrl.Items.Refresh();
+
         }
     }
 }
