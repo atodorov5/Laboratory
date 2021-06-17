@@ -24,9 +24,10 @@ namespace Laboratory
         public UserWindow()
         {
             InitializeComponent();
-            if(Properties.Settings.Default.roleID != 1)
+            usernameLabel.Content = "Потребител: " + Properties.Settings.Default.user;
+            if (Properties.Settings.Default.roleID != 1)
             {
-                adminItem.Visibility = Visibility.Hidden;
+                adminItem.Visibility = Visibility.Collapsed;
             }
         }
 

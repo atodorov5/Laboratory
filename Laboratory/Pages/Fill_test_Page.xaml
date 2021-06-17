@@ -18,17 +18,30 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="400"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" DataContext="{StaticResource ViewModel}">
-            <Label Content="Необработени Тестове" HorizontalContentAlignment="Center" Height="24" VerticalAlignment="Top"/>
-            <ListView x:Name="retrieve_testListView" IsTextSearchEnabled="True"  TextSearch.TextPath="refNumber" TextSearch.Text="text_filterTB"  ItemsSource="{Binding Collection}" Margin="10,61,10,9.8" SelectionMode="Single" MouseDoubleClick="newtab_test_MouseDoubleClick">
-               
+            <Label Content="Необработени Тестове" FontSize="20" HorizontalContentAlignment="Center" Height="35" VerticalAlignment="Top"/>
+            <ListView x:Name="retrieve_testListView" IsTextSearchEnabled="True"  TextSearch.TextPath="refNumber" TextSearch.Text="text_filterTB"  ItemsSource="{Binding Collection}" Margin="10,73,10,9.8" SelectionMode="Single" MouseDoubleClick="newtab_test_MouseDoubleClick">
+
                 <ListView.ItemContainerStyle>
-                    <Style>
+                    <Style TargetType="ListViewItem">
                         <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
                         <Setter Property="Control.VerticalContentAlignment" Value="Stretch"/>
+                        <Setter Property="Background" Value="white" />
+                        <Setter Property="BorderThickness" Value="2" />
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#FFEDCB" />
+                                <Setter Property="BorderBrush" Value="Wheat"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFEDCB" />
+                                <Setter Property="BorderBrush" Value="white"></Setter>
+                            </Trigger>
+                            
+                        </Style.Triggers>
                     </Style>
                 </ListView.ItemContainerStyle>
                 <ListView.View>
@@ -57,13 +70,18 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <TextBox HorizontalAlignment="Left" Name="text_filterTB"  Height="23" Margin="97,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="193" Text="{Binding Path=Filter, UpdateSourceTrigger=PropertyChanged}"/>
-            <Label Content="Номер тест" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="82" Height="27"/>
+            <TextBox Name="text_filterTB"  Height="23" Margin="97,45,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding Path=Filter, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Content="Номер тест" FontSize="14" HorizontalAlignment="Left" Margin="10,43,0,0" VerticalAlignment="Top" Width="82" Height="27"/>
         </Grid>
         <Grid Grid.Column="1">
             <TabControl x:Name="tabctrl" VerticalAlignment="Stretch"  HorizontalContentAlignment="Stretch" Margin="10,37,10,9.8">
 
-                <TabItem Header="Hello"  />
+
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Height="300" Width="300" Source="C:\Users\atodo\source\repos\Laboratory\Laboratory\Resources\Images\choice.png"/>
+                    <Label Content="Не е избрано изследване" FontSize="30" HorizontalContentAlignment="Center"></Label>
+                </StackPanel>
+
             </TabControl>
 
             <Button Background="White" BorderThickness="1,1,1,0" Click="Button_Close" Margin="0,37,10,0" Content="Затвори" HorizontalAlignment="Right" Width="54" Height="22" VerticalAlignment="Top"/>

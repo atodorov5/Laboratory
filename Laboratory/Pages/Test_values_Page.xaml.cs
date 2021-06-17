@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -26,6 +27,7 @@ namespace Laboratory.Pages
         Test test;
         TabControl tabctrl;
         ListView list;
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public Test_values_Page(Test row,TabControl tabctrl, ListView ls)
         {
             InitializeComponent();
@@ -36,6 +38,8 @@ namespace Laboratory.Pages
             ref_numbTV.Content = row.refnumber;
             this.tabctrl = tabctrl;
             this.list = ls;
+            log4net.Config.XmlConfigurator.Configure();
+
         }
 
 
@@ -66,21 +70,16 @@ namespace Laboratory.Pages
 
             queryTableAdapter.set_test_status(test.idTest);
 
+            log.Info(Properties.Settings.Default.user + " обработи тест -" + test.idTest);
 
 
-            if (MessageBox.Show("Резултатите са запазени", "Question", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
-            {
-                
-                                
-                TestColection col3 = new TestColection();
-                list.ItemsSource = col3.fillColection();
-            }
-            else
-            {
-                
-            }
+            MessageBox.Show("Изследването е обработено!");           
+            TestColection col3 = new TestColection();
+            list.ItemsSource = col3.fillColection();
 
-            tabctrl.Items.Remove(tabctrl.SelectedItem);
+            TabItem tab = (TabItem)tabctrl.SelectedItem;
+            tab.Template = null;
+            tabctrl.Items.Remove(tab);
             tabctrl.Items.Refresh();
 
         }

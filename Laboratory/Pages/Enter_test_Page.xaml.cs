@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Laboratory.Windows;
+using log4net;
 
 namespace Laboratory.Pages
 {
@@ -23,9 +24,11 @@ namespace Laboratory.Pages
     /// </summary>
     public partial class Enter_test_Page : Page
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public Enter_test_Page()
         {
             InitializeComponent();
+            log4net.Config.XmlConfigurator.Configure();
             testtypeListView.UnselectAll();
         }
 
@@ -128,6 +131,7 @@ namespace Laboratory.Pages
                 }
 
                 Test_label_Window test_Label_Window = new Test_label_Window((int)testid, price);
+                log.Info(Properties.Settings.Default.user + " въведе изследване -" + testid);
                 test_Label_Window.Show();
                 clean_controls();
             }

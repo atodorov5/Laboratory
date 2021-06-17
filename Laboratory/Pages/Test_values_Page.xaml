@@ -18,13 +18,19 @@
     </Page.Resources>
 
     <Grid DataContext="{StaticResource select_result_byTestIDViewSource}">
-        <Label Content="Данни от тест" FontSize="16" HorizontalContentAlignment="Center" Margin="10,10,680,0" VerticalAlignment="Top" />
-        <Label Content="Пациент:" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top"/>
-        <Label Content="име" Name="name_label" HorizontalAlignment="Left" Margin="92,47,0,0" VerticalAlignment="Top" Width="226"/>
-        <Label Content="EГН:" HorizontalAlignment="Left" Margin="323,47,0,0" VerticalAlignment="Top"/>
-        <Label Content="егн" Name="pin_label" HorizontalAlignment="Left" Margin="368,47,0,0" VerticalAlignment="Top"/>
-        <Button Content="Запази" Click="Button_Save_Results" Margin="0,0,10,10.6" HorizontalAlignment="Right" Width="75" Height="19" VerticalAlignment="Bottom"/>
-        <ListView x:Name="select_result_byTestIDListView" Focusable="False" ItemsSource="{Binding}" Margin="10,84,10,34.6" HorizontalContentAlignment="Stretch" >
+       
+            <Label Content="Данни от тест" FontSize="20" HorizontalContentAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" />
+        <StackPanel Orientation="Horizontal" Margin="10,46,10,370.6">
+            <Label Content="Пациент:" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
+            <Label Content="име" Name="name_label" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="226"/>
+            <Label Content="EГН:" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
+            <Label Content="егн" Name="pin_label" HorizontalAlignment="Left" Margin="0,0,150,0" VerticalAlignment="Top"/>
+            <Label Content="Направление №:" HorizontalContentAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Top"/>
+            <Label Content="nomer" Name="ref_numbTV" Margin="0,0,10,0" VerticalAlignment="Top" Height="29" HorizontalAlignment="Right" Width="107"/>
+        </StackPanel>
+            
+            <Button Content="Запази" Style="{StaticResource GelButton}" Click="Button_Save_Results" Margin="0,0,10,9.6" HorizontalAlignment="Right" Width="75" Height="30" VerticalAlignment="Bottom"/>
+        <ListView x:Name="select_result_byTestIDListView" Focusable="False" ItemsSource="{Binding}" Margin="10,84,10,44.6" HorizontalContentAlignment="Stretch" >
             <ListView.ItemContainerStyle >
                 <Style TargetType="{x:Type ListViewItem}">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -33,7 +39,7 @@
                     <Setter Property="Control.VerticalContentAlignment" Value="Stretch"/>
                 </Style>
             </ListView.ItemContainerStyle>
-            
+
             <ListView.View>
                 <GridView>
 
@@ -51,21 +57,21 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="unitColumn1" Header="Мерна единица" Width="200">
+                    <GridViewColumn x:Name="unitColumn1" Header="Мерна единица" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Label Margin="-6,-1" Content="{Binding unit, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="minValColumn1" Header="min Val" Width="50">
+                    <GridViewColumn x:Name="minValColumn1" Header="Мин. стойност" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Label  Content="{Binding min_value, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="maxValColumn1" Header="max Val" Width="50">
+                    <GridViewColumn x:Name="maxValColumn1" Header="Макс стойност" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Label Margin="-6,-1" Content="{Binding max_value, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
@@ -77,8 +83,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label Content="nomer" Name="ref_numbTV" Margin="0,47,10,0" VerticalAlignment="Top" Height="29" HorizontalAlignment="Right" Width="107"/>
-        <Label Content="Направление №:" HorizontalContentAlignment="Right" Margin="532,47,122,0" VerticalAlignment="Top"/>
+       
 
     </Grid>
 </Page>

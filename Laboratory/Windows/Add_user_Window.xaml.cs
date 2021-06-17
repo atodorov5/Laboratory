@@ -58,8 +58,6 @@ namespace Laboratory.Windows
             var result = pwd.Next();
             MessageBox.Show("Pasword is " + result);
 
-
-
             String hashedpass = Password_salt.GenerateSHA256Hash(result, salt);
             retrieve_UsersTableAdapter.add_lab_user(firstnameTB.Text, surnameTB.Text, lastnameTB.Text, usernameTB.Text, pinTB.Text, addressTB.Text, phoneTB.Text, hashedpass, salt, (int)labCB.SelectedValue, (int)roleCB.SelectedValue);
             this.Close();
