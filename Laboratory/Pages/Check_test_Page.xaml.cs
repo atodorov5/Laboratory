@@ -39,45 +39,49 @@ namespace Laboratory.Pages
 
         private void Button_Check_Test(object sender, RoutedEventArgs e)
         {
+            int res=0;
 
-
-            
-             Laboratory.laboratorydbDataSet laboratorydbDataSet = ((Laboratory.laboratorydbDataSet)(this.FindResource("laboratorydbDataSet")));
-             // Load data into the table clinicbranch. You can modify this code as needed.
-             Laboratory.laboratorydbDataSetTableAdapters.select_result_byTestIDTableAdapter resultTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.select_result_byTestIDTableAdapter();
-             int res = resultTableAdapter.Fill(laboratorydbDataSet.select_result_byTestID, Int32.Parse(test_idTB.Text),1);
-             System.Windows.Data.CollectionViewSource resultViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("select_result_byTestIDViewSource")));
-             resultViewSource.View.MoveCurrentToFirst();
-
-
-            if (res > 0)
+            if (test_idTB.Text != "")
             {
-                var dt_n = select_result_byTestIDDataGrid.Items.Count;
-
-                for (int i = 0; i < dt_n; i++)
+                Laboratory.laboratorydbDataSet laboratorydbDataSet = ((Laboratory.laboratorydbDataSet)(this.FindResource("laboratorydbDataSet")));
+                // Load data into the table clinicbranch. You can modify this code as needed.
+                Laboratory.laboratorydbDataSetTableAdapters.select_result_byTestIDTableAdapter resultTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.select_result_byTestIDTableAdapter();
+                res = resultTableAdapter.Fill(laboratorydbDataSet.select_result_byTestID, Int32.Parse(test_idTB.Text), 1);
+                System.Windows.Data.CollectionViewSource resultViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("select_result_byTestIDViewSource")));
+                resultViewSource.View.MoveCurrentToFirst();
+            }
+           
+                if (res > 0)
                 {
-                    DataRowView rowView = select_result_byTestIDDataGrid.Items[i] as DataRowView; //Get RowView
-                    rowView.BeginEdit();
-                    if (Convert.ToDouble(rowView[7]) == 0 & Convert.ToDouble(rowView[8]) == 0)
+                    var dt_n = select_result_byTestIDDataGrid.Items.Count;
+
+                    for (int i = 0; i < dt_n; i++)
                     {
-                        if (Convert.ToDouble(rowView[0]) == 1)
-                            rowView[12] = "ПОЛОЖИТЕЛЕН";
-                        else if (Convert.ToDouble(rowView[0]) == 0)
-                            rowView[12] = "ОТРИЦАТЕЛЕН";
-                    }
-                    else
-                    {
-                        if (Convert.ToDouble(rowView[0]) > Convert.ToDouble(rowView[8]))
-                            rowView[12] = "H";
-                        else if (Convert.ToDouble(rowView[0]) < Convert.ToDouble(rowView[7]))
-                            rowView[12] = "L";
-                        rowView.EndEdit();
-                        select_result_byTestIDDataGrid.Items.Refresh();
+                        DataRowView rowView = select_result_byTestIDDataGrid.Items[i] as DataRowView; //Get RowView
+                        rowView.BeginEdit();
+                        if (Convert.ToDouble(rowView[7]) == 0 & Convert.ToDouble(rowView[8]) == 0)
+                        {
+                            if (Convert.ToDouble(rowView[0]) == 1)
+                                rowView[12] = "ПОЛОЖИТЕЛЕН";
+                            else if (Convert.ToDouble(rowView[0]) == 0)
+                                rowView[12] = "ОТРИЦАТЕЛЕН";
+                        }
+                        else
+                        {
+                            if (Convert.ToDouble(rowView[0]) > Convert.ToDouble(rowView[8]))
+                                rowView[12] = "H";
+                            else if (Convert.ToDouble(rowView[0]) < Convert.ToDouble(rowView[7]))
+                                rowView[12] = "L";
+                            rowView.EndEdit();
+                            select_result_byTestIDDataGrid.Items.Refresh();
+                        }
                     }
                 }
-            }
-            else
-                MessageBox.Show("Тестът не е оброботен!");
+                else
+                    MessageBox.Show("Тестът не е оброботен или не съществува!", "Известие", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+          
+
+            
 
         }
 

@@ -9,7 +9,7 @@
     <StackPanel Margin="0,40,0,20">
         <Label Content="Група" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
         <TextBox x:Name="group_name" Width="200"></TextBox>
-        <Button Click="Button_AddGroup" Width="60" Content="Запази" Height="20" Margin="0,20,0,0" Style="{StaticResource GelButton}"></Button>
+        <Button Click="Button_AddGroup" Name="groupBtn" Width="60" Content="Запази" Height="20" Margin="0,20,0,0" Style="{StaticResource GelButton}"></Button>
 
     </StackPanel>
 </Window>

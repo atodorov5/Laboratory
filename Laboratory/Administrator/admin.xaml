@@ -14,99 +14,106 @@
         <CollectionViewSource x:Key="testtypeViewSource" Source="{Binding testtype, Source={StaticResource laboratorydbDataSet}}"/>
         <CollectionViewSource x:Key="retrieve_usersViewSource" Source="{Binding retrieve_users, Source={StaticResource laboratorydbDataSet}}"/>
         <CollectionViewSource x:Key="type_groupViewSource" Source="{Binding type_group, Source={StaticResource laboratorydbDataSet}}"/>
+        <CollectionViewSource x:Key="ref_valueViewSource" Source="{Binding ref_value, Source={StaticResource laboratorydbDataSet}}"/>
 
     </Page.Resources>
 
 
-    <Grid >
+    <Grid DataContext="{StaticResource testtypeViewSource}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.7*" />
-            <ColumnDefinition Width="1.2*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
 
 
-        <Grid Grid.Row="0" Grid.Column="0" DataContext="{StaticResource testtypeViewSource}"  >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-            </Grid.RowDefinitions>
 
 
-            <Grid Grid.Row="0" Grid.Column="0">
-                <Label x:Name="tty" Content="Изследвания/Показатели" HorizontalAlignment="Center" FontSize="20" Margin="144,0,143.6,350.4" />
-                <Button Click="edit_testtype" Content="Редактирай" Height="30" Width="80" Margin="150,346,139.6,10.4" Style="{StaticResource GelButton}"/>
-                <Button Click="add_testtype" Content="Добави" Height="30" Width="70" Margin="20,346,279.6,10.4" Style="{StaticResource GelButton}"/>
-                <Button Click="delete_testtype" Content="Изтрий" Height="30" Width="70" Margin="290,346,9.6,10.4" Style="{StaticResource GelButton}"/>
-                <DataGrid CanUserAddRows="False" IsReadOnly="True" x:Name="testtypeDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,41,9.6,45.4" RowDetailsVisibilityMode="VisibleWhenSelected">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn x:Name="type_nameColumn" Binding="{Binding type_name}" Header="Изследване/Показател" Width="2*"/>
 
-                        <DataGridTextColumn x:Name="unitColumn" Binding="{Binding unit}" Header="Мерна единица" Width="*"/>
-                        <DataGridTextColumn x:Name="priceColumn" Binding="{Binding price}" Header="Цена" Width="*"/>
-                        <DataGridTextColumn x:Name="group_type" Binding="{Binding group_name}" Header="Група" Width="*"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </Grid>
-            <Grid Grid.Row="1" Grid.Column="0">
-                <Label FontSize="20" Content="Групи" Margin="153,0,152.6,348.6" HorizontalAlignment="Center"></Label>
-                <DataGrid x:Name="type_groupDataGrid" CanUserAddRows="False" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource type_groupViewSource}}" Margin="10,42,9.6,58.6" RowDetailsVisibilityMode="VisibleWhenSelected">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn x:Name="idtype_groupColumn" Binding="{Binding idtype_group}" Header="idtype group" Width="*" Visibility="Hidden"/>
-                        <DataGridTextColumn x:Name="group_nameColumn" Binding="{Binding group_name}" Header="Име на група" Width="*" IsReadOnly="True"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-                <Button Click="add_group" Content="Добави" Height="30" Width="70" Margin="10,332,289.6,23.6" Style="{StaticResource GelButton}"/>
-                <Button Click="edit_group" Content="Редактирай" Height="30" Width="80" Margin="153,332,136.6,23.6" Style="{StaticResource GelButton}"/>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Label x:Name="tty" Content="Изследвания/Показатели" HorizontalAlignment="Center" FontSize="20" Margin="144,0,143.6,350.4" />
+            <Button Click="edit_testtype" Content="Редактирай" Height="30" Width="80" Margin="150,346,139.6,10.4" Style="{StaticResource GelButton}"/>
+            <Button Click="add_testtype" Content="Добави" Height="30" Width="70" Margin="20,346,279.6,10.4" Style="{StaticResource GelButton}"/>
+            <Button Click="delete_testtype" Content="Изтрий" Height="30" Width="70" Margin="290,346,9.6,10.4" Style="{StaticResource GelButton}"/>
+            <DataGrid CanUserAddRows="False" IsReadOnly="True" x:Name="testtypeDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,41,9.6,45.4" RowDetailsVisibilityMode="VisibleWhenSelected"  MouseDoubleClick="ref_valueDataGrid_MouseDoubleClick">
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="type_nameColumn" Binding="{Binding type_name}" Header="Изследване/Показател" Width="2*"/>
 
-
-            </Grid>
-
+                    <DataGridTextColumn x:Name="unitColumn" Binding="{Binding unit}" Header="Мерна единица" Width="*"/>
+                    <DataGridTextColumn x:Name="priceColumn" Binding="{Binding price}" Header="Цена" Width="*"/>
+                    <DataGridTextColumn x:Name="group_type" Binding="{Binding group_name}" Header="Група" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
-
         <Grid Grid.Row="0" Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-            </Grid.RowDefinitions>
+            <Label FontSize="20" Content="Групи" Margin="153,0,152.6,348.6" HorizontalAlignment="Center"></Label>
+            <DataGrid x:Name="type_groupDataGrid" CanUserAddRows="False" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource type_groupViewSource}}" Margin="10,42,9.2,45.4" RowDetailsVisibilityMode="VisibleWhenSelected">
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="idtype_groupColumn" Binding="{Binding idtype_group}" Header="idtype group" Width="0" Visibility="Hidden"/>
+                    <DataGridTextColumn x:Name="group_nameColumn" Binding="{Binding group_name}" Header="Име на група" Width="*" IsReadOnly="True"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Click="add_group" Content="Добави" Height="30" Width="70" Margin="10,346,451.2,10.4" Style="{StaticResource GelButton}"/>
+            <Button Click="edit_group" Content="Редактирай" Height="30" Width="80" Margin="234,346,217.2,0" Style="{StaticResource GelButton}" VerticalAlignment="Top"/>
+            <Button Click="delete_group" Content="Изтрий" Height="30" Width="80" Margin="441,346,10.2,10.4" Style="{StaticResource GelButton}"/>
 
 
-
-            <Grid Grid.Row="0" DataContext="{StaticResource clinicbranchViewSource}">
-                <Label Content="Лаборатории" HorizontalAlignment="Center" FontSize="20" Margin="113,0,113,345.8"/>
-               
-            </Grid>
-
-            <Grid Grid.Row="1" DataContext="{StaticResource retrieve_usersViewSource}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="38*"/>
-                    <ColumnDefinition Width="7*"/>
-                </Grid.ColumnDefinitions>
-                <Label Content="Профили" HorizontalAlignment="Center" FontSize="20" Margin="132,0,76,348.6"/>
-                <Button Click="edit_user" Content="Редактирай" Height="30" Width="80" Margin="145,335,89,20.6" Style="{StaticResource GelButton}"/>
-                <Button Click="add_user" Content="Добави" Height="30" Width="70" Margin="10,334,224,21.6" Style="{StaticResource GelButton}"/>
-                <DataGrid x:Name="retrieve_usersDataGrid"  IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,42,10,56.6" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.ColumnSpan="2">
-                    <DataGrid.Columns>
-
-                        <DataGridTextColumn x:Name="nameColumn" Binding="{Binding name}" Header="Име" Width="*"/>
-                        <DataGridTextColumn x:Name="surnameColumn" Binding="{Binding surname}" Header="Презиме" Width="*"/>
-                        <DataGridTextColumn x:Name="lastnameColumn" Binding="{Binding lastname}" Header="Фамилия" Width="*"/>
-                        <DataGridTextColumn x:Name="user_pinColumn" Binding="{Binding user_pin}" Header="ЕГН" Width="*"/>
-                        <DataGridTextColumn x:Name="user_addressColumn" Binding="{Binding user_address}" Header="Адрес" Width="*"/>
-                        <DataGridTextColumn x:Name="user_phoneColumn" Binding="{Binding user_phone}" Header="Телефон" Width="*"/>
-                        <DataGridTextColumn x:Name="townColumn1" Binding="{Binding license}" Header="ЛАБ РЦЗ" Width="*"/>
-                        <DataGridTextColumn x:Name="roleNameColumn" Binding="{Binding RoleName}" Header="Роля" Width="*" />
-                        <DataGridTextColumn x:Name="active_statusColumn" Binding="{Binding active_status}" Header="Статус" Width="*"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-
-            </Grid>
         </Grid>
 
 
 
 
 
+
+        <Grid Grid.Row="1" Grid.Column="0" DataContext="{StaticResource clinicbranchViewSource}">
+            <Label Content="Референтни стойности за избрано изследване" HorizontalAlignment="Center" FontSize="20" Margin="113,0,113,345.8"/>
+            <DataGrid x:Name="ref_valueDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource ref_valueViewSource}}" Margin="10,45,10.2,54.6" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserAddRows="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="idref_valueColumn" Binding="{Binding idref_value}" Header="idref value" Width="0" Visibility="Hidden"/>
+                    <DataGridTextColumn x:Name="ref_typeColumn" Binding="{Binding ref_type}" Header="Пол" Width="*"/>
+                    <DataGridTextColumn x:Name="min_valueColumn" Binding="{Binding min_value}" Header="Мин" Width="*"/>
+                    <DataGridTextColumn x:Name="max_valueColumn" Binding="{Binding max_value}" Header="Макс" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Click="add_refVal" Content="Добави" Height="30" Width="70" Margin="10,336,451.2,19.6" Style="{StaticResource GelButton}"/>
+            <Button  Content="Редактирай" Height="30" Margin="207,336,244.2,19.6" Style="{StaticResource GelButton}"/>
+            <Button  Content="Изтрий" Height="30" Width="70" Margin="451,336,10.2,19.6" Style="{StaticResource GelButton}"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1" DataContext="{StaticResource retrieve_usersViewSource}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="38*"/>
+                <ColumnDefinition Width="7*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Профили" HorizontalAlignment="Center" FontSize="20" Margin="132,0,76,348.6"/>
+            <Button Click="edit_user" Content="Редактирай" Height="30" Width="80" Margin="270,334,10,21.6" Style="{StaticResource GelButton}" Grid.ColumnSpan="2"/>
+            <Button Click="add_user" Content="Добави" Height="30" Width="70" Margin="10,334,224,21.6" Style="{StaticResource GelButton}"/>
+            <DataGrid x:Name="retrieve_usersDataGrid"  IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,42,10,56.6" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.ColumnSpan="2">
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn x:Name="nameColumn" Binding="{Binding name}" Header="Име" Width="*"/>
+                    <DataGridTextColumn x:Name="surnameColumn" Binding="{Binding surname}" Header="Презиме" Width="*"/>
+                    <DataGridTextColumn x:Name="lastnameColumn" Binding="{Binding lastname}" Header="Фамилия" Width="*"/>
+                    <DataGridTextColumn x:Name="user_pinColumn" Binding="{Binding user_pin}" Header="ЕГН" Width="*"/>
+                    <DataGridTextColumn x:Name="user_addressColumn" Binding="{Binding user_address}" Header="Адрес" Width="*"/>
+                    <DataGridTextColumn x:Name="user_phoneColumn" Binding="{Binding user_phone}" Header="Телефон" Width="*"/>
+                    <DataGridTextColumn x:Name="townColumn1" Binding="{Binding license}" Header="ЛАБ РЦЗ" Width="*"/>
+                    <DataGridTextColumn x:Name="roleNameColumn" Binding="{Binding RoleName}" Header="Роля" Width="*" />
+                    <DataGridTextColumn x:Name="active_statusColumn" Binding="{Binding active_status}" Header="Статус" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </Grid>
     </Grid>
+
+
+
+
+
+
 
 
 

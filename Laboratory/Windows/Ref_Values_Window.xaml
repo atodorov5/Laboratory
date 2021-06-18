@@ -1,0 +1,35 @@
+﻿<Window x:Class="Laboratory.Windows.Ref_Values_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Laboratory.Windows"
+        mc:Ignorable="d"
+        
+        Title="Ref_Values_Window" Height="200" Width="300">
+    <StackPanel Orientation="Vertical">
+        <Label Name="titleLabel" HorizontalContentAlignment="Center">Реф. стойности за</Label>
+        <CheckBox Content="Всички" HorizontalAlignment="Center"></CheckBox>
+        <StackPanel Orientation="Horizontal" Margin="40,20,0,0">
+            <Label Content="Всички:" Width="53"></Label>
+            <Label Content="ОТ-"></Label>
+            <TextBox x:Name="allMin" Width="50"></TextBox>
+            <Label Content="ДО-"></Label>
+            <TextBox x:Name="allMax" Width="50"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="40,5,0,0">
+            <Label Content="Мъже:" Width="53"></Label>
+            <Label Content="ОТ-"></Label>
+            <TextBox x:Name="maleMin" Width="50"></TextBox>
+            <Label Content="ДО-"></Label>
+            <TextBox x:Name="maleMax" Width="50"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="40,5,0,0">
+            <Label Content="Жени:" Width="53" ></Label>
+            <Label Content="ОТ-"></Label>
+            <TextBox x:Name="femaleMin" Width="50" ></TextBox>
+            <Label Content="ДО-"></Label>
+            <TextBox x:Name="femaleMax" Width="50"></TextBox>
+        </StackPanel>
+    </StackPanel>
+</Window>

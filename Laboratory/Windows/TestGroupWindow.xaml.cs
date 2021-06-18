@@ -37,12 +37,12 @@ namespace Laboratory.Windows
         {
             string content = (sender as Button).Content.ToString();
             if (content == "Добави") {
-                Laboratory.laboratorydbDataSetTableAdapters.type_groupTableAdapter type_groupTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.type_groupTableAdapter();
+                laboratorydbDataSetTableAdapters.type_groupTableAdapter type_groupTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.type_groupTableAdapter();
                 type_groupTableAdapter.insert_group(group_name.Text);
             }
             else
             {
-                Laboratory.laboratorydbDataSetTableAdapters.type_groupTableAdapter type_groupTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.type_groupTableAdapter();
+                laboratorydbDataSetTableAdapters.type_groupTableAdapter type_groupTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.type_groupTableAdapter();
                 type_groupTableAdapter.edit_group((int)row[0],group_name.Text);
             }
             this.Close();

@@ -177,6 +177,9 @@
     <Compile Include="Windows\Edit_user_Window.xaml.cs">
       <DependentUpon>Edit_user_Window.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Ref_Values_Window.xaml.cs">
+      <DependentUpon>Ref_Values_Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\TestGroupWindow.xaml.cs">
       <DependentUpon>TestGroupWindow.xaml</DependentUpon>
     </Compile>
@@ -251,6 +254,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Edit_user_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Ref_Values_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
