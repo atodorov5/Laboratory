@@ -31,12 +31,12 @@
             </StackPanel.Style>
             <Label HorizontalContentAlignment="Center">Редактиране на парола</Label>
             <Label>Стара парола</Label>
-            <TextBox></TextBox>
+            <PasswordBox Name="old_pass"></PasswordBox>
             <Label>Нова парола</Label>
-            <TextBox></TextBox>
+            <PasswordBox Name="new_pass"></PasswordBox>
             <Label>Нова парола</Label>
-            <TextBox></TextBox>
-            <Button Margin="0,10,0,0">Запази</Button>
+            <PasswordBox Name="new_pass2"></PasswordBox>
+            <Button Margin="0,10,0,0" Click="Button_SavePass" Style="{StaticResource GelButton}">Запази</Button>
         </StackPanel>
     </Grid>
 </Page>

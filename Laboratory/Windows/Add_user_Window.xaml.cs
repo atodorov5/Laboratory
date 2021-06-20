@@ -34,11 +34,11 @@ namespace Laboratory.Windows
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            Laboratory.laboratorydbDataSet laboratorydbDataSet = ((Laboratory.laboratorydbDataSet)(this.FindResource("laboratorydbDataSet")));
+            laboratorydbDataSet laboratorydbDataSet = (laboratorydbDataSet)this.FindResource("laboratorydbDataSet");
             // Load data into the table clinicbranch. You can modify this code as needed.
             Laboratory.laboratorydbDataSetTableAdapters.clinicbranchTableAdapter laboratorydbDataSetclinicbranchTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.clinicbranchTableAdapter();
             laboratorydbDataSetclinicbranchTableAdapter.Fill(laboratorydbDataSet.clinicbranch);
-            System.Windows.Data.CollectionViewSource clinicbranchViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("clinicbranchViewSource")));
+            CollectionViewSource clinicbranchViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("clinicbranchViewSource")));
             clinicbranchViewSource.View.MoveCurrentToFirst();
 
             // Load data into the table roles. You can modify this code as needed.
@@ -52,13 +52,13 @@ namespace Laboratory.Windows
         {
             Laboratory.laboratorydbDataSet laboratoryDataSet = ((Laboratory.laboratorydbDataSet)(this.FindResource("laboratorydbDataSet")));
             Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter retrieve_UsersTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter();
-            String salt = Password_salt.CreateSalt(10);
+            string salt = Password_salt.CreateSalt(10);
 
             var pwd = new Password().LengthRequired(4).IncludeLowercase().IncludeNumeric();
             var result = pwd.Next();
             MessageBox.Show("Pasword is " + result);
 
-            String hashedpass = Password_salt.GenerateSHA256Hash(result, salt);
+            string hashedpass = Password_salt.GenerateSHA256Hash(result, salt);
             retrieve_UsersTableAdapter.add_lab_user(firstnameTB.Text, surnameTB.Text, lastnameTB.Text, usernameTB.Text, pinTB.Text, addressTB.Text, phoneTB.Text, hashedpass, salt, (int)labCB.SelectedValue, (int)roleCB.SelectedValue);
             this.Close();
 

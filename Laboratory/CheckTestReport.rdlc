@@ -1,0 +1,1193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Tablix Name="Tablix1">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>1.58624in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.72911in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.73957in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.667in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.75113in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.41256in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.39167in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Изследване/Показател</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox3">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Резултат</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox3</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox5">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Мерна единица</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox5</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox15">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>ОТ</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox15</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox9">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>ДО</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox9</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox11">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Статус</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox11</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.325in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="type_name">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!type_name.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>type_name</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="result_value">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!result_value.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>result_value</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="unit">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!unit.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>unit</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="min_value">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!min_value.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>min_value</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="max_value">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!max_value.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>max_value</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="stat">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=
+iif(Fields!result_value.Value=1 and Fields!min_value.Value=0 and Fields!max_value.Value=0 ,"ПОЛОЖИТЕЛЕН",
+iif(Fields!result_value.Value=0 and Fields!min_value.Value=0 and Fields!max_value.Value=0 ,"ОТРИЦАТЕЛЕН",
+iif(Fields!result_value.Value&gt;Fields!max_value.Value,"H",
+iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>stat</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <TablixHeader>
+                <Size>0.98425in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox37">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Група</Value>
+                            <Style />
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox37</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                        <Style>Solid</Style>
+                      </Border>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixMember>
+            <TablixMember>
+              <Group Name="group_name">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!group_name.Value</GroupExpression>
+                </GroupExpressions>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=Fields!group_name.Value</Value>
+                </SortExpression>
+              </SortExpressions>
+              <TablixHeader>
+                <Size>0.98425in</Size>
+                <CellContents>
+                  <Textbox Name="group_name">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>=Fields!group_name.Value</Value>
+                            <Style />
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>group_name</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                        <Style>Solid</Style>
+                      </Border>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="Details" />
+                </TablixMember>
+              </TablixMembers>
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>laboratorydbDataSet</DataSetName>
+        <Top>2.55278in</Top>
+        <Left>0.32114in</Left>
+        <Height>0.71667in</Height>
+        <Width>6.86986in</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+      <Textbox Name="Textbox17">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Дата: </Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!testDate.Value</Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox17</rd:DefaultName>
+        <Top>1.63in</Top>
+        <Left>4.62888in</Left>
+        <Height>0.25in</Height>
+        <Width>2.56212in</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Image Name="Image1">
+        <Source>Embedded</Source>
+        <Value>icon_login</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>0.27994in</Top>
+        <Left>0.40184in</Left>
+        <Height>0.67967in</Height>
+        <Width>0.72857in</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Textbox Name="Textbox18">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Лаборатория Синтех</Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox18</rd:DefaultName>
+        <Top>0.27994in</Top>
+        <Left>1.49699in</Left>
+        <Height>0.25in</Height>
+        <Width>2.06944in</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox22">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Тел. номер </Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!phonenumber.Value</Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox22</rd:DefaultName>
+        <Top>0.70961in</Top>
+        <Left>5.02733in</Left>
+        <Height>0.25in</Height>
+        <Width>2.06944in</Width>
+        <ZIndex>4</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox23">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Адрес: </Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!town.Value</Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!lab_address.Value</Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox23</rd:DefaultName>
+        <Top>0.70961in</Top>
+        <Left>1.49699in</Left>
+        <Height>0.25in</Height>
+        <Width>2.38333in</Width>
+        <ZIndex>5</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line1">
+        <Top>1.16334in</Top>
+        <Left>0.17229in</Left>
+        <Height>0in</Height>
+        <Width>7.01871in</Width>
+        <ZIndex>6</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox24">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Пациент </Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!p_name.Value</Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!p_surname.Value</Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!p_lastname.Value</Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox24</rd:DefaultName>
+        <Top>1.31056in</Top>
+        <Left>0.17229in</Left>
+        <Height>0.25in</Height>
+        <Width>3.95in</Width>
+        <ZIndex>7</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox25">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>РЦЗ Номер: </Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!license.Value</Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox25</rd:DefaultName>
+        <Top>0.27994in</Top>
+        <Left>5.29348in</Left>
+        <Height>0.25in</Height>
+        <Width>1.86262in</Width>
+        <ZIndex>8</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox26">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>ЕГН: </Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!pin.Value</Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox26</rd:DefaultName>
+        <Top>1.31055in</Top>
+        <Left>5.29346in</Left>
+        <Height>0.25in</Height>
+        <Width>1.89754in</Width>
+        <ZIndex>9</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox27">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Адрес: </Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!address.Value</Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox27</rd:DefaultName>
+        <Top>1.63in</Top>
+        <Left>0.17229in</Left>
+        <Height>0.25in</Height>
+        <Width>2.2in</Width>
+        <ZIndex>10</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line2">
+        <Top>1.94944in</Top>
+        <Left>0.17227in</Left>
+        <Height>0in</Height>
+        <Width>7.01873in</Width>
+        <ZIndex>11</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox35">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>ИЗВЪРШЕНИ ИЗСЛЕДВАНИЯ</Value>
+                <Style>
+                  <FontSize>16pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox35</rd:DefaultName>
+        <Top>2.12445in</Top>
+        <Left>2.23586in</Left>
+        <Height>0.35889in</Height>
+        <Width>3.28333in</Width>
+        <ZIndex>12</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+    </ReportItems>
+    <Height>13.25032cm</Height>
+    <Style />
+  </Body>
+  <Width>18.43452cm</Width>
+  <Page>
+    <PageFooter>
+      <Height>1.88271cm</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="Textbox36">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>*Пояснение
+H (high) - Резултат над горната референтна граница
+L (low) - Резултат под долната референтна граница</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox36</rd:DefaultName>
+          <Top>0.05556in</Top>
+          <Left>0.1331in</Left>
+          <Height>0.545in</Height>
+          <Width>3.6041in</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox39">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Лекар извършил изследването:</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox39</rd:DefaultName>
+          <Top>0.17639cm</Top>
+          <Left>10.00337cm</Left>
+          <Height>0.6cm</Height>
+          <Width>5.53132cm</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Line Name="Line3">
+          <Top>0.77639cm</Top>
+          <Left>15.40087cm</Left>
+          <Height>0cm</Height>
+          <Width>2.86432cm</Width>
+          <ZIndex>2</ZIndex>
+          <Style>
+            <Border>
+              <Style>Solid</Style>
+            </Border>
+          </Style>
+        </Line>
+        <Textbox Name="Textbox40">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>д-р </Value>
+                  <Style />
+                </TextRun>
+                <TextRun>
+                  <Value>=Fields!p_lastname.Value</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox40</rd:DefaultName>
+          <Top>0.95278cm</Top>
+          <Left>15.08337cm</Left>
+          <Height>0.6cm</Height>
+          <Width>3.35115cm</Width>
+          <ZIndex>3</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageFooter>
+    <PageHeight>29.7cm</PageHeight>
+    <PageWidth>21cm</PageWidth>
+    <LeftMargin>1cm</LeftMargin>
+    <RightMargin>1cm</RightMargin>
+    <TopMargin>1.5cm</TopMargin>
+    <BottomMargin>1.5cm</BottomMargin>
+    <ColumnSpacing>1.27cm</ColumnSpacing>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="laboratorydbDataSet">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>a4b4af56-1ace-4cde-9b9b-0683caf89f46</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="laboratorydbDataSet">
+      <Query>
+        <DataSourceName>laboratorydbDataSet</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="result_value">
+          <DataField>result_value</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="type_name">
+          <DataField>type_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="unit">
+          <DataField>unit</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="p_name">
+          <DataField>p_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="p_surname">
+          <DataField>p_surname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="pin">
+          <DataField>pin</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="testDate">
+          <DataField>testDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="min_value">
+          <DataField>min_value</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="max_value">
+          <DataField>max_value</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="p_lastname">
+          <DataField>p_lastname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="idTest">
+          <DataField>idTest</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="idTestType">
+          <DataField>idTestType</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="stat">
+          <DataField>stat</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="group_name">
+          <DataField>group_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="address">
+          <DataField>address</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="town">
+          <DataField>town</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="lab_address">
+          <DataField>lab_address</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="phonenumber">
+          <DataField>phonenumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="license">
+          <DataField>license</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>laboratorydbDataSet</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\atodo\source\repos\Laboratory\Laboratory\laboratorydbDataSet.xsd</rd:SchemaPath>
+        <rd:TableName>select_result_byTestID</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>select_result_byTestIDTableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <EmbeddedImages>
+    <EmbeddedImage Name="icon_login">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>f4415d4a-9a3b-4c0f-8f33-d4485a7d4806</rd:ReportID>
+</Report>

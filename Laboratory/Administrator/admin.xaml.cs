@@ -53,6 +53,12 @@ namespace Laboratory.Administrator
             type_groupDataGrid.ItemsSource = group_typeTableAdapter.GetData();
         }
 
+        private void updateViewRefValues(int id)
+        {
+            Laboratory.laboratorydbDataSetTableAdapters.ref_valueTableAdapter refval_TableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.ref_valueTableAdapter();
+            ref_valueDataGrid.ItemsSource = null;
+            ref_valueDataGrid.ItemsSource = refval_TableAdapter.GetDataByTypeID(id);
+        }
 
         private void add_testtype(object sender, RoutedEventArgs e)
         {
@@ -233,10 +239,14 @@ namespace Laboratory.Administrator
             ref_valViewSource.View.MoveCurrentToFirst();
         }
 
-        private void add_refVal(object sender, RoutedEventArgs e)
+        private void edit_refVal(object sender, RoutedEventArgs e)
         {
-            Ref_Values_Window ref_Values_Window = new Ref_Values_Window();
-            ref_Values_Window.Show();
+            DataRowView row = (DataRowView)ref_valueDataGrid.SelectedItems[0];
+
+            Ref_Values_Window ref_Values_Window = new Ref_Values_Window(row);
+            ref_Values_Window.ShowDialog();
+
+            updateViewRefValues((int)row[4]);
         }
     }
 }

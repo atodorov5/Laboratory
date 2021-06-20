@@ -8,28 +8,14 @@
         
         Title="Ref_Values_Window" Height="200" Width="300">
     <StackPanel Orientation="Vertical">
-        <Label Name="titleLabel" HorizontalContentAlignment="Center">Реф. стойности за</Label>
-        <CheckBox Content="Всички" HorizontalAlignment="Center"></CheckBox>
+        <Label Name="titleLabel" HorizontalContentAlignment="Center" Content="Реф. стойности за"></Label>
         <StackPanel Orientation="Horizontal" Margin="40,20,0,0">
-            <Label Content="Всички:" Width="53"></Label>
+            <Label Content="Всички:" Width="53" Name="genderLb"></Label>
             <Label Content="ОТ-"></Label>
-            <TextBox x:Name="allMin" Width="50"></TextBox>
+            <TextBox x:Name="allMin" Width="50" Height="21"></TextBox>
             <Label Content="ДО-"></Label>
-            <TextBox x:Name="allMax" Width="50"></TextBox>
+            <TextBox x:Name="allMax" Width="50" Height="22"></TextBox>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Margin="40,5,0,0">
-            <Label Content="Мъже:" Width="53"></Label>
-            <Label Content="ОТ-"></Label>
-            <TextBox x:Name="maleMin" Width="50"></TextBox>
-            <Label Content="ДО-"></Label>
-            <TextBox x:Name="maleMax" Width="50"></TextBox>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Margin="40,5,0,0">
-            <Label Content="Жени:" Width="53" ></Label>
-            <Label Content="ОТ-"></Label>
-            <TextBox x:Name="femaleMin" Width="50" ></TextBox>
-            <Label Content="ДО-"></Label>
-            <TextBox x:Name="femaleMax" Width="50"></TextBox>
-        </StackPanel>
+        <Button Content="Запази" Click="Button_save" Style="{StaticResource GelButton}" Width="60" Margin="0,30,0,0"></Button>
     </StackPanel>
 </Window>

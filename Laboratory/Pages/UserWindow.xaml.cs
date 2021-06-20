@@ -65,7 +65,8 @@ namespace Laboratory
 
         private void MenuItem_checkTest(object sender, RoutedEventArgs e)
         {
-            userMainFrame.Content = new Check_test_Page();
+            //userMainFrame.Content = new Check_test_Page();
+            userMainFrame.Content = new CheckTest_Page();
         }
 
         private void MenuItem_Edit_Pwrd(object sender, RoutedEventArgs e)

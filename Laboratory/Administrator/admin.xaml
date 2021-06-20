@@ -39,26 +39,39 @@
             <Button Click="add_testtype" Content="Добави" Height="30" Width="70" Margin="20,346,279.6,10.4" Style="{StaticResource GelButton}"/>
             <Button Click="delete_testtype" Content="Изтрий" Height="30" Width="70" Margin="290,346,9.6,10.4" Style="{StaticResource GelButton}"/>
             <DataGrid CanUserAddRows="False" IsReadOnly="True" x:Name="testtypeDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,41,9.6,45.4" RowDetailsVisibilityMode="VisibleWhenSelected"  MouseDoubleClick="ref_valueDataGrid_MouseDoubleClick">
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Добави" Click="add_testtype"></MenuItem>
+                        <MenuItem Header="Редактиране" Click="edit_testtype"></MenuItem>
+                        <MenuItem Header="Изриване" Click="delete_testtype"></MenuItem>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
                 <DataGrid.Columns>
                     <DataGridTextColumn x:Name="type_nameColumn" Binding="{Binding type_name}" Header="Изследване/Показател" Width="2*"/>
-
                     <DataGridTextColumn x:Name="unitColumn" Binding="{Binding unit}" Header="Мерна единица" Width="*"/>
                     <DataGridTextColumn x:Name="priceColumn" Binding="{Binding price}" Header="Цена" Width="*"/>
                     <DataGridTextColumn x:Name="group_type" Binding="{Binding group_name}" Header="Група" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-        <Grid Grid.Row="0" Grid.Column="1">
+        <Grid Grid.Row="1" Grid.Column="0">
             <Label FontSize="20" Content="Групи" Margin="153,0,152.6,348.6" HorizontalAlignment="Center"></Label>
-            <DataGrid x:Name="type_groupDataGrid" CanUserAddRows="False" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource type_groupViewSource}}" Margin="10,42,9.2,45.4" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid x:Name="type_groupDataGrid" CanUserAddRows="False" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource type_groupViewSource}}" Margin="10,42,9.2,58.6" RowDetailsVisibilityMode="VisibleWhenSelected">
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Добави" Click="add_group"></MenuItem>
+                        <MenuItem Header="Редактиране" Click="edit_group"></MenuItem>
+                        <MenuItem Header="Изриване" Click="delete_group"></MenuItem>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
                 <DataGrid.Columns>
                     <DataGridTextColumn x:Name="idtype_groupColumn" Binding="{Binding idtype_group}" Header="idtype group" Width="0" Visibility="Hidden"/>
                     <DataGridTextColumn x:Name="group_nameColumn" Binding="{Binding group_name}" Header="Име на група" Width="*" IsReadOnly="True"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button Click="add_group" Content="Добави" Height="30" Width="70" Margin="10,346,451.2,10.4" Style="{StaticResource GelButton}"/>
-            <Button Click="edit_group" Content="Редактирай" Height="30" Width="80" Margin="234,346,217.2,0" Style="{StaticResource GelButton}" VerticalAlignment="Top"/>
-            <Button Click="delete_group" Content="Изтрий" Height="30" Width="80" Margin="441,346,10.2,10.4" Style="{StaticResource GelButton}"/>
+            <Button Click="add_group" Content="Добави" Height="30" Width="70" Margin="10,332,451.2,23.6" Style="{StaticResource GelButton}"/>
+            <Button Click="edit_group" Content="Редактирай" Height="30" Width="80" Margin="234,332,217.2,0" Style="{StaticResource GelButton}" VerticalAlignment="Top"/>
+            <Button Click="delete_group" Content="Изтрий" Height="30" Width="80" Margin="441,332,10.2,23.6" Style="{StaticResource GelButton}"/>
 
 
         </Grid>
@@ -68,19 +81,23 @@
 
 
 
-        <Grid Grid.Row="1" Grid.Column="0" DataContext="{StaticResource clinicbranchViewSource}">
+        <Grid Grid.Row="0" Grid.Column="1" DataContext="{StaticResource clinicbranchViewSource}">
             <Label Content="Референтни стойности за избрано изследване" HorizontalAlignment="Center" FontSize="20" Margin="113,0,113,345.8"/>
-            <DataGrid x:Name="ref_valueDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource ref_valueViewSource}}" Margin="10,45,10.2,54.6" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserAddRows="False" IsReadOnly="True">
+            <DataGrid x:Name="ref_valueDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource ref_valueViewSource}}" Margin="10,45,10.4,45.4" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserAddRows="False" IsReadOnly="True">
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Редактиране" Click="edit_refVal"></MenuItem>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
                 <DataGrid.Columns>
                     <DataGridTextColumn x:Name="idref_valueColumn" Binding="{Binding idref_value}" Header="idref value" Width="0" Visibility="Hidden"/>
                     <DataGridTextColumn x:Name="ref_typeColumn" Binding="{Binding ref_type}" Header="Пол" Width="*"/>
                     <DataGridTextColumn x:Name="min_valueColumn" Binding="{Binding min_value}" Header="Мин" Width="*"/>
                     <DataGridTextColumn x:Name="max_valueColumn" Binding="{Binding max_value}" Header="Макс" Width="*"/>
+                    <DataGridTextColumn x:Name="typ_nameColumn" Binding="{Binding type_name}" Header="type_name" Width="0" Visibility="Hidden"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button Click="add_refVal" Content="Добави" Height="30" Width="70" Margin="10,336,451.2,19.6" Style="{StaticResource GelButton}"/>
-            <Button  Content="Редактирай" Height="30" Margin="207,336,244.2,19.6" Style="{StaticResource GelButton}"/>
-            <Button  Content="Изтрий" Height="30" Width="70" Margin="451,336,10.2,19.6" Style="{StaticResource GelButton}"/>
+            <Button Click="edit_refVal" Content="Редактирай" Height="30" Margin="10,346,554.4,10.4" Style="{StaticResource GelButton}"/>
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="1" DataContext="{StaticResource retrieve_usersViewSource}">
@@ -92,6 +109,12 @@
             <Button Click="edit_user" Content="Редактирай" Height="30" Width="80" Margin="270,334,10,21.6" Style="{StaticResource GelButton}" Grid.ColumnSpan="2"/>
             <Button Click="add_user" Content="Добави" Height="30" Width="70" Margin="10,334,224,21.6" Style="{StaticResource GelButton}"/>
             <DataGrid x:Name="retrieve_usersDataGrid"  IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,42,10,56.6" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.ColumnSpan="2">
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Добави" Click="add_user"></MenuItem>
+                        <MenuItem Header="Редактиране" Click="edit_user"></MenuItem>                        
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
                 <DataGrid.Columns>
 
                     <DataGridTextColumn x:Name="nameColumn" Binding="{Binding name}" Header="Име" Width="*"/>
