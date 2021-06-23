@@ -4,32 +4,79 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Laboratory.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      mc:Ignorable="d" Loaded="Page_Loaded"
+      xmlns:local2="clr-namespace:Laboratory"
+      d:DesignHeight="750" d:DesignWidth="800"
+       xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
       Title="Edit_profile_Page">
+
+    <Page.Resources>
+        <local2:laboratorydbDataSet x:Key="laboratorydbDataSet"/>
+        <CollectionViewSource x:Key="retrieve_usersViewSource" Source="{Binding retrieve_users, Source={StaticResource laboratorydbDataSet}}"/>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+    </Page.Resources>
+
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1.2*"></ColumnDefinition>
             <ColumnDefinition Width="0.3*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0">
-            <Label Content="Label"/>
-            <Label Content="Label"/>
-            
+        <StackPanel Grid.Column="0" DataContext="{StaticResource retrieve_usersViewSource}" Margin="50,0,50,50">
+
+            <Label Content="Информация за профил" HorizontalContentAlignment="Center" FontSize="20"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Лаборант:"></Label>
+                <Label x:Name="myLabel">
+                    <Label.Content>
+                        <TextBlock TextWrapping="Wrap">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1} {2}">
+                                    <Binding Path="name" />
+                                    <Binding Path="surname" />
+                                    <Binding Path="lastname" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </Label.Content>
+                </Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="ЕГН:"></Label>
+                <Label Name="pinLb" Content="{Binding user_pin}"></Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Адрес:"></Label>
+                <Label Name="adr" Content="{Binding user_address}"></Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Телефон:"></Label>
+                <Label  Content="{Binding user_phone}"></Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Клиника: Синтех-"></Label>
+                <Label  Content="{Binding town}"></Label>
+            </StackPanel>
+            <WindowsFormsHost  Height="471" Margin="10,20,10.2,0">
+                <rv:ReportViewer x:Name="reportViewer2" ShowToolBar="False" />
+            </WindowsFormsHost>
+
         </StackPanel>
-        <StackPanel Grid.Column="1"  >
+        <StackPanel Grid.Column="1" Margin="10,0,10,0" >
             <StackPanel.Style>
                 <Style TargetType="{x:Type StackPanel}">
                     <Style.Resources>
-                <Style TargetType="{x:Type Label}">
+                        <Style TargetType="{x:Type Label}">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            <Setter Property="FontSize" Value="20" />
+                        </Style>
+                    </Style.Resources>
                 </Style>
-            </Style.Resources>
-        </Style>
             </StackPanel.Style>
-            <Label HorizontalContentAlignment="Center">Редактиране на парола</Label>
+            <Label HorizontalContentAlignment="Center" FontSize="18">Редактиране на парола</Label>
             <Label>Стара парола</Label>
             <PasswordBox Name="old_pass"></PasswordBox>
             <Label>Нова парола</Label>

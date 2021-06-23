@@ -123,9 +123,9 @@
                     <DataGridTextColumn x:Name="user_pinColumn" Binding="{Binding user_pin}" Header="ЕГН" Width="*"/>
                     <DataGridTextColumn x:Name="user_addressColumn" Binding="{Binding user_address}" Header="Адрес" Width="*"/>
                     <DataGridTextColumn x:Name="user_phoneColumn" Binding="{Binding user_phone}" Header="Телефон" Width="*"/>
-                    <DataGridTextColumn x:Name="townColumn1" Binding="{Binding license}" Header="ЛАБ РЦЗ" Width="*"/>
+                    <DataGridTextColumn x:Name="townColumn1" Binding="{Binding license}" Header="ЛАБ РЦЗ" Width="0.8*"/>
                     <DataGridTextColumn x:Name="roleNameColumn" Binding="{Binding RoleName}" Header="Роля" Width="*" />
-                    <DataGridTextColumn x:Name="active_statusColumn" Binding="{Binding active_status}" Header="Статус" Width="*"/>
+                    <DataGridTextColumn x:Name="active_statusColumn" Binding="{Binding active_status}" Header="Статус" Width="0.6*"/>
                 </DataGrid.Columns>
             </DataGrid>
 

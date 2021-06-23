@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Laboratory"
         mc:Ignorable="d"
-        Icon="C:\Users\atodo\source\repos\Laboratory\Laboratory\Resources\Images\icon.png"
+        Icon="C:\Users\atodo\Desktop\cells.png"
         Title="Вход" Height="450" Width="350">
 
     <Grid>

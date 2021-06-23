@@ -13,7 +13,7 @@
         <local2:laboratorydbDataSet x:Key="laboratorydbDataSet"/>
     </Page.Resources>
 
-    <Grid>
+    <Grid Margin="10,0,10,0">
         <WindowsFormsHost   Margin="194,10,10,0" Height="740" VerticalAlignment="Top">
             <rv:ReportViewer x:Name="reportViewer"/>
         </WindowsFormsHost>

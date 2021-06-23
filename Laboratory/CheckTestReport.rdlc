@@ -549,7 +549,9 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox17</rd:DefaultName>
@@ -691,7 +693,7 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
         <Top>0.70961in</Top>
         <Left>1.49699in</Left>
         <Height>0.25in</Height>
-        <Width>2.38333in</Width>
+        <Width>3.11666in</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
@@ -834,7 +836,9 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox26</rd:DefaultName>

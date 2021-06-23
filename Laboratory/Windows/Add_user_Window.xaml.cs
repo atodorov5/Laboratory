@@ -1,4 +1,5 @@
 ﻿using Laboratory.Data;
+using log4net;
 using MySql.Data.MySqlClient;
 using PasswordGenerator;
 using System;
@@ -23,10 +24,12 @@ namespace Laboratory.Windows
     /// </summary>
     public partial class Add_user_Window : Window
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public Add_user_Window()
         {
             InitializeComponent();
             labCB.SelectedIndex = 2;
+            log4net.Config.XmlConfigurator.Configure();
         }
 
 
@@ -60,6 +63,7 @@ namespace Laboratory.Windows
 
             string hashedpass = Password_salt.GenerateSHA256Hash(result, salt);
             retrieve_UsersTableAdapter.add_lab_user(firstnameTB.Text, surnameTB.Text, lastnameTB.Text, usernameTB.Text, pinTB.Text, addressTB.Text, phoneTB.Text, hashedpass, salt, (int)labCB.SelectedValue, (int)roleCB.SelectedValue);
+            log.Info("Потребител-" + Properties.Settings.Default.user + " добави потребител " + usernameTB.Text);
             this.Close();
 
 

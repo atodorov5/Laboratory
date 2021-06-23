@@ -106,7 +106,7 @@ namespace Laboratory.Pages
 
         private void Button_save_test(object sender, RoutedEventArgs e)
         {
-            if (testtypeListView.SelectedItems.Count > 0 && user_pinTB.Text!="")
+            if (testtypeListView.SelectedItems.Count > 0 && user_pinTB.Text!="" && user_nameTB.Text != "" && user_lastnameTB.Text != "")
             {
 
                 Laboratory.laboratorydbDataSetTableAdapters.retrieve_testTableAdapter testTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.retrieve_testTableAdapter();

@@ -46,17 +46,37 @@
                 </ListView.ItemContainerStyle>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn x:Name="idTestColumn" Header="ИД Изследване" Width="Auto">
+                        
+                        <GridViewColumn x:Name="idTestColumn" Header="ИД" Width="Auto">                                                    
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Label Margin="6,-1,-6,-1" Content="{Binding idTest, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    <Label Content="{Binding idTest, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn x:Name="testDateColumn"   Header="Дата" Width="Auto">
+                        <GridViewColumn x:Name="testDateColumn" Header="Дата" Width="Auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <Label  Content="{Binding testDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        
+                        <GridViewColumn x:Name="patientColumn" Header="Пациент" Width="Auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Label x:Name="myLabel">
+                                        <Label.Content>
+                                            <TextBlock TextWrapping="Wrap">
+                                                <TextBlock.Text>
+                                                    <MultiBinding StringFormat="{}{0} {1}">
+                                                        <Binding Path="p_name" />
+                                                        <Binding Path="p_lastname" />
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                            </TextBlock>
+                                        </Label.Content>
+                                    </Label>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -67,11 +87,12 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
+                        
                     </GridView>
                 </ListView.View>
             </ListView>
-            <TextBox Name="text_filterTB"  Height="23" Margin="97,45,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding Path=Filter, UpdateSourceTrigger=PropertyChanged}"/>
-            <Label Content="Номер тест" FontSize="14" HorizontalAlignment="Left" Margin="10,43,0,0" VerticalAlignment="Top" Width="82" Height="27"/>
+            <TextBox Name="text_filterTB"  Height="23" Margin="108,45,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding Path=Filter, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Content="Номер тест:" FontSize="16" HorizontalAlignment="Left"  Margin="10,40,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="98" Height="30"/>
         </Grid>
         <Grid Grid.Column="1">
             <TabControl x:Name="tabctrl" VerticalAlignment="Stretch"  HorizontalContentAlignment="Stretch" Margin="10,37,10,9.8">

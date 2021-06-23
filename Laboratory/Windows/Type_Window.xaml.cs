@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using log4net;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,13 @@ namespace Laboratory.Windows
     /// </summary>
     public partial class Type_Window : Window
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public Type_Window()
         {
             InitializeComponent();
+
+            log4net.Config.XmlConfigurator.Configure();
         }
 
         private void add_type(object sender, RoutedEventArgs e)
@@ -52,6 +57,7 @@ namespace Laboratory.Windows
 
 
                     MessageBox.Show("Успешно!");
+                log.Info("User " + Properties.Settings.Default.user + "added new test type " + test_nameTB.Text);
                  }
 
 

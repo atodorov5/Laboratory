@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -21,9 +22,12 @@ namespace Laboratory.Windows
     public partial class TestGroupWindow : Window
     {
         DataRowView row;
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public TestGroupWindow()
         {
             InitializeComponent();
+
+            log4net.Config.XmlConfigurator.Configure();
         }
 
         public TestGroupWindow(DataRowView groupRow)
@@ -39,11 +43,13 @@ namespace Laboratory.Windows
             if (content == "Добави") {
                 laboratorydbDataSetTableAdapters.type_groupTableAdapter type_groupTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.type_groupTableAdapter();
                 type_groupTableAdapter.insert_group(group_name.Text);
+                log.Info("User " + Properties.Settings.Default.user + " added new test group " + group_name.Text);
             }
             else
             {
                 laboratorydbDataSetTableAdapters.type_groupTableAdapter type_groupTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.type_groupTableAdapter();
                 type_groupTableAdapter.edit_group((int)row[0],group_name.Text);
+                log.Info("User " + Properties.Settings.Default.user + " eddited group " + group_name.Text);
             }
             this.Close();
         }

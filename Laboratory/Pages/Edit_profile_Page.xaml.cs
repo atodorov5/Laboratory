@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Laboratory.Data;
+using Microsoft.Reporting.WinForms;
 
 namespace Laboratory.Pages
 {
@@ -24,6 +25,7 @@ namespace Laboratory.Pages
         public Edit_profile_Page()
         {
             InitializeComponent();
+            load_chart();
         }
 
         private void Button_SavePass(object sender, RoutedEventArgs e)
@@ -54,6 +56,40 @@ namespace Laboratory.Pages
             }
             else
                 MessageBox.Show("Нова парола не съвпада!");
+        }
+
+        private void load_chart()
+        {
+            
+            ReportDataSource reportDataSource1 = new ReportDataSource();
+            laboratorydbDataSet dataset = new laboratorydbDataSet();
+
+            dataset.BeginInit();
+
+            reportDataSource1.Name = "DataSet1"; //Name of the report dataset in our .RDLC file
+            reportDataSource1.Value = dataset.user_report;
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer2.LocalReport.ReportEmbeddedResource = "Laboratory.UserReport.rdlc";
+
+            dataset.EndInit();
+
+            //fill data into DataSet
+            laboratorydbDataSetTableAdapters.user_reportTableAdapter userTableAdapter = new laboratorydbDataSetTableAdapters.user_reportTableAdapter();
+            userTableAdapter.ClearBeforeFill = true;
+            userTableAdapter.Fill(dataset.user_report);
+
+            reportViewer2.RefreshReport();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            laboratorydbDataSet laboratoryDataSet = (laboratorydbDataSet)this.FindResource("laboratorydbDataSet");
+
+            // Load data into the table bloodtype. You can modify this code as needed
+            laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter retrieve_UsersTableAdapter = new laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter();
+            retrieve_UsersTableAdapter.FillByUserID(laboratoryDataSet.retrieve_users, Properties.Settings.Default.userID);
+            CollectionViewSource retrieve_usersViewSource = (CollectionViewSource)this.FindResource("retrieve_usersViewSource");
+            retrieve_usersViewSource.View.MoveCurrentToFirst();
         }
     }
 }
