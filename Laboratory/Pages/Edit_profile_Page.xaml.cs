@@ -69,7 +69,7 @@ namespace Laboratory.Pages
             reportDataSource1.Name = "DataSet1"; //Name of the report dataset in our .RDLC file
             reportDataSource1.Value = dataset.user_report;
             this.reportViewer2.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer2.LocalReport.ReportEmbeddedResource = "Laboratory.UserReport.rdlc";
+            this.reportViewer2.LocalReport.ReportEmbeddedResource = "Laboratory.Reports.UserReport.rdlc";
 
             dataset.EndInit();
 

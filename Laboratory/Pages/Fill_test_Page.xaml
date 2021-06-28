@@ -13,7 +13,7 @@
     <Page.Resources>
         <Laboratory:laboratorydbDataSet x:Key="laboratorydbDataSet"/>
         <CollectionViewSource x:Key="retrieve_testViewSource" Source="{Binding retrieve_test, Source={StaticResource laboratorydbDataSet}}"/>
-        <l:TestColection x:Key="ViewModel"/>
+        <l:TestCollection x:Key="ViewModel"/>
     </Page.Resources>
 
     <Grid>
@@ -99,7 +99,7 @@
 
 
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Image Height="300" Width="300" Source="C:\Users\atodo\source\repos\Laboratory\Laboratory\Resources\Images\choice.png"/>
+                    <Image Height="300" Width="300" Source="{StaticResource noselection}"/>
                     <Label Content="Не е избрано изследване" FontSize="30" HorizontalContentAlignment="Center"></Label>
                 </StackPanel>
 

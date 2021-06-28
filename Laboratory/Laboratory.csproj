@@ -190,7 +190,8 @@
     </Compile>
     <Compile Include="Model\Test.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="TestColection.cs" />
+    <Compile Include="TestCollection.cs" />
+    <Compile Include="Validation\NumericValidationRule .cs" />
     <Compile Include="Windows\Add_clinic_Window.xaml.cs">
       <DependentUpon>Add_clinic_Window.xaml</DependentUpon>
     </Compile>
@@ -262,7 +263,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\ResourceDictionary.xaml">
+    <Page Include="Resources\DictionaryImg.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -317,7 +318,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="UserReport.rdlc" />
+    <EmbeddedResource Include="Reports\UserReport.rdlc" />
     <Resource Include="Resources\Images\chemical.png" />
     <Resource Include="cells.ico" />
     <Content Include="SqlServerTypes\readme.htm" />
@@ -337,10 +338,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Content Include="log4net.config">
+    <Content Include="Data\log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="CheckTestReport.rdlc" />
+    <EmbeddedResource Include="Reports\CheckTestReport.rdlc" />
     <None Include="laboratorydbDataSet.xsc">
       <DependentUpon>laboratorydbDataSet.xsd</DependentUpon>
     </None>
@@ -362,22 +363,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\printer.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Images\icon_login.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\tube.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\icon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\choice.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

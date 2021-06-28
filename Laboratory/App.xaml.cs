@@ -20,6 +20,8 @@ namespace Laboratory
             log4net.Config.XmlConfigurator.Configure();
             log.Info("        ============= App Started   =============        ");
             base.OnStartup(e);
+
+           
         }
     }
 }

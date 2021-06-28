@@ -4,14 +4,22 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Laboratory.Pages" 
+      xmlns:validationRules="clr-namespace:Laboratory.Validation" 
       xmlns:local2="clr-namespace:Laboratory"
-      xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+      xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms" d:DataContext="{d:DesignInstance Type=local2:TestCollection}"
       mc:Ignorable="d" 
       Title="CheckTest_Page" d:DesignHeight="800" 
+      xmlns:ui="using:Microsoft.Toolkit.Uwp.UI"
       >
+      
     <Page.Resources>
         <local2:laboratorydbDataSet x:Key="laboratorydbDataSet"/>
+       
     </Page.Resources>
+
+   
+
+
 
     <Grid Margin="10,0,10,0">
         <WindowsFormsHost   Margin="194,10,10,0" Height="740" VerticalAlignment="Top">
@@ -19,8 +27,22 @@
         </WindowsFormsHost>
         <Label Content="Номер на изследване:" Margin="10,15,525,752" FontSize="16"></Label>
         <Button Click="Button_Check" Content="Търсене" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" Width="173" Style="{StaticResource GelButton}"/>
-        <TextBox Name="testID" HorizontalAlignment="Left" Height="23" Margin="10,48,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="173" RenderTransformOrigin="0.54,0.77"/>
-        <Image HorizontalAlignment="Left" Height="153" Margin="15,597,0,0" VerticalAlignment="Top" Width="179" Source="C:\Users\atodo\source\repos\Laboratory\Laboratory\Resources\Images\chemical.png"/>
+        <TextBox PreviewTextInput="testID2_PreviewTextInput" FontSize="16" Name="testID2" HorizontalAlignment="Left" Height="23" Margin="10,48,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="173" RenderTransformOrigin="0.54,0.77"/>
+
+
+
+
+        <TextBox Validation.ErrorTemplate="{StaticResource errorTemplate}" VerticalAlignment="Center" FontSize="20" Margin="10,107,0,665" Name="testID" HorizontalAlignment="Left" Width="173">
+            <TextBox.Text>
+                <Binding Path="idTest" TargetNullValue=" " StringFormat="{}{0:#}" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <validationRules:NumericValidationRule ValidatesOnTargetUpdated="True"  />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+        <Image HorizontalAlignment="Left" Height="153" Margin="15,573,0,0" VerticalAlignment="Top" Width="179" Source="{StaticResource tube}" />
 
 
     </Grid>

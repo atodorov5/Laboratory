@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,9 +22,11 @@ namespace Laboratory.Pages
     /// </summary>
     public partial class CheckTest_Page : Page
     {
+      
         public CheckTest_Page()
         {
             InitializeComponent();
+            DataContext = new Test();
         }
 
         private void Button_Check(object sender, RoutedEventArgs e)
@@ -51,7 +54,7 @@ namespace Laboratory.Pages
                 reportDataSource1.Name = "laboratorydbDataSet"; //Name of the report dataset in our .RDLC file
                 reportDataSource1.Value = dataset.select_result_byTestID;
                 this.reportViewer.LocalReport.DataSources.Add(reportDataSource1);
-                this.reportViewer.LocalReport.ReportEmbeddedResource = "Laboratory.CheckTestReport.rdlc";
+                this.reportViewer.LocalReport.ReportEmbeddedResource = "Laboratory.Reports.CheckTestReport.rdlc";
 
                 dataset.EndInit();
 
@@ -68,6 +71,12 @@ namespace Laboratory.Pages
                 reportViewer.RefreshReport();
 
             }
+        }
+
+        private void testID2_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

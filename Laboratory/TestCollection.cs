@@ -12,7 +12,7 @@ using System.Windows.Data;
 
 namespace Laboratory
 {
-    class TestColection : INotifyPropertyChanged
+    class TestCollection : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -69,7 +69,7 @@ namespace Laboratory
             }
             return Collection;
         }
-        public TestColection()
+        public TestCollection()
         {
             Collection = new ObservableCollection<Test>();
             CollectionViewSource.GetDefaultView(Collection).Filter = new Predicate<object>(Contains);

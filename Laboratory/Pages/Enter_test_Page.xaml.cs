@@ -35,18 +35,20 @@ namespace Laboratory.Pages
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
 
-            Laboratory.laboratorydbDataSet laboratoryDataSet = ((Laboratory.laboratorydbDataSet)(this.FindResource("laboratorydbDataSet")));
+            laboratorydbDataSet laboratoryDataSet = (laboratorydbDataSet)this.FindResource("laboratorydbDataSet");
 
-            Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter testTypeTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter();
+            laboratorydbDataSetTableAdapters.testtypeTableAdapter testTypeTableAdapter = new laboratorydbDataSetTableAdapters.testtypeTableAdapter();
             testTypeTableAdapter.Fill(laboratoryDataSet.testtype);
-            System.Windows.Data.CollectionViewSource testtype1ViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("testtypeViewSource")));
+            CollectionViewSource testtype1ViewSource = (CollectionViewSource)this.FindResource("testtypeViewSource");
             testtype1ViewSource.View.MoveCurrentToFirst();
 
-            Laboratory.laboratorydbDataSetTableAdapters.bloodtypeTableAdapter bloodTypeTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.bloodtypeTableAdapter();
+            laboratorydbDataSetTableAdapters.bloodtypeTableAdapter bloodTypeTableAdapter = new laboratorydbDataSetTableAdapters.bloodtypeTableAdapter();
             bloodTypeTableAdapter.Fill(laboratoryDataSet.bloodtype);
-            System.Windows.Data.CollectionViewSource bloodtypeViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("bloodtypeViewSource")));
+            CollectionViewSource bloodtypeViewSource = (CollectionViewSource)FindResource("bloodtypeViewSource");
             bloodtypeViewSource.View.MoveCurrentToFirst();
 
+
+            bloodtypeComboBox.SelectedValue = 9;
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -62,9 +64,9 @@ namespace Laboratory.Pages
         private void Button_CheckUser(object sender, RoutedEventArgs e)
         {
 
-            Laboratory.laboratorydbDataSet laboratoryDataSet = ((Laboratory.laboratorydbDataSet)(this.FindResource("laboratorydbDataSet")));
+            laboratorydbDataSet laboratoryDataSet = (laboratorydbDataSet)this.FindResource("laboratorydbDataSet");
             
-            Laboratory.laboratorydbDataSetTableAdapters.check_patientTableAdapter testTypeTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.check_patientTableAdapter();
+            laboratorydbDataSetTableAdapters.check_patientTableAdapter testTypeTableAdapter = new laboratorydbDataSetTableAdapters.check_patientTableAdapter();
             object gender ;
             int? lab = 0;
             string name, surname, lastname, address;
@@ -120,7 +122,7 @@ namespace Laboratory.Pages
                 }
                 price = Math.Round(price, 2);
 
-                testTableAdapter.Insert(user_nameTB.Text, user_surnameTB.Text, user_lastnameTB.Text, user_pinTB.Text, 1, user_addressTB.Text, bloodtypeComboBox.SelectedIndex, Properties.Settings.Default.userID, ref_numberTB.Text, result, price, out testid);
+                testTableAdapter.Insert(user_nameTB.Text, user_surnameTB.Text, user_lastnameTB.Text, user_pinTB.Text, 1, user_addressTB.Text, emailTB.Text, bloodtypeComboBox.SelectedIndex, Properties.Settings.Default.userID, ref_numberTB.Text, result, price, out testid);
 
 
                 Laboratory.laboratorydbDataSetTableAdapters.QueriesTableAdapter queryTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.QueriesTableAdapter();

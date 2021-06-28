@@ -74,7 +74,7 @@ namespace Laboratory.Pages
 
 
             MessageBox.Show("Изследването е обработено!");           
-            TestColection col3 = new TestColection();
+            TestCollection col3 = new TestCollection();
             list.ItemsSource = col3.fillColection();
 
             TabItem tab = (TabItem)tabctrl.SelectedItem;

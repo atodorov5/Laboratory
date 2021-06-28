@@ -10,14 +10,14 @@
 
     <Grid>
         <Grid>
-            <Label Content="Потребител:" HorizontalAlignment="Left" Margin="22,238,0,0" VerticalAlignment="Top" FontSize="16"/>
-            <Label Content="Парола:" HorizontalAlignment="Left" Margin="55,274,0,0" VerticalAlignment="Top" FontSize="16"/>
-            <TextBox Name="usernameTB"  HorizontalAlignment="Left" Height="23" Margin="128,243,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="178" FontSize="16"/>
-            <PasswordBox Name="passwordTB" HorizontalAlignment="Left" Margin="128,282,0,0" VerticalAlignment="Top" Width="178" Height="23"/>
+            <Label Content="Потребител:" HorizontalAlignment="Left" Margin="22,243,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <Label Content="Парола:" HorizontalAlignment="Left" Margin="55,279,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <TextBox Name="usernameTB"  HorizontalAlignment="Left" Height="23" Margin="128,248,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="178" FontSize="16"/>
+            <PasswordBox Name="passwordTB" HorizontalAlignment="Left" Margin="128,287,0,0" VerticalAlignment="Top" Width="178" Height="23"/>
 
-            <Image  HorizontalAlignment="Left" Height="177" Margin="89,24,0,0" VerticalAlignment="Top" Width="170" Source="C:\Users\atodo\source\repos\Laboratory\Laboratory\Resources\Images\tube.png"/>
+            <Image  HorizontalAlignment="Left" Height="177" Margin="89,24,0,0" VerticalAlignment="Top" Width="170" Source="{StaticResource tube}"/>
             <Label Name="loginError" Foreground="#FF6E6E" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="10,378,0,0" VerticalAlignment="Top" Width="322" Height="31" FontWeight="Bold"/>
-            <Label Name="alo" Content="Вход в системата" FontSize="15" Margin="111,201,95,179" />
+            <Label Name="alo" Content="Вход в системата" FontSize="20" Margin="79,201,80,182" HorizontalContentAlignment="Center" />
             <Button Content="Вход"  HorizontalAlignment="Left" Margin="111,334,0,0" VerticalAlignment="Top" Width="120" Height="44" Click="login2"  Style="{StaticResource GelButton}">
 
             </Button>

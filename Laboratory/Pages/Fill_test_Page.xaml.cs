@@ -33,17 +33,7 @@ namespace Laboratory.Pages
            
 
         }
-        private bool CustomFilter(object obj)
-        {
-            if (string.IsNullOrEmpty(text_filterTB.Text))
-            {
-                return true;
-            }
-            else
-            {
-                return (obj.ToString().IndexOf(text_filterTB.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-            }
-        }
+ 
 
         private void txtData_TextChanged(object sender, TextChangedEventArgs e)
         {
