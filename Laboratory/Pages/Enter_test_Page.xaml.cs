@@ -69,14 +69,15 @@ namespace Laboratory.Pages
             laboratorydbDataSetTableAdapters.check_patientTableAdapter testTypeTableAdapter = new laboratorydbDataSetTableAdapters.check_patientTableAdapter();
             object gender ;
             int? lab = 0;
-            string name, surname, lastname, address;
-            var res = testTypeTableAdapter.GetData(user_pinTB.Text, out name, out surname, out lastname, out gender, out address, out lab);
+            string name, surname, lastname, address,email;
+            var res = testTypeTableAdapter.GetData(user_pinTB.Text, out name, out surname, out lastname, out gender, out address,out email, out lab);
             if (name != null)
             {
                 user_nameTB.Text = name;
                 user_surnameTB.Text = surname;
                 user_lastnameTB.Text = lastname;
                 user_addressTB.Text = address;
+                emailTB.Text = email;
 
                 if (Convert.ToBoolean(gender))
                     femaleRB.IsChecked = true;

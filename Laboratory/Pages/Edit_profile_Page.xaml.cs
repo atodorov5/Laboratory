@@ -25,7 +25,7 @@ namespace Laboratory.Pages
         public Edit_profile_Page()
         {
             InitializeComponent();
-            load_chart();
+           // load_chart();
         }
 
         private void Button_SavePass(object sender, RoutedEventArgs e)

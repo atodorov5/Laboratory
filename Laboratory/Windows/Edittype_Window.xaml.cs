@@ -59,7 +59,7 @@ namespace Laboratory.Windows
             test_nameTB.Text = row[1].ToString();
             test_valueTB.Text = row[2].ToString();
             test_priceTB.Text = row[3].ToString();
-            type_groupComboBox.SelectedValue = (int)row[5];
+            //type_groupComboBox.SelectedValue = (int)row[5];
         }
 
         private void Button_Edit(object sender, RoutedEventArgs e)
@@ -68,7 +68,7 @@ namespace Laboratory.Windows
             Laboratory.laboratorydbDataSet laboratorydbDataSet = ((Laboratory.laboratorydbDataSet)(this.FindResource("laboratorydbDataSet")));
             // Load data into the table type_group. You can modify this code as needed.
             Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter laboratorydbDataSettype_groupTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter();
-            laboratorydbDataSettype_groupTableAdapter.edit_testype((int)row[0],test_nameTB.Text,test_valueTB.Text,test_priceTB.Text,(int)type_groupComboBox.SelectedValue);
+            laboratorydbDataSettype_groupTableAdapter.edit_testype((int)row[0],test_nameTB.Text,test_valueTB.Text,Convert.ToDouble( test_priceTB.Text),(int)type_groupComboBox.SelectedValue);
 
             this.Close();
         

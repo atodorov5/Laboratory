@@ -133,7 +133,7 @@ namespace Laboratory.Administrator
         {
 
             Laboratory.laboratorydbDataSet laboratoryDataSet = ((Laboratory.laboratorydbDataSet)(this.FindResource("laboratorydbDataSet")));
-
+            
             // Load data into the table bloodtype. You can modify this code as needed
             Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter testTypeTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter();
             testTypeTableAdapter.Fill(laboratoryDataSet.testtype);
@@ -145,7 +145,7 @@ namespace Laboratory.Administrator
             retrieve_UsersTableAdapter.Fill(laboratoryDataSet.retrieve_users,Properties.Settings.Default.labID);
             System.Windows.Data.CollectionViewSource retrieve_usersViewSource = (System.Windows.Data.CollectionViewSource)(this.FindResource("retrieve_usersViewSource"));
             retrieve_usersViewSource.View.MoveCurrentToFirst();
-
+            
             Laboratory.laboratorydbDataSetTableAdapters.type_groupTableAdapter type_groupTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.type_groupTableAdapter();
             type_groupTableAdapter.Fill(laboratoryDataSet.type_group);
             System.Windows.Data.CollectionViewSource type_groupreViewSource = (System.Windows.Data.CollectionViewSource)this.FindResource("type_groupViewSource");
@@ -246,7 +246,7 @@ namespace Laboratory.Administrator
             Ref_Values_Window ref_Values_Window = new Ref_Values_Window(row);
             ref_Values_Window.ShowDialog();
 
-            updateViewRefValues((int)row[4]);
+            updateViewRefValues((int)row[6]);
         }
     }
 }

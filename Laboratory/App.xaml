@@ -43,16 +43,7 @@
                         </Border>
                     </ControlTemplate>
                 </ResourceDictionary>
-                
-                <ResourceDictionary >
-                    <Style TargetType="Label">
-                        <Setter Property="FontFamily" Value="Tahoma"/>
-                        <Setter Property="FontStyle" Value="Oblique"></Setter>
 
-
-                    </Style>
-
-                </ResourceDictionary>
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

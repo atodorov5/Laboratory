@@ -56,6 +56,7 @@ namespace Laboratory
                             p_name = (string)dr["p_name"],
                             p_surname = (string)dr["p_surname"],
                             p_lastname = (string)dr["p_lastname"],
+                            p_email = (string)dr["email"],
                         };
                         Collection.Add(obj);
                     }
@@ -95,6 +96,7 @@ namespace Laboratory
                             p_name = (string)dr["p_name"],
                             p_surname= (string)dr["p_surname"],
                             p_lastname = (string)dr["p_lastname"],
+                            p_email = (string)dr["email"],
                             };
                         Collection.Add(obj);
                     }

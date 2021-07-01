@@ -5,6 +5,8 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -50,7 +52,7 @@ namespace Laboratory.Pages
             // Load data into the table clinicbranch. You can modify this code as needed.
             Laboratory.laboratorydbDataSetTableAdapters.select_result_byTestIDTableAdapter resultTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.select_result_byTestIDTableAdapter();
             resultTableAdapter.Fill(laboratorydbDataSet.select_result_byTestID, test.idTest, Properties.Settings.Default.labID, 0);
-            System.Windows.Data.CollectionViewSource resultViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("select_result_byTestIDViewSource")));
+            CollectionViewSource resultViewSource = (CollectionViewSource)this.FindResource("select_result_byTestIDViewSource");
             resultViewSource.View.MoveCurrentToFirst();
         }
 
@@ -58,14 +60,15 @@ namespace Laboratory.Pages
         {
             int count = select_result_byTestIDListView.Items.Count;
 
-            Laboratory.laboratorydbDataSetTableAdapters.QueriesTableAdapter queryTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.QueriesTableAdapter();
+
+            laboratorydbDataSetTableAdapters.QueriesTableAdapter queryTableAdapter = new laboratorydbDataSetTableAdapters.QueriesTableAdapter();
             
 
             for (int i = 0; i < count; i++)
             {
                 DataRowView item = (DataRowView)select_result_byTestIDListView.Items[i];
 
-                queryTableAdapter.enter_test_result(item[0].ToString(), (int)item[10],(int)item[11]);
+                queryTableAdapter.enter_test_result(item[0].ToString(), (int)item[10],(int)item[18]);
             }
 
             queryTableAdapter.set_test_status(test.idTest);
@@ -82,6 +85,38 @@ namespace Laboratory.Pages
             tabctrl.Items.Remove(tab);
             tabctrl.Items.Refresh();
 
+            sendEmail();
+
+
+
+
+        }
+
+        private void sendEmail()
+        {
+            var fromAddress = new MailAddress("laboratory_sintex@mail.bg", "Лаборатория Синтех");
+            var toAddress = new MailAddress(test.p_email, test.getFullName());
+            const string fromPassword = "lab123";
+            const string subject = "Вашето изследвани е обработено!";
+            string body = "Здравейте, " + test.getFullName() + " изследване №" + test.idTest + " e обработено";
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.mail.bg",
+                Port = 25,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body
+            })
+            {
+                smtp.Send(message);
+            }
         }
     }
 }

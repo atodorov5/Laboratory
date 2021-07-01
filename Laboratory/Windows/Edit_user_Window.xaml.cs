@@ -62,10 +62,10 @@ namespace Laboratory.Windows
         {
 
             Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter USERTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter();
-            var stat = true;
+            bool stat = true;
             if ((bool)status_user.IsChecked)
                 stat = false;
-            USERTableAdapter.Update(firstnameTB.Text, surnameTB.Text, lastnameTB.Text, pinTB.Text, addressTB.Text, phoneTB.Text,(int) labCB.SelectedValue,(int) rolesComboBox.SelectedValue, stat);
+            USERTableAdapter.update_users(firstnameTB.Text, surnameTB.Text, lastnameTB.Text, pinTB.Text, addressTB.Text, phoneTB.Text,(int) labCB.SelectedValue,(int) rolesComboBox.SelectedValue, stat);
 
             this.Close();
         }

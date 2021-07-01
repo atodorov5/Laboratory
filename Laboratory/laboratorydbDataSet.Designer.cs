@@ -46,6 +46,8 @@ namespace Laboratory {
         
         private bloodtypeDataTable tablebloodtype;
         
+        private global::System.Data.DataRelation relationfk_type_group;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -434,6 +436,7 @@ namespace Laboratory {
                     this.tablebloodtype.InitVars();
                 }
             }
+            this.relationfk_type_group = this.Relations["fk_type_group"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -466,6 +469,10 @@ namespace Laboratory {
             base.Tables.Add(this.tableuser_report);
             this.tablebloodtype = new bloodtypeDataTable();
             base.Tables.Add(this.tablebloodtype);
+            this.relationfk_type_group = new global::System.Data.DataRelation("fk_type_group", new global::System.Data.DataColumn[] {
+                        this.tabletype_group.idtype_groupColumn}, new global::System.Data.DataColumn[] {
+                        this.tabletesttype.type_groupColumn}, false);
+            this.Relations.Add(this.relationfk_type_group);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1898,9 +1905,7 @@ namespace Laboratory {
             
             private global::System.Data.DataColumn columnLabAssistant_idLabAssistant;
             
-            private global::System.Data.DataColumn columntest_price;
-            
-            private global::System.Data.DataColumn columntest_status1;
+            private global::System.Data.DataColumn columnprice;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -1993,17 +1998,9 @@ namespace Laboratory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn test_priceColumn {
+            public global::System.Data.DataColumn priceColumn {
                 get {
-                    return this.columntest_price;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn test_status1Column {
-                get {
-                    return this.columntest_status1;
+                    return this.columnprice;
                 }
             }
             
@@ -2044,7 +2041,7 @@ namespace Laboratory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public retrieve_testRow Addretrieve_testRow(System.DateTime testDate, string refNumber, string test_pass, string test_status, int Patient_idPatient, int LabAssistant_idLabAssistant, double test_price, sbyte test_status1) {
+            public retrieve_testRow Addretrieve_testRow(System.DateTime testDate, string refNumber, string test_pass, string test_status, int Patient_idPatient, int LabAssistant_idLabAssistant, double price) {
                 retrieve_testRow rowretrieve_testRow = ((retrieve_testRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2054,8 +2051,7 @@ namespace Laboratory {
                         test_status,
                         Patient_idPatient,
                         LabAssistant_idLabAssistant,
-                        test_price,
-                        test_status1};
+                        price};
                 rowretrieve_testRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowretrieve_testRow);
                 return rowretrieve_testRow;
@@ -2092,8 +2088,7 @@ namespace Laboratory {
                 this.columntest_status = base.Columns["test_status"];
                 this.columnPatient_idPatient = base.Columns["Patient_idPatient"];
                 this.columnLabAssistant_idLabAssistant = base.Columns["LabAssistant_idLabAssistant"];
-                this.columntest_price = base.Columns["test_price"];
-                this.columntest_status1 = base.Columns["test_status1"];
+                this.columnprice = base.Columns["price"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2113,10 +2108,8 @@ namespace Laboratory {
                 base.Columns.Add(this.columnPatient_idPatient);
                 this.columnLabAssistant_idLabAssistant = new global::System.Data.DataColumn("LabAssistant_idLabAssistant", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLabAssistant_idLabAssistant);
-                this.columntest_price = new global::System.Data.DataColumn("test_price", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntest_price);
-                this.columntest_status1 = new global::System.Data.DataColumn("test_status1", typeof(sbyte), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntest_status1);
+                this.columnprice = new global::System.Data.DataColumn("price", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnprice);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnidTest}, true));
                 this.columnidTest.AutoIncrement = true;
@@ -2129,7 +2122,6 @@ namespace Laboratory {
                 this.columntest_status.MaxLength = 45;
                 this.columnPatient_idPatient.AllowDBNull = false;
                 this.columnLabAssistant_idLabAssistant.AllowDBNull = false;
-                this.columntest_status1.Caption = "test_status";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2285,10 +2277,6 @@ namespace Laboratory {
             
             private global::System.Data.DataColumn columnidTest;
             
-            private global::System.Data.DataColumn columnidTestType;
-            
-            private global::System.Data.DataColumn columnstat;
-            
             private global::System.Data.DataColumn columngroup_name;
             
             private global::System.Data.DataColumn columnaddress;
@@ -2300,6 +2288,10 @@ namespace Laboratory {
             private global::System.Data.DataColumn columnphonenumber;
             
             private global::System.Data.DataColumn columnlicense;
+            
+            private global::System.Data.DataColumn columnemail;
+            
+            private global::System.Data.DataColumn columnIdTestType;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -2424,22 +2416,6 @@ namespace Laboratory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn idTestTypeColumn {
-                get {
-                    return this.columnidTestType;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn statColumn {
-                get {
-                    return this.columnstat;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn group_nameColumn {
                 get {
                     return this.columngroup_name;
@@ -2483,6 +2459,22 @@ namespace Laboratory {
             public global::System.Data.DataColumn licenseColumn {
                 get {
                     return this.columnlicense;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn emailColumn {
+                get {
+                    return this.columnemail;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IdTestTypeColumn {
+                get {
+                    return this.columnIdTestType;
                 }
             }
             
@@ -2534,13 +2526,13 @@ namespace Laboratory {
                         double min_value, 
                         double max_value, 
                         string p_lastname, 
-                        string stat, 
                         string group_name, 
                         string address, 
                         string town, 
                         string lab_address, 
                         string phonenumber, 
-                        string license) {
+                        string license, 
+                        string email) {
                 select_result_byTestIDRow rowselect_result_byTestIDRow = ((select_result_byTestIDRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         result_value,
@@ -2554,14 +2546,14 @@ namespace Laboratory {
                         max_value,
                         p_lastname,
                         null,
-                        null,
-                        stat,
                         group_name,
                         address,
                         town,
                         lab_address,
                         phonenumber,
-                        license};
+                        license,
+                        email,
+                        null};
                 rowselect_result_byTestIDRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowselect_result_byTestIDRow);
                 return rowselect_result_byTestIDRow;
@@ -2569,10 +2561,10 @@ namespace Laboratory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public select_result_byTestIDRow FindByidTestidTestType(int idTest, int idTestType) {
+            public select_result_byTestIDRow FindByidTestIdTestType(int idTest, int IdTestType) {
                 return ((select_result_byTestIDRow)(this.Rows.Find(new object[] {
                             idTest,
-                            idTestType})));
+                            IdTestType})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2603,14 +2595,14 @@ namespace Laboratory {
                 this.columnmax_value = base.Columns["max_value"];
                 this.columnp_lastname = base.Columns["p_lastname"];
                 this.columnidTest = base.Columns["idTest"];
-                this.columnidTestType = base.Columns["idTestType"];
-                this.columnstat = base.Columns["stat"];
                 this.columngroup_name = base.Columns["group_name"];
                 this.columnaddress = base.Columns["address"];
                 this.columntown = base.Columns["town"];
                 this.columnlab_address = base.Columns["lab_address"];
                 this.columnphonenumber = base.Columns["phonenumber"];
                 this.columnlicense = base.Columns["license"];
+                this.columnemail = base.Columns["email"];
+                this.columnIdTestType = base.Columns["IdTestType"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2638,10 +2630,6 @@ namespace Laboratory {
                 base.Columns.Add(this.columnp_lastname);
                 this.columnidTest = new global::System.Data.DataColumn("idTest", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnidTest);
-                this.columnidTestType = new global::System.Data.DataColumn("idTestType", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnidTestType);
-                this.columnstat = new global::System.Data.DataColumn("stat", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnstat);
                 this.columngroup_name = new global::System.Data.DataColumn("group_name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columngroup_name);
                 this.columnaddress = new global::System.Data.DataColumn("address", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2654,9 +2642,13 @@ namespace Laboratory {
                 base.Columns.Add(this.columnphonenumber);
                 this.columnlicense = new global::System.Data.DataColumn("license", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnlicense);
+                this.columnemail = new global::System.Data.DataColumn("email", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnemail);
+                this.columnIdTestType = new global::System.Data.DataColumn("IdTestType", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdTestType);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnidTest,
-                                this.columnidTestType}, true));
+                                this.columnIdTestType}, true));
                 this.columnresult_value.MaxLength = 45;
                 this.columntype_name.MaxLength = 45;
                 this.columnunit.MaxLength = 45;
@@ -2668,17 +2660,17 @@ namespace Laboratory {
                 this.columnidTest.AutoIncrementSeed = -1;
                 this.columnidTest.AutoIncrementStep = -1;
                 this.columnidTest.AllowDBNull = false;
-                this.columnidTestType.AutoIncrement = true;
-                this.columnidTestType.AutoIncrementSeed = -1;
-                this.columnidTestType.AutoIncrementStep = -1;
-                this.columnidTestType.AllowDBNull = false;
-                this.columnstat.MaxLength = 45;
                 this.columngroup_name.MaxLength = 45;
                 this.columnaddress.MaxLength = 45;
                 this.columntown.MaxLength = 45;
                 this.columnlab_address.MaxLength = 45;
                 this.columnphonenumber.MaxLength = 10;
                 this.columnlicense.MaxLength = 45;
+                this.columnemail.MaxLength = 50;
+                this.columnIdTestType.AutoIncrement = true;
+                this.columnIdTestType.AutoIncrementSeed = -1;
+                this.columnIdTestType.AutoIncrementStep = -1;
+                this.columnIdTestType.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2820,11 +2812,15 @@ namespace Laboratory {
             
             private global::System.Data.DataColumn columnprice;
             
-            private global::System.Data.DataColumn columngroup_id;
-            
             private global::System.Data.DataColumn columnidtype_group;
             
             private global::System.Data.DataColumn columngroup_name;
+            
+            private global::System.Data.DataColumn columnminVal;
+            
+            private global::System.Data.DataColumn columnmaxVal;
+            
+            private global::System.Data.DataColumn columntype_group;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -2893,14 +2889,6 @@ namespace Laboratory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn group_idColumn {
-                get {
-                    return this.columngroup_id;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn idtype_groupColumn {
                 get {
                     return this.columnidtype_group;
@@ -2912,6 +2900,30 @@ namespace Laboratory {
             public global::System.Data.DataColumn group_nameColumn {
                 get {
                     return this.columngroup_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn minValColumn {
+                get {
+                    return this.columnminVal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn maxValColumn {
+                get {
+                    return this.columnmaxVal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn type_groupColumn {
+                get {
+                    return this.columntype_group;
                 }
             }
             
@@ -2952,16 +2964,21 @@ namespace Laboratory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public testtypeRow AddtesttypeRow(string type_name, string unit, double price, int group_id, int idtype_group, string group_name) {
+            public testtypeRow AddtesttypeRow(string type_name, string unit, double price, int idtype_group, string group_name, double minVal, double maxVal, type_groupRow parenttype_groupRowByfk_type_group) {
                 testtypeRow rowtesttypeRow = ((testtypeRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         type_name,
                         unit,
                         price,
-                        group_id,
                         idtype_group,
-                        group_name};
+                        group_name,
+                        minVal,
+                        maxVal,
+                        null};
+                if ((parenttype_groupRowByfk_type_group != null)) {
+                    columnValuesArray[8] = parenttype_groupRowByfk_type_group[0];
+                }
                 rowtesttypeRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowtesttypeRow);
                 return rowtesttypeRow;
@@ -2995,9 +3012,11 @@ namespace Laboratory {
                 this.columntype_name = base.Columns["type_name"];
                 this.columnunit = base.Columns["unit"];
                 this.columnprice = base.Columns["price"];
-                this.columngroup_id = base.Columns["group_id"];
                 this.columnidtype_group = base.Columns["idtype_group"];
                 this.columngroup_name = base.Columns["group_name"];
+                this.columnminVal = base.Columns["minVal"];
+                this.columnmaxVal = base.Columns["maxVal"];
+                this.columntype_group = base.Columns["type_group"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3011,12 +3030,16 @@ namespace Laboratory {
                 base.Columns.Add(this.columnunit);
                 this.columnprice = new global::System.Data.DataColumn("price", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprice);
-                this.columngroup_id = new global::System.Data.DataColumn("group_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columngroup_id);
                 this.columnidtype_group = new global::System.Data.DataColumn("idtype_group", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnidtype_group);
                 this.columngroup_name = new global::System.Data.DataColumn("group_name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columngroup_name);
+                this.columnminVal = new global::System.Data.DataColumn("minVal", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnminVal);
+                this.columnmaxVal = new global::System.Data.DataColumn("maxVal", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmaxVal);
+                this.columntype_group = new global::System.Data.DataColumn("type_group", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntype_group);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnidTestType}, true));
                 this.columnidTestType.AutoIncrement = true;
@@ -4947,33 +4970,17 @@ namespace Laboratory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double test_price {
+            public double price {
                 get {
                     try {
-                        return ((double)(this[this.tableretrieve_test.test_priceColumn]));
+                        return ((double)(this[this.tableretrieve_test.priceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'test_price\' in table \'retrieve_test\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'price\' in table \'retrieve_test\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableretrieve_test.test_priceColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public sbyte test_status1 {
-                get {
-                    try {
-                        return ((sbyte)(this[this.tableretrieve_test.test_status1Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'test_status1\' in table \'retrieve_test\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableretrieve_test.test_status1Column] = value;
+                    this[this.tableretrieve_test.priceColumn] = value;
                 }
             }
             
@@ -5027,26 +5034,14 @@ namespace Laboratory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool Istest_priceNull() {
-                return this.IsNull(this.tableretrieve_test.test_priceColumn);
+            public bool IspriceNull() {
+                return this.IsNull(this.tableretrieve_test.priceColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Settest_priceNull() {
-                this[this.tableretrieve_test.test_priceColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool Istest_status1Null() {
-                return this.IsNull(this.tableretrieve_test.test_status1Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Settest_status1Null() {
-                this[this.tableretrieve_test.test_status1Column] = global::System.Convert.DBNull;
+            public void SetpriceNull() {
+                this[this.tableretrieve_test.priceColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5237,33 +5232,6 @@ namespace Laboratory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int idTestType {
-                get {
-                    return ((int)(this[this.tableselect_result_byTestID.idTestTypeColumn]));
-                }
-                set {
-                    this[this.tableselect_result_byTestID.idTestTypeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string stat {
-                get {
-                    try {
-                        return ((string)(this[this.tableselect_result_byTestID.statColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'stat\' in table \'select_result_byTestID\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableselect_result_byTestID.statColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string group_name {
                 get {
                     try {
@@ -5355,6 +5323,33 @@ namespace Laboratory {
                 }
                 set {
                     this[this.tableselect_result_byTestID.licenseColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string email {
+                get {
+                    try {
+                        return ((string)(this[this.tableselect_result_byTestID.emailColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'email\' in table \'select_result_byTestID\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableselect_result_byTestID.emailColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int IdTestType {
+                get {
+                    return ((int)(this[this.tableselect_result_byTestID.IdTestTypeColumn]));
+                }
+                set {
+                    this[this.tableselect_result_byTestID.IdTestTypeColumn] = value;
                 }
             }
             
@@ -5480,18 +5475,6 @@ namespace Laboratory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsstatNull() {
-                return this.IsNull(this.tableselect_result_byTestID.statColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetstatNull() {
-                this[this.tableselect_result_byTestID.statColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Isgroup_nameNull() {
                 return this.IsNull(this.tableselect_result_byTestID.group_nameColumn);
             }
@@ -5560,6 +5543,18 @@ namespace Laboratory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetlicenseNull() {
                 this[this.tableselect_result_byTestID.licenseColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsemailNull() {
+                return this.IsNull(this.tableselect_result_byTestID.emailColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetemailNull() {
+                this[this.tableselect_result_byTestID.emailColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5638,22 +5633,6 @@ namespace Laboratory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int group_id {
-                get {
-                    try {
-                        return ((int)(this[this.tabletesttype.group_idColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'group_id\' in table \'testtype\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabletesttype.group_idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int idtype_group {
                 get {
                     return ((int)(this[this.tabletesttype.idtype_groupColumn]));
@@ -5676,6 +5655,65 @@ namespace Laboratory {
                 }
                 set {
                     this[this.tabletesttype.group_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public double minVal {
+                get {
+                    try {
+                        return ((double)(this[this.tabletesttype.minValColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'minVal\' in table \'testtype\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletesttype.minValColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public double maxVal {
+                get {
+                    try {
+                        return ((double)(this[this.tabletesttype.maxValColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'maxVal\' in table \'testtype\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletesttype.maxValColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int type_group {
+                get {
+                    try {
+                        return ((int)(this[this.tabletesttype.type_groupColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'type_group\' in table \'testtype\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletesttype.type_groupColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public type_groupRow type_groupRow {
+                get {
+                    return ((type_groupRow)(this.GetParentRow(this.Table.ParentRelations["fk_type_group"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["fk_type_group"]);
                 }
             }
             
@@ -5717,18 +5755,6 @@ namespace Laboratory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool Isgroup_idNull() {
-                return this.IsNull(this.tabletesttype.group_idColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Setgroup_idNull() {
-                this[this.tabletesttype.group_idColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Isgroup_nameNull() {
                 return this.IsNull(this.tabletesttype.group_nameColumn);
             }
@@ -5737,6 +5763,42 @@ namespace Laboratory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Setgroup_nameNull() {
                 this[this.tabletesttype.group_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsminValNull() {
+                return this.IsNull(this.tabletesttype.minValColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetminValNull() {
+                this[this.tabletesttype.minValColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsmaxValNull() {
+                return this.IsNull(this.tabletesttype.maxValColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetmaxValNull() {
+                this[this.tabletesttype.maxValColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Istype_groupNull() {
+                return this.IsNull(this.tabletesttype.type_groupColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Settype_groupNull() {
+                this[this.tabletesttype.type_groupColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5791,6 +5853,17 @@ namespace Laboratory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Setgroup_nameNull() {
                 this[this.tabletype_group.group_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public testtypeRow[] GettesttypeRows() {
+                if ((this.Table.ChildRelations["fk_type_group"] == null)) {
+                    return new testtypeRow[0];
+                }
+                else {
+                    return ((testtypeRow[])(base.GetChildRows(this.Table.ChildRelations["fk_type_group"])));
+                }
             }
         }
         
@@ -7699,128 +7772,21 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("idRoles", "idRoles");
             tableMapping.ColumnMappings.Add("license", "license");
             this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "`laboratorydb`.`delete_user`";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.StoredProcedure;
-            global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_userID";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.Size = 2147483647;
-            param.IsNullable = true;
-            param.SourceColumn = "";
-            param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "`laboratorydb`.`add_lab_user`";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.StoredProcedure;
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_labName";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 255;
-            param.IsNullable = true;
-            param.SourceColumn = "name";
-            param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_labSurName";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 255;
-            param.IsNullable = true;
-            param.SourceColumn = "surname";
-            param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_labLastName";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 255;
-            param.IsNullable = true;
-            param.SourceColumn = "lastname";
-            param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_username";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 255;
-            param.IsNullable = true;
-            param.SourceColumn = "name";
-            param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_pin";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 255;
-            param.IsNullable = true;
-            param.SourceColumn = "";
-            param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_address";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 255;
-            param.IsNullable = true;
-            param.SourceColumn = "";
-            param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_phone";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 255;
-            param.IsNullable = true;
-            param.SourceColumn = "";
-            param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_hashedPaswrd";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 255;
-            param.IsNullable = true;
-            param.SourceColumn = "";
-            param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_salt";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 255;
-            param.IsNullable = true;
-            param.SourceColumn = "";
-            param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_clinic";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.Size = 2147483647;
-            param.IsNullable = true;
-            param.SourceColumn = "";
-            param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_role";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.Size = 2147483647;
-            param.IsNullable = true;
-            param.SourceColumn = "";
-            param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "`laboratorydb`.`edit_user`";
+            this._adapter.UpdateCommand.CommandText = "`laboratorydb`.`update_users`";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.StoredProcedure;
+            global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "p_pin";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 45;
+            param.IsNullable = true;
+            param.SourceColumn = "";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_name";
+            param.ParameterName = "p_name1";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 45;
@@ -7829,7 +7795,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_surname";
+            param.ParameterName = "p_surname1";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 45;
@@ -7838,21 +7804,12 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_lastname";
+            param.ParameterName = "p_lastname1";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 45;
             param.IsNullable = true;
             param.SourceColumn = "lastname";
-            param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_pin";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 45;
-            param.IsNullable = true;
-            param.SourceColumn = "";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -7874,7 +7831,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_labID";
+            param.ParameterName = "p_labid";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.Size = 2147483647;
@@ -7892,7 +7849,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_status";
+            param.ParameterName = "stat";
             param.DbType = global::System.Data.DbType.Object;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.Size = 2147483647;
@@ -7912,7 +7869,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[6];
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[7];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "`laboratorydb`.`retrieve_users`";
@@ -7930,26 +7887,26 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             this._commandCollection[1].CommandText = "`laboratorydb`.`add_lab_user`";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.StoredProcedure;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_labName";
+            param.ParameterName = "p_fname";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 255;
+            param.Size = 45;
             param.IsNullable = true;
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[1].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_labSurName";
+            param.ParameterName = "p_sname";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 255;
+            param.Size = 45;
             param.IsNullable = true;
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[1].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_labLastName";
+            param.ParameterName = "p_lname";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 255;
+            param.Size = 45;
             param.IsNullable = true;
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[1].Parameters.Add(param);
@@ -7957,7 +7914,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.ParameterName = "p_username";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 255;
+            param.Size = 45;
             param.IsNullable = true;
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[1].Parameters.Add(param);
@@ -7965,7 +7922,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.ParameterName = "p_pin";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 255;
+            param.Size = 45;
             param.IsNullable = true;
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[1].Parameters.Add(param);
@@ -7973,7 +7930,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.ParameterName = "p_address";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 255;
+            param.Size = 45;
             param.IsNullable = true;
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[1].Parameters.Add(param);
@@ -7981,15 +7938,15 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.ParameterName = "p_phone";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 255;
+            param.Size = 45;
             param.IsNullable = true;
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[1].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_hashedPaswrd";
+            param.ParameterName = "p_hashp";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 255;
+            param.Size = 45;
             param.IsNullable = true;
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[1].Parameters.Add(param);
@@ -7997,12 +7954,12 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.ParameterName = "p_salt";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 255;
+            param.Size = 45;
             param.IsNullable = true;
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[1].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_clinic";
+            param.ParameterName = "p_labID";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.Size = 2147483647;
@@ -8010,7 +7967,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[1].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_role";
+            param.ParameterName = "p_roleID";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.Size = 2147483647;
@@ -8030,7 +7987,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[2].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_old_passwrd";
+            param.ParameterName = "p_hashed_old";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 45;
@@ -8038,7 +7995,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[2].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_salt";
+            param.ParameterName = "p_new_salt";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 45;
@@ -8046,7 +8003,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[2].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_new_passwrd";
+            param.ParameterName = "p_hashed_new";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 45;
@@ -8078,7 +8035,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[4].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "o_salt";
+            param.ParameterName = "p_salt";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 45;
@@ -8099,7 +8056,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[5].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_hashpsswrd";
+            param.ParameterName = "p_hashedpass";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 45;
@@ -8126,7 +8083,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[5].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_userID";
+            param.ParameterName = "p_userid";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.Size = 2147483647;
@@ -8143,6 +8100,82 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.IsNullable = true;
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[5].Parameters.Add(param);
+            this._commandCollection[6] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[6].Connection = this.Connection;
+            this._commandCollection[6].CommandText = "`laboratorydb`.`update_users`";
+            this._commandCollection[6].CommandType = global::System.Data.CommandType.StoredProcedure;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "p_pin";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 45;
+            param.IsNullable = true;
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[6].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "p_name1";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 45;
+            param.IsNullable = true;
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[6].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "p_surname1";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 45;
+            param.IsNullable = true;
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[6].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "p_lastname1";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 45;
+            param.IsNullable = true;
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[6].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "p_address";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 45;
+            param.IsNullable = true;
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[6].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "p_phone";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 45;
+            param.IsNullable = true;
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[6].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "p_labid";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.Size = 2147483647;
+            param.IsNullable = true;
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[6].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "p_roleID";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.Size = 2147483647;
+            param.IsNullable = true;
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[6].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "stat";
+            param.DbType = global::System.Data.DbType.Object;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
+            param.Size = 2147483647;
+            param.IsNullable = true;
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[6].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8249,214 +8282,25 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(global::System.Nullable<int> p_userID) {
-            if ((p_userID.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(p_userID.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string p_labName, string p_labSurName, string p_labLastName, string p_username, string p_pin, string p_address, string p_phone, string p_hashedPaswrd, string p_salt, global::System.Nullable<int> p_clinic, global::System.Nullable<int> p_role) {
-            if ((p_labName == null)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(p_labName));
-            }
-            if ((p_labSurName == null)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(p_labSurName));
-            }
-            if ((p_labLastName == null)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(p_labLastName));
-            }
-            if ((p_username == null)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(p_username));
-            }
-            if ((p_pin == null)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(p_pin));
-            }
-            if ((p_address == null)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(p_address));
-            }
-            if ((p_phone == null)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(p_phone));
-            }
-            if ((p_hashedPaswrd == null)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(p_hashedPaswrd));
-            }
-            if ((p_salt == null)) {
-                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(p_salt));
-            }
-            if ((p_clinic.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((int)(p_clinic.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            if ((p_role.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((int)(p_role.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string p_name, string p_surname, string p_lastname, string p_pin, string p_address, string p_phone, global::System.Nullable<int> p_labID, global::System.Nullable<int> p_roleID, object p_status) {
-            if ((p_name == null)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(p_name));
-            }
-            if ((p_surname == null)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(p_surname));
-            }
-            if ((p_lastname == null)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(p_lastname));
-            }
-            if ((p_pin == null)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(p_pin));
-            }
-            if ((p_address == null)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(p_address));
-            }
-            if ((p_phone == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(p_phone));
-            }
-            if ((p_labID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(p_labID.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            if ((p_roleID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(p_roleID.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            if ((p_status == null)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(p_status));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int add_lab_user(string p_labName, string p_labSurName, string p_labLastName, string p_username, string p_pin, string p_address, string p_phone, string p_hashedPaswrd, string p_salt, global::System.Nullable<int> p_clinic, global::System.Nullable<int> p_role) {
+        public virtual int add_lab_user(string p_fname, string p_sname, string p_lname, string p_username, string p_pin, string p_address, string p_phone, string p_hashp, string p_salt, global::System.Nullable<int> p_labID, global::System.Nullable<int> p_roleID) {
             global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[1];
-            if ((p_labName == null)) {
+            if ((p_fname == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[0].Value = ((string)(p_labName));
+                command.Parameters[0].Value = ((string)(p_fname));
             }
-            if ((p_labSurName == null)) {
+            if ((p_sname == null)) {
                 command.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[1].Value = ((string)(p_labSurName));
+                command.Parameters[1].Value = ((string)(p_sname));
             }
-            if ((p_labLastName == null)) {
+            if ((p_lname == null)) {
                 command.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[2].Value = ((string)(p_labLastName));
+                command.Parameters[2].Value = ((string)(p_lname));
             }
             if ((p_username == null)) {
                 command.Parameters[3].Value = global::System.DBNull.Value;
@@ -8482,11 +8326,11 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             else {
                 command.Parameters[6].Value = ((string)(p_phone));
             }
-            if ((p_hashedPaswrd == null)) {
+            if ((p_hashp == null)) {
                 command.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[7].Value = ((string)(p_hashedPaswrd));
+                command.Parameters[7].Value = ((string)(p_hashp));
             }
             if ((p_salt == null)) {
                 command.Parameters[8].Value = global::System.DBNull.Value;
@@ -8494,14 +8338,14 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             else {
                 command.Parameters[8].Value = ((string)(p_salt));
             }
-            if ((p_clinic.HasValue == true)) {
-                command.Parameters[9].Value = ((int)(p_clinic.Value));
+            if ((p_labID.HasValue == true)) {
+                command.Parameters[9].Value = ((int)(p_labID.Value));
             }
             else {
                 command.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((p_role.HasValue == true)) {
-                command.Parameters[10].Value = ((int)(p_role.Value));
+            if ((p_roleID.HasValue == true)) {
+                command.Parameters[10].Value = ((int)(p_roleID.Value));
             }
             else {
                 command.Parameters[10].Value = global::System.DBNull.Value;
@@ -8526,7 +8370,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int change_password(global::System.Nullable<int> p_userID, string p_old_passwrd, string p_salt, string p_new_passwrd) {
+        public virtual int change_password(global::System.Nullable<int> p_userID, string p_hashed_old, string p_new_salt, string p_hashed_new) {
             global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[2];
             if ((p_userID.HasValue == true)) {
                 command.Parameters[0].Value = ((int)(p_userID.Value));
@@ -8534,23 +8378,23 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             else {
                 command.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((p_old_passwrd == null)) {
+            if ((p_hashed_old == null)) {
                 command.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[1].Value = ((string)(p_old_passwrd));
+                command.Parameters[1].Value = ((string)(p_hashed_old));
             }
-            if ((p_salt == null)) {
+            if ((p_new_salt == null)) {
                 command.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[2].Value = ((string)(p_salt));
+                command.Parameters[2].Value = ((string)(p_new_salt));
             }
-            if ((p_new_passwrd == null)) {
+            if ((p_hashed_new == null)) {
                 command.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[3].Value = ((string)(p_new_passwrd));
+                command.Parameters[3].Value = ((string)(p_hashed_new));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8572,7 +8416,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual object get_userSalt(global::System.Nullable<int> p_userID, out string o_salt) {
+        public virtual object get_userSalt(global::System.Nullable<int> p_userID, out string p_salt) {
             global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[4];
             if ((p_userID.HasValue == true)) {
                 command.Parameters[0].Value = ((int)(p_userID.Value));
@@ -8596,10 +8440,10 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             }
             if (((command.Parameters[1].Value == null) 
                         || (command.Parameters[1].Value.GetType() == typeof(global::System.DBNull)))) {
-                o_salt = null;
+                p_salt = null;
             }
             else {
-                o_salt = ((string)(command.Parameters[1].Value));
+                p_salt = ((string)(command.Parameters[1].Value));
             }
             if (((returnValue == null) 
                         || (returnValue.GetType() == typeof(global::System.DBNull)))) {
@@ -8613,7 +8457,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int login_procedure(string p_username, out string p_hashpsswrd, out string p_salt, out global::System.Nullable<int> p_roleID, out global::System.Nullable<int> p_userID, out global::System.Nullable<int> p_labID) {
+        public virtual int login_procedure(string p_username, out string p_hashedpass, out string p_salt, out global::System.Nullable<int> p_roleID, out global::System.Nullable<int> p_userid, out global::System.Nullable<int> p_labID) {
             global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[5];
             if ((p_username == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
@@ -8637,10 +8481,10 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             }
             if (((command.Parameters[1].Value == null) 
                         || (command.Parameters[1].Value.GetType() == typeof(global::System.DBNull)))) {
-                p_hashpsswrd = null;
+                p_hashedpass = null;
             }
             else {
-                p_hashpsswrd = ((string)(command.Parameters[1].Value));
+                p_hashedpass = ((string)(command.Parameters[1].Value));
             }
             if (((command.Parameters[2].Value == null) 
                         || (command.Parameters[2].Value.GetType() == typeof(global::System.DBNull)))) {
@@ -8658,10 +8502,10 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             }
             if (((command.Parameters[4].Value == null) 
                         || (command.Parameters[4].Value.GetType() == typeof(global::System.DBNull)))) {
-                p_userID = new global::System.Nullable<int>();
+                p_userid = new global::System.Nullable<int>();
             }
             else {
-                p_userID = new global::System.Nullable<int>(((int)(command.Parameters[4].Value)));
+                p_userid = new global::System.Nullable<int>(((int)(command.Parameters[4].Value)));
             }
             if (((command.Parameters[5].Value == null) 
                         || (command.Parameters[5].Value.GetType() == typeof(global::System.DBNull)))) {
@@ -8669,6 +8513,82 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             }
             else {
                 p_labID = new global::System.Nullable<int>(((int)(command.Parameters[5].Value)));
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int update_users(string p_pin, string p_name1, string p_surname1, string p_lastname1, string p_address, string p_phone, global::System.Nullable<int> p_labid, global::System.Nullable<int> p_roleID, object stat) {
+            global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[6];
+            if ((p_pin == null)) {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[0].Value = ((string)(p_pin));
+            }
+            if ((p_name1 == null)) {
+                command.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[1].Value = ((string)(p_name1));
+            }
+            if ((p_surname1 == null)) {
+                command.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[2].Value = ((string)(p_surname1));
+            }
+            if ((p_lastname1 == null)) {
+                command.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[3].Value = ((string)(p_lastname1));
+            }
+            if ((p_address == null)) {
+                command.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[4].Value = ((string)(p_address));
+            }
+            if ((p_phone == null)) {
+                command.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[5].Value = ((string)(p_phone));
+            }
+            if ((p_labid.HasValue == true)) {
+                command.Parameters[6].Value = ((int)(p_labid.Value));
+            }
+            else {
+                command.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((p_roleID.HasValue == true)) {
+                command.Parameters[7].Value = ((int)(p_roleID.Value));
+            }
+            else {
+                command.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((stat == null)) {
+                command.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[8].Value = ((object)(stat));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
             }
             return returnValue;
         }
@@ -8807,18 +8727,18 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "`laboratorydb`.`check_patient`";
+            this._commandCollection[0].CommandText = "`laboratorydb`.`check_patient1`";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "p_pin";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 10;
+            param.Size = 45;
             param.IsNullable = true;
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[0].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "o_name";
+            param.ParameterName = "p_name1";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 45;
@@ -8827,7 +8747,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[0].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "o_surname";
+            param.ParameterName = "p_surname1";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 45;
@@ -8836,7 +8756,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[0].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "o_lastname";
+            param.ParameterName = "p_lastname1";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 45;
@@ -8854,7 +8774,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[0].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "o_address";
+            param.ParameterName = "p_address";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 45;
@@ -8863,7 +8783,16 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[0].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "o_bloodType";
+            param.ParameterName = "p_email";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 45;
+            param.Direction = global::System.Data.ParameterDirection.Output;
+            param.IsNullable = true;
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[0].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "p_blood";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.Size = 2147483647;
@@ -8877,7 +8806,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(laboratorydbDataSet.check_patientDataTable dataTable, string p_pin, out string o_name, out string o_surname, out string o_lastname, out object o_gender, out string o_address, out global::System.Nullable<int> o_bloodType) {
+        public virtual int Fill(laboratorydbDataSet.check_patientDataTable dataTable, string p_pin, out string p_name1, out string p_surname1, out string p_lastname1, out object o_gender, out string p_address, out string p_email, out global::System.Nullable<int> p_blood) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((p_pin == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -8891,24 +8820,24 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             int returnValue = this.Adapter.Fill(dataTable);
             if (((this.Adapter.SelectCommand.Parameters[1].Value == null) 
                         || (this.Adapter.SelectCommand.Parameters[1].Value.GetType() == typeof(global::System.DBNull)))) {
-                o_name = null;
+                p_name1 = null;
             }
             else {
-                o_name = ((string)(this.Adapter.SelectCommand.Parameters[1].Value));
+                p_name1 = ((string)(this.Adapter.SelectCommand.Parameters[1].Value));
             }
             if (((this.Adapter.SelectCommand.Parameters[2].Value == null) 
                         || (this.Adapter.SelectCommand.Parameters[2].Value.GetType() == typeof(global::System.DBNull)))) {
-                o_surname = null;
+                p_surname1 = null;
             }
             else {
-                o_surname = ((string)(this.Adapter.SelectCommand.Parameters[2].Value));
+                p_surname1 = ((string)(this.Adapter.SelectCommand.Parameters[2].Value));
             }
             if (((this.Adapter.SelectCommand.Parameters[3].Value == null) 
                         || (this.Adapter.SelectCommand.Parameters[3].Value.GetType() == typeof(global::System.DBNull)))) {
-                o_lastname = null;
+                p_lastname1 = null;
             }
             else {
-                o_lastname = ((string)(this.Adapter.SelectCommand.Parameters[3].Value));
+                p_lastname1 = ((string)(this.Adapter.SelectCommand.Parameters[3].Value));
             }
             if (((this.Adapter.SelectCommand.Parameters[4].Value == null) 
                         || (this.Adapter.SelectCommand.Parameters[4].Value.GetType() == typeof(global::System.DBNull)))) {
@@ -8919,17 +8848,24 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             }
             if (((this.Adapter.SelectCommand.Parameters[5].Value == null) 
                         || (this.Adapter.SelectCommand.Parameters[5].Value.GetType() == typeof(global::System.DBNull)))) {
-                o_address = null;
+                p_address = null;
             }
             else {
-                o_address = ((string)(this.Adapter.SelectCommand.Parameters[5].Value));
+                p_address = ((string)(this.Adapter.SelectCommand.Parameters[5].Value));
             }
             if (((this.Adapter.SelectCommand.Parameters[6].Value == null) 
                         || (this.Adapter.SelectCommand.Parameters[6].Value.GetType() == typeof(global::System.DBNull)))) {
-                o_bloodType = new global::System.Nullable<int>();
+                p_email = null;
             }
             else {
-                o_bloodType = new global::System.Nullable<int>(((int)(this.Adapter.SelectCommand.Parameters[6].Value)));
+                p_email = ((string)(this.Adapter.SelectCommand.Parameters[6].Value));
+            }
+            if (((this.Adapter.SelectCommand.Parameters[7].Value == null) 
+                        || (this.Adapter.SelectCommand.Parameters[7].Value.GetType() == typeof(global::System.DBNull)))) {
+                p_blood = new global::System.Nullable<int>();
+            }
+            else {
+                p_blood = new global::System.Nullable<int>(((int)(this.Adapter.SelectCommand.Parameters[7].Value)));
             }
             return returnValue;
         }
@@ -8938,7 +8874,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual laboratorydbDataSet.check_patientDataTable GetData(string p_pin, out string o_name, out string o_surname, out string o_lastname, out object o_gender, out string o_address, out global::System.Nullable<int> o_bloodType) {
+        public virtual laboratorydbDataSet.check_patientDataTable GetData(string p_pin, out string p_name1, out string p_surname1, out string p_lastname1, out object o_gender, out string p_address, out string p_email, out global::System.Nullable<int> p_blood) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((p_pin == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -8950,24 +8886,24 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             this.Adapter.Fill(dataTable);
             if (((this.Adapter.SelectCommand.Parameters[1].Value == null) 
                         || (this.Adapter.SelectCommand.Parameters[1].Value.GetType() == typeof(global::System.DBNull)))) {
-                o_name = null;
+                p_name1 = null;
             }
             else {
-                o_name = ((string)(this.Adapter.SelectCommand.Parameters[1].Value));
+                p_name1 = ((string)(this.Adapter.SelectCommand.Parameters[1].Value));
             }
             if (((this.Adapter.SelectCommand.Parameters[2].Value == null) 
                         || (this.Adapter.SelectCommand.Parameters[2].Value.GetType() == typeof(global::System.DBNull)))) {
-                o_surname = null;
+                p_surname1 = null;
             }
             else {
-                o_surname = ((string)(this.Adapter.SelectCommand.Parameters[2].Value));
+                p_surname1 = ((string)(this.Adapter.SelectCommand.Parameters[2].Value));
             }
             if (((this.Adapter.SelectCommand.Parameters[3].Value == null) 
                         || (this.Adapter.SelectCommand.Parameters[3].Value.GetType() == typeof(global::System.DBNull)))) {
-                o_lastname = null;
+                p_lastname1 = null;
             }
             else {
-                o_lastname = ((string)(this.Adapter.SelectCommand.Parameters[3].Value));
+                p_lastname1 = ((string)(this.Adapter.SelectCommand.Parameters[3].Value));
             }
             if (((this.Adapter.SelectCommand.Parameters[4].Value == null) 
                         || (this.Adapter.SelectCommand.Parameters[4].Value.GetType() == typeof(global::System.DBNull)))) {
@@ -8978,17 +8914,24 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             }
             if (((this.Adapter.SelectCommand.Parameters[5].Value == null) 
                         || (this.Adapter.SelectCommand.Parameters[5].Value.GetType() == typeof(global::System.DBNull)))) {
-                o_address = null;
+                p_address = null;
             }
             else {
-                o_address = ((string)(this.Adapter.SelectCommand.Parameters[5].Value));
+                p_address = ((string)(this.Adapter.SelectCommand.Parameters[5].Value));
             }
             if (((this.Adapter.SelectCommand.Parameters[6].Value == null) 
                         || (this.Adapter.SelectCommand.Parameters[6].Value.GetType() == typeof(global::System.DBNull)))) {
-                o_bloodType = new global::System.Nullable<int>();
+                p_email = null;
             }
             else {
-                o_bloodType = new global::System.Nullable<int>(((int)(this.Adapter.SelectCommand.Parameters[6].Value)));
+                p_email = ((string)(this.Adapter.SelectCommand.Parameters[6].Value));
+            }
+            if (((this.Adapter.SelectCommand.Parameters[7].Value == null) 
+                        || (this.Adapter.SelectCommand.Parameters[7].Value.GetType() == typeof(global::System.DBNull)))) {
+                p_blood = new global::System.Nullable<int>();
+            }
+            else {
+                p_blood = new global::System.Nullable<int>(((int)(this.Adapter.SelectCommand.Parameters[7].Value)));
             }
             return dataTable;
         }
@@ -9121,8 +9064,8 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("test_pass", "test_pass");
             tableMapping.ColumnMappings.Add("Patient_idPatient", "Patient_idPatient");
             tableMapping.ColumnMappings.Add("LabAssistant_idLabAssistant", "LabAssistant_idLabAssistant");
-            tableMapping.ColumnMappings.Add("test_price", "test_price");
-            tableMapping.ColumnMappings.Add("test_status", "test_status1");
+            tableMapping.ColumnMappings.Add("test_status", "test_status");
+            tableMapping.ColumnMappings.Add("price", "price");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
@@ -9138,7 +9081,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_surname1";
+            param.ParameterName = "p_surname";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 45;
@@ -9147,7 +9090,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_lastName1";
+            param.ParameterName = "p_lastName";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 45;
@@ -9165,7 +9108,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_gender";
+            param.ParameterName = "p_sex";
             param.DbType = global::System.Data.DbType.Object;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.Size = 2147483647;
@@ -9219,7 +9162,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_passw";
+            param.ParameterName = "p_pass";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 45;
@@ -9233,7 +9176,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
             param.Size = 2147483647;
             param.IsNullable = true;
-            param.SourceColumn = "";
+            param.SourceColumn = "price";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -9261,10 +9204,10 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[2];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "`laboratorydb`.`retrieve_test`";
+            this._commandCollection[0].CommandText = "`laboratorydb`.`get_test`";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_test_id";
+            param.ParameterName = "p_id";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.Size = 2147483647;
@@ -9282,10 +9225,10 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(laboratorydbDataSet.retrieve_testDataTable dataTable, global::System.Nullable<int> p_test_id) {
+        public virtual int Fill(laboratorydbDataSet.retrieve_testDataTable dataTable, global::System.Nullable<int> p_id) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((p_test_id.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(p_test_id.Value));
+            if ((p_id.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(p_id.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -9301,10 +9244,10 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual laboratorydbDataSet.retrieve_testDataTable GetData(global::System.Nullable<int> p_test_id) {
+        public virtual laboratorydbDataSet.retrieve_testDataTable GetData(global::System.Nullable<int> p_id) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((p_test_id.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(p_test_id.Value));
+            if ((p_id.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(p_id.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -9371,24 +9314,24 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string p_name1, string p_surname1, string p_lastName1, string p_pin, object p_gender, string p_address, string p_email, global::System.Nullable<int> p_bloodType, global::System.Nullable<int> p_LabAssistantID, string p_refnumb, string p_passw, global::System.Nullable<double> p_price, out global::System.Nullable<int> o_testid) {
+        public virtual int Insert(string p_name1, string p_surname, string p_lastName, string p_pin, object p_sex, string p_address, string p_email, global::System.Nullable<int> p_bloodType, global::System.Nullable<int> p_LabAssistantID, string p_refnumb, string p_pass, global::System.Nullable<double> p_price, out global::System.Nullable<int> o_testid) {
             if ((p_name1 == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(p_name1));
             }
-            if ((p_surname1 == null)) {
+            if ((p_surname == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(p_surname1));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(p_surname));
             }
-            if ((p_lastName1 == null)) {
+            if ((p_lastName == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(p_lastName1));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(p_lastName));
             }
             if ((p_pin == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
@@ -9396,11 +9339,11 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = ((string)(p_pin));
             }
-            if ((p_gender == null)) {
+            if ((p_sex == null)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((object)(p_gender));
+                this.Adapter.InsertCommand.Parameters[4].Value = ((object)(p_sex));
             }
             if ((p_address == null)) {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
@@ -9432,11 +9375,11 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[9].Value = ((string)(p_refnumb));
             }
-            if ((p_passw == null)) {
+            if ((p_pass == null)) {
                 this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(p_passw));
+                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(p_pass));
             }
             if ((p_price.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[11].Value = ((double)(p_price.Value));
@@ -9600,46 +9543,15 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("max_value", "max_value");
             tableMapping.ColumnMappings.Add("p_lastname", "p_lastname");
             tableMapping.ColumnMappings.Add("idTest", "idTest");
-            tableMapping.ColumnMappings.Add("idTestType", "idTestType");
-            tableMapping.ColumnMappings.Add("stat", "stat");
             tableMapping.ColumnMappings.Add("group_name", "group_name");
             tableMapping.ColumnMappings.Add("address", "address");
             tableMapping.ColumnMappings.Add("town", "town");
             tableMapping.ColumnMappings.Add("lab_address", "lab_address");
             tableMapping.ColumnMappings.Add("phonenumber", "phonenumber");
             tableMapping.ColumnMappings.Add("license", "license");
+            tableMapping.ColumnMappings.Add("email", "email");
+            tableMapping.ColumnMappings.Add("IdTestType", "IdTestType");
             this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "`laboratorydb`.`enter_test_tesult`";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.StoredProcedure;
-            global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_value";
-            param.DbType = global::System.Data.DbType.Double;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
-            param.Size = 2147483647;
-            param.IsNullable = true;
-            param.SourceColumn = "";
-            param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_testID";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.Size = 2147483647;
-            param.IsNullable = true;
-            param.SourceColumn = "";
-            param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_testtypeID";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.Size = 2147483647;
-            param.IsNullable = true;
-            param.SourceColumn = "";
-            param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._adapter.UpdateCommand.Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9655,10 +9567,10 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "`laboratorydb`.`check_test_by_id`";
+            this._commandCollection[0].CommandText = "`laboratorydb`.`select_result_byTestID`";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_testID";
+            param.ParameterName = "testID";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.Size = 2147483647;
@@ -9666,7 +9578,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[0].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_labID";
+            param.ParameterName = "labID";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.Size = 2147483647;
@@ -9674,7 +9586,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[0].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_mod";
+            param.ParameterName = "test_mode";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.Size = 2147483647;
@@ -9687,22 +9599,22 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(laboratorydbDataSet.select_result_byTestIDDataTable dataTable, global::System.Nullable<int> p_testID, global::System.Nullable<int> p_labID, global::System.Nullable<int> p_mod) {
+        public virtual int Fill(laboratorydbDataSet.select_result_byTestIDDataTable dataTable, global::System.Nullable<int> testID, global::System.Nullable<int> labID, global::System.Nullable<int> test_mode) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((p_testID.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(p_testID.Value));
+            if ((testID.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(testID.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((p_labID.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(p_labID.Value));
+            if ((labID.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(labID.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((p_mod.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[2].Value = ((int)(p_mod.Value));
+            if ((test_mode.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((int)(test_mode.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
@@ -9718,22 +9630,22 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual laboratorydbDataSet.select_result_byTestIDDataTable GetData(global::System.Nullable<int> p_testID, global::System.Nullable<int> p_labID, global::System.Nullable<int> p_mod) {
+        public virtual laboratorydbDataSet.select_result_byTestIDDataTable GetData(global::System.Nullable<int> testID, global::System.Nullable<int> labID, global::System.Nullable<int> test_mode) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((p_testID.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(p_testID.Value));
+            if ((testID.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(testID.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((p_labID.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(p_labID.Value));
+            if ((labID.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(labID.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((p_mod.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[2].Value = ((int)(p_mod.Value));
+            if ((test_mode.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((int)(test_mode.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
@@ -9741,35 +9653,6 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             laboratorydbDataSet.select_result_byTestIDDataTable dataTable = new laboratorydbDataSet.select_result_byTestIDDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(laboratorydbDataSet.select_result_byTestIDDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(laboratorydbDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "select_result_byTestID");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
         }
     }
     
@@ -9898,9 +9781,11 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("type_name", "type_name");
             tableMapping.ColumnMappings.Add("unit", "unit");
             tableMapping.ColumnMappings.Add("price", "price");
-            tableMapping.ColumnMappings.Add("group_id", "group_id");
             tableMapping.ColumnMappings.Add("idtype_group", "idtype_group");
             tableMapping.ColumnMappings.Add("group_name", "group_name");
+            tableMapping.ColumnMappings.Add("minVal", "minVal");
+            tableMapping.ColumnMappings.Add("maxVal", "maxVal");
+            tableMapping.ColumnMappings.Add("type_group", "type_group");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -9917,14 +9802,14 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[4];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT *  FROM `testtype` join type_group on group_id=idtype_group";
+            this._commandCollection[0].CommandText = "SELECT *  FROM `testtype` join type_group on type_group=idtype_group";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "`laboratorydb`.`add_testtype`";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.StoredProcedure;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_name";
+            param.ParameterName = "p_testname";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 45;
@@ -9948,7 +9833,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[1].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_group_id";
+            param.ParameterName = "p_typeGroup";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.Size = 2147483647;
@@ -9956,7 +9841,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[1].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_testID";
+            param.ParameterName = "testtypeID";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.Size = 2147483647;
@@ -9969,7 +9854,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             this._commandCollection[2].CommandText = "`laboratorydb`.`delete_testtype`";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.StoredProcedure;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_testTypeID";
+            param.ParameterName = "p_typeID";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.Size = 2147483647;
@@ -9978,10 +9863,10 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             this._commandCollection[2].Parameters.Add(param);
             this._commandCollection[3] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "`laboratorydb`.`edit_testype`";
+            this._commandCollection[3].CommandText = "`laboratorydb`.`edit_testtype`";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.StoredProcedure;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_testTypeID";
+            param.ParameterName = "typeID";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.Size = 2147483647;
@@ -10006,9 +9891,9 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             this._commandCollection[3].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "p_price";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 45;
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.Size = 2147483647;
             param.IsNullable = true;
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[3].Parameters.Add(param);
@@ -10049,13 +9934,13 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual object add_testtype(string p_name, string p_unit, global::System.Nullable<double> p_price, global::System.Nullable<int> p_group_id, out global::System.Nullable<int> p_testID) {
+        public virtual object add_testtype(string p_testname, string p_unit, global::System.Nullable<double> p_price, global::System.Nullable<int> p_typeGroup, out global::System.Nullable<int> testtypeID) {
             global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[1];
-            if ((p_name == null)) {
+            if ((p_testname == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[0].Value = ((string)(p_name));
+                command.Parameters[0].Value = ((string)(p_testname));
             }
             if ((p_unit == null)) {
                 command.Parameters[1].Value = global::System.DBNull.Value;
@@ -10069,8 +9954,8 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             else {
                 command.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((p_group_id.HasValue == true)) {
-                command.Parameters[3].Value = ((int)(p_group_id.Value));
+            if ((p_typeGroup.HasValue == true)) {
+                command.Parameters[3].Value = ((int)(p_typeGroup.Value));
             }
             else {
                 command.Parameters[3].Value = global::System.DBNull.Value;
@@ -10091,10 +9976,10 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             }
             if (((command.Parameters[4].Value == null) 
                         || (command.Parameters[4].Value.GetType() == typeof(global::System.DBNull)))) {
-                p_testID = new global::System.Nullable<int>();
+                testtypeID = new global::System.Nullable<int>();
             }
             else {
-                p_testID = new global::System.Nullable<int>(((int)(command.Parameters[4].Value)));
+                testtypeID = new global::System.Nullable<int>(((int)(command.Parameters[4].Value)));
             }
             if (((returnValue == null) 
                         || (returnValue.GetType() == typeof(global::System.DBNull)))) {
@@ -10108,10 +9993,10 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int delete_testtype(global::System.Nullable<int> p_testTypeID) {
+        public virtual int delete_testtype(global::System.Nullable<int> p_typeID) {
             global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[2];
-            if ((p_testTypeID.HasValue == true)) {
-                command.Parameters[0].Value = ((int)(p_testTypeID.Value));
+            if ((p_typeID.HasValue == true)) {
+                command.Parameters[0].Value = ((int)(p_typeID.Value));
             }
             else {
                 command.Parameters[0].Value = global::System.DBNull.Value;
@@ -10136,10 +10021,10 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int edit_testype(global::System.Nullable<int> p_testTypeID, string p_name, string p_unit, string p_price, global::System.Nullable<int> p_groupID) {
+        public virtual int edit_testype(global::System.Nullable<int> typeID, string p_name, string p_unit, global::System.Nullable<double> p_price, global::System.Nullable<int> p_groupID) {
             global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[3];
-            if ((p_testTypeID.HasValue == true)) {
-                command.Parameters[0].Value = ((int)(p_testTypeID.Value));
+            if ((typeID.HasValue == true)) {
+                command.Parameters[0].Value = ((int)(typeID.Value));
             }
             else {
                 command.Parameters[0].Value = global::System.DBNull.Value;
@@ -10156,11 +10041,11 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             else {
                 command.Parameters[2].Value = ((string)(p_unit));
             }
-            if ((p_price == null)) {
-                command.Parameters[3].Value = global::System.DBNull.Value;
+            if ((p_price.HasValue == true)) {
+                command.Parameters[3].Value = ((double)(p_price.Value));
             }
             else {
-                command.Parameters[3].Value = ((string)(p_price));
+                command.Parameters[3].Value = global::System.DBNull.Value;
             }
             if ((p_groupID.HasValue == true)) {
                 command.Parameters[4].Value = ((int)(p_groupID.Value));
@@ -10425,7 +10310,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "`laboratorydb`.`delete_type_group`";
+            this._commandCollection[1].CommandText = "`laboratorydb`.`delete_group`";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.StoredProcedure;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "p_groupID";
@@ -10448,7 +10333,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[2].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_groupName";
+            param.ParameterName = "p_name";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 45;
@@ -10460,7 +10345,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             this._commandCollection[3].CommandText = "`laboratorydb`.`get_test_by_group`";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.StoredProcedure;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_group";
+            param.ParameterName = "p_name";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 45;
@@ -10668,7 +10553,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int edit_group(global::System.Nullable<int> p_id, string p_groupName) {
+        public virtual int edit_group(global::System.Nullable<int> p_id, string p_name) {
             global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[2];
             if ((p_id.HasValue == true)) {
                 command.Parameters[0].Value = ((int)(p_id.Value));
@@ -10676,11 +10561,11 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             else {
                 command.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((p_groupName == null)) {
+            if ((p_name == null)) {
                 command.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[1].Value = ((string)(p_groupName));
+                command.Parameters[1].Value = ((string)(p_name));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -10702,13 +10587,13 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual object get_test_by_group(string p_group) {
+        public virtual object get_test_by_group(string p_name) {
             global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[3];
-            if ((p_group == null)) {
+            if ((p_name == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[0].Value = ((string)(p_group));
+                command.Parameters[0].Value = ((string)(p_name));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -10938,7 +10823,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             this._commandCollection[1].Parameters.Add(param);
             this._commandCollection[2] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "`laboratorydb`.`select_refValue_byTestID`";
+            this._commandCollection[2].CommandText = "`laboratorydb`.`FillByTypeID`";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.StoredProcedure;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "p_typeID";
@@ -11652,7 +11537,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[1])).CommandText = "`laboratorydb`.`insertResult`";
             ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[1])).CommandType = global::System.Data.CommandType.StoredProcedure;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_idTest";
+            param.ParameterName = "p_testID";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.Size = 2147483647;
@@ -11660,7 +11545,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[1])).Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_idTestType";
+            param.ParameterName = "p_testTypeID";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.Size = 2147483647;
@@ -11684,7 +11569,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[3])).CommandText = "`laboratorydb`.`add_ref_value`";
             ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[3])).CommandType = global::System.Data.CommandType.StoredProcedure;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "ref_val";
+            param.ParameterName = "p_ref";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 45;
@@ -11708,7 +11593,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[3])).Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "p_tesID";
+            param.ParameterName = "p_testTypeID";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.Size = 2147483647;
@@ -11766,16 +11651,16 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual object insertResult(global::System.Nullable<int> p_idTest, global::System.Nullable<int> p_idTestType) {
+        public virtual object insertResult(global::System.Nullable<int> p_testID, global::System.Nullable<int> p_testTypeID) {
             global::MySql.Data.MySqlClient.MySqlCommand command = ((global::MySql.Data.MySqlClient.MySqlCommand)(this.CommandCollection[1]));
-            if ((p_idTest.HasValue == true)) {
-                command.Parameters[0].Value = ((int)(p_idTest.Value));
+            if ((p_testID.HasValue == true)) {
+                command.Parameters[0].Value = ((int)(p_testID.Value));
             }
             else {
                 command.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((p_idTestType.HasValue == true)) {
-                command.Parameters[1].Value = ((int)(p_idTestType.Value));
+            if ((p_testTypeID.HasValue == true)) {
+                command.Parameters[1].Value = ((int)(p_testTypeID.Value));
             }
             else {
                 command.Parameters[1].Value = global::System.DBNull.Value;
@@ -11806,7 +11691,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int set_test_status(global::System.Nullable<int> p_testID) {
+        public virtual object set_test_status(global::System.Nullable<int> p_testID) {
             global::MySql.Data.MySqlClient.MySqlCommand command = ((global::MySql.Data.MySqlClient.MySqlCommand)(this.CommandCollection[2]));
             if ((p_testID.HasValue == true)) {
                 command.Parameters[0].Value = ((int)(p_testID.Value));
@@ -11819,28 +11704,34 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
                         != global::System.Data.ConnectionState.Open)) {
                 command.Connection.Open();
             }
-            int returnValue;
+            object returnValue;
             try {
-                returnValue = command.ExecuteNonQuery();
+                returnValue = command.ExecuteScalar();
             }
             finally {
                 if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
                     command.Connection.Close();
                 }
             }
-            return returnValue;
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return null;
+            }
+            else {
+                return ((object)(returnValue));
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual object add_ref_value(string ref_val, global::System.Nullable<double> p_min, global::System.Nullable<double> p_max, global::System.Nullable<int> p_tesID) {
+        public virtual object add_ref_value(string p_ref, global::System.Nullable<double> p_min, global::System.Nullable<double> p_max, global::System.Nullable<int> p_testTypeID) {
             global::MySql.Data.MySqlClient.MySqlCommand command = ((global::MySql.Data.MySqlClient.MySqlCommand)(this.CommandCollection[3]));
-            if ((ref_val == null)) {
+            if ((p_ref == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[0].Value = ((string)(ref_val));
+                command.Parameters[0].Value = ((string)(p_ref));
             }
             if ((p_min.HasValue == true)) {
                 command.Parameters[1].Value = ((double)(p_min.Value));
@@ -11854,8 +11745,8 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             else {
                 command.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((p_tesID.HasValue == true)) {
-                command.Parameters[3].Value = ((int)(p_tesID.Value));
+            if ((p_testTypeID.HasValue == true)) {
+                command.Parameters[3].Value = ((int)(p_testTypeID.Value));
             }
             else {
                 command.Parameters[3].Value = global::System.DBNull.Value;
@@ -11903,8 +11794,6 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         private retrieve_usersTableAdapter _retrieve_usersTableAdapter;
         
         private retrieve_testTableAdapter _retrieve_testTableAdapter;
-        
-        private select_result_byTestIDTableAdapter _select_result_byTestIDTableAdapter;
         
         private type_groupTableAdapter _type_groupTableAdapter;
         
@@ -11986,20 +11875,6 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public select_result_byTestIDTableAdapter select_result_byTestIDTableAdapter {
-            get {
-                return this._select_result_byTestIDTableAdapter;
-            }
-            set {
-                this._select_result_byTestIDTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
         public type_groupTableAdapter type_groupTableAdapter {
             get {
                 return this._type_groupTableAdapter;
@@ -12058,10 +11933,6 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
                             && (this._retrieve_testTableAdapter.Connection != null))) {
                     return this._retrieve_testTableAdapter.Connection;
                 }
-                if (((this._select_result_byTestIDTableAdapter != null) 
-                            && (this._select_result_byTestIDTableAdapter.Connection != null))) {
-                    return this._select_result_byTestIDTableAdapter.Connection;
-                }
                 if (((this._type_groupTableAdapter != null) 
                             && (this._type_groupTableAdapter.Connection != null))) {
                     return this._type_groupTableAdapter.Connection;
@@ -12095,9 +11966,6 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
                 if ((this._retrieve_testTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._select_result_byTestIDTableAdapter != null)) {
-                    count = (count + 1);
-                }
                 if ((this._type_groupTableAdapter != null)) {
                     count = (count + 1);
                 }
@@ -12115,6 +11983,15 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateUpdatedRows(laboratorydbDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._type_groupTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.type_group.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._type_groupTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._clinicbranchTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.clinicbranch.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -12151,24 +12028,6 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._select_result_byTestIDTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.select_result_byTestID.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._select_result_byTestIDTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._type_groupTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.type_group.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._type_groupTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._bloodtypeTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.bloodtype.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -12188,6 +12047,14 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateInsertedRows(laboratorydbDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._type_groupTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.type_group.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._type_groupTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._clinicbranchTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.clinicbranch.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -12220,22 +12087,6 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._select_result_byTestIDTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.select_result_byTestID.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._select_result_byTestIDTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._type_groupTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.type_group.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._type_groupTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._bloodtypeTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.bloodtype.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -12259,22 +12110,6 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._bloodtypeTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._type_groupTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.type_group.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._type_groupTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._select_result_byTestIDTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.select_result_byTestID.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._select_result_byTestIDTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -12307,6 +12142,14 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._clinicbranchTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._type_groupTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.type_group.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._type_groupTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -12366,11 +12209,6 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             }
             if (((this._retrieve_testTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._retrieve_testTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
-            }
-            if (((this._select_result_byTestIDTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._select_result_byTestIDTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -12450,15 +12288,6 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
                     if (this._retrieve_testTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._retrieve_testTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._retrieve_testTableAdapter.Adapter);
-                    }
-                }
-                if ((this._select_result_byTestIDTableAdapter != null)) {
-                    revertConnections.Add(this._select_result_byTestIDTableAdapter, this._select_result_byTestIDTableAdapter.Connection);
-                    this._select_result_byTestIDTableAdapter.Connection = ((global::MySql.Data.MySqlClient.MySqlConnection)(workConnection));
-                    this._select_result_byTestIDTableAdapter.Transaction = ((global::MySql.Data.MySqlClient.MySqlTransaction)(workTransaction));
-                    if (this._select_result_byTestIDTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._select_result_byTestIDTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._select_result_byTestIDTableAdapter.Adapter);
                     }
                 }
                 if ((this._type_groupTableAdapter != null)) {
@@ -12552,10 +12381,6 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
                 if ((this._retrieve_testTableAdapter != null)) {
                     this._retrieve_testTableAdapter.Connection = ((global::MySql.Data.MySqlClient.MySqlConnection)(revertConnections[this._retrieve_testTableAdapter]));
                     this._retrieve_testTableAdapter.Transaction = null;
-                }
-                if ((this._select_result_byTestIDTableAdapter != null)) {
-                    this._select_result_byTestIDTableAdapter.Connection = ((global::MySql.Data.MySqlClient.MySqlConnection)(revertConnections[this._select_result_byTestIDTableAdapter]));
-                    this._select_result_byTestIDTableAdapter.Transaction = null;
                 }
                 if ((this._type_groupTableAdapter != null)) {
                     this._type_groupTableAdapter.Connection = ((global::MySql.Data.MySqlClient.MySqlConnection)(revertConnections[this._type_groupTableAdapter]));
