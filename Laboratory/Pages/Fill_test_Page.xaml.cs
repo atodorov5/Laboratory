@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using Laboratory.Pages;
+using Laboratory.Windows;
 using MySql.Data.MySqlClient;
 
 namespace Laboratory.Pages

@@ -9,26 +9,22 @@ using System.Windows.Controls;
 
 namespace Laboratory.Validation
 {
-    class NumericValidationRule : ValidationRule
+    class TextValidationRule : ValidationRule
     {
-        public Type ValidationType { get; set; }
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            
             Regex regex = new Regex(@"^[0-9]*$");
-            
+
             Match match = regex.Match(value.ToString());
             if (match == null || match == Match.Empty)
             {
                 return new ValidationResult(false, "Въведете число");
             }
-          
+
             else
             {
                 return ValidationResult.ValidResult;
             }
-            
-
         }
     }
 }

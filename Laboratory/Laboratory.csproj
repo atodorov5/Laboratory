@@ -190,8 +190,9 @@
     </Compile>
     <Compile Include="Model\Test.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="TestCollection.cs" />
+    <Compile Include="ViewModel\TestCollection.cs" />
     <Compile Include="Validation\NumericValidationRule .cs" />
+    <Compile Include="Validation\TextValidationRule.cs" />
     <Compile Include="Windows\Add_clinic_Window.xaml.cs">
       <DependentUpon>Add_clinic_Window.xaml</DependentUpon>
     </Compile>
@@ -243,7 +244,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\LoginWindow.xaml">
+    <Page Include="Windows\LoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -251,7 +252,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Pages\LoginWindow.xaml.cs">
+    <Compile Include="Windows\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -374,8 +375,6 @@
   <ItemGroup>
     <Resource Include="Resources\Images\choice.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

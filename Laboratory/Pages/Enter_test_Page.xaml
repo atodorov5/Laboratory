@@ -115,7 +115,7 @@
             <Label Content="Направление:" HorizontalAlignment="Left" Margin="20,414,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.722,0.641" Height="29"/>
             <TextBox x:Name="ref_numberTB" FontSize="14" Height="23" Margin="114,416,9.4,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
             <Label Content="Email:" FontSize="14"  HorizontalAlignment="Left" Margin="52,452,0,0" VerticalAlignment="Top"/>
-            <TextBox FontSize="14"  Name="emailTB" Height="23" Margin="114,455,9.4,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <TextBox FontSize="14" Text="lab_sintex@abv.bg" Name="emailTB" Height="23" Margin="114,455,9.4,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
 
         </Grid>

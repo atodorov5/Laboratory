@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Laboratory.Windows;
 using log4net;
+using System.Text.RegularExpressions;
 
 namespace Laboratory.Pages
 {
@@ -48,7 +49,7 @@ namespace Laboratory.Pages
             bloodtypeViewSource.View.MoveCurrentToFirst();
 
 
-            bloodtypeComboBox.SelectedValue = 9;
+           
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -63,14 +64,12 @@ namespace Laboratory.Pages
 
         private void Button_CheckUser(object sender, RoutedEventArgs e)
         {
-
-            laboratorydbDataSet laboratoryDataSet = (laboratorydbDataSet)this.FindResource("laboratorydbDataSet");
-            
+                        
             laboratorydbDataSetTableAdapters.check_patientTableAdapter testTypeTableAdapter = new laboratorydbDataSetTableAdapters.check_patientTableAdapter();
             object gender ;
-            int? lab = 0;
-            string name, surname, lastname, address,email;
-            var res = testTypeTableAdapter.GetData(user_pinTB.Text, out name, out surname, out lastname, out gender, out address,out email, out lab);
+            string name, surname, lastname, address, email;
+            int? bloodType;
+            var res = testTypeTableAdapter.GetData(user_pinTB.Text, out name, out surname, out lastname, out gender, out address, out email, out bloodType);
             if (name != null)
             {
                 user_nameTB.Text = name;
@@ -84,8 +83,8 @@ namespace Laboratory.Pages
                 else
                     maleRB.IsChecked = true;
 
-                bloodtypeComboBox.SelectedIndex = (int)lab;
-                bloodtypeComboBox.IsEnabled = false;
+                bloodtypeComboBox.SelectedIndex = (int)bloodType;
+                
             }
             else
                 MessageBox.Show("Пациентът не е намерен!");
@@ -112,7 +111,7 @@ namespace Laboratory.Pages
             if (testtypeListView.SelectedItems.Count > 0 && user_pinTB.Text!="" && user_nameTB.Text != "" && user_lastnameTB.Text != "")
             {
 
-                Laboratory.laboratorydbDataSetTableAdapters.retrieve_testTableAdapter testTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.retrieve_testTableAdapter();
+                laboratorydbDataSetTableAdapters.retrieve_testTableAdapter testTableAdapter = new laboratorydbDataSetTableAdapters.retrieve_testTableAdapter();
                 var pwd = new Password().LengthRequired(4).IncludeLowercase().IncludeNumeric();
                 var result = pwd.Next();
                 int? testid;
@@ -123,10 +122,17 @@ namespace Laboratory.Pages
                 }
                 price = Math.Round(price, 2);
 
-                testTableAdapter.Insert(user_nameTB.Text, user_surnameTB.Text, user_lastnameTB.Text, user_pinTB.Text, 1, user_addressTB.Text, emailTB.Text, bloodtypeComboBox.SelectedIndex, Properties.Settings.Default.userID, ref_numberTB.Text, result, price, out testid);
+                var gender= false;
+                if (maleRB.IsChecked==true)
+                    gender = false;
+              else if (femaleRB.IsChecked == true)
+                    gender = true;
 
 
-                Laboratory.laboratorydbDataSetTableAdapters.QueriesTableAdapter queryTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.QueriesTableAdapter();
+                testTableAdapter.Insert(user_nameTB.Text, user_surnameTB.Text, user_lastnameTB.Text, user_pinTB.Text, gender, user_addressTB.Text, emailTB.Text, bloodtypeComboBox.SelectedIndex, Properties.Settings.Default.userID, ref_numberTB.Text, result, price, out testid);
+
+
+                laboratorydbDataSetTableAdapters.QueriesTableAdapter queryTableAdapter = new laboratorydbDataSetTableAdapters.QueriesTableAdapter();
 
                 foreach (DataRowView item in testtypeListView.SelectedItems)
                 {
@@ -140,7 +146,7 @@ namespace Laboratory.Pages
             }
             else
             {
-                MessageBox.Show("Изберете ТЕСТ!");
+                MessageBox.Show("Изберете изследване и въведете данни!");
             }
         
         }
@@ -160,6 +166,8 @@ namespace Laboratory.Pages
                 }
             }
         }
+
+       
     }
 
 

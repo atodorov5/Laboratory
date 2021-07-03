@@ -46,7 +46,7 @@ namespace Laboratory.Pages
                 Laboratory.laboratorydbDataSet laboratorydbDataSet = ((Laboratory.laboratorydbDataSet)(this.FindResource("laboratorydbDataSet")));
                 // Load data into the table clinicbranch. You can modify this code as needed.
                 Laboratory.laboratorydbDataSetTableAdapters.select_result_byTestIDTableAdapter resultTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.select_result_byTestIDTableAdapter();
-                res = resultTableAdapter.Fill(laboratorydbDataSet.select_result_byTestID, Int32.Parse(test_idTB.Text),Properties.Settings.Default.labID, 1);
+                res = resultTableAdapter.Fill(laboratorydbDataSet.select_result_byTestID, Int32.Parse(test_idTB.Text), 1);
                 System.Windows.Data.CollectionViewSource resultViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("select_result_byTestIDViewSource")));
                 resultViewSource.View.MoveCurrentToFirst();
             }

@@ -32,32 +32,8 @@ namespace Laboratory
             
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-            using (var conn = DBConfig.Connection)
-            {
-                String salt = Password_salt.CreateSalt(10);
-                String hashedpass = Password_salt.GenerateSHA256Hash("az", salt);
-
-                conn.Open();
-
-                MySqlCommand comm = conn.CreateCommand();
-                comm.CommandText = "INSERT INTO user(name, surname,lastname,username,hashedPassWrd,salt,ClinicBranch_idClinicBranch,Roles_idRoles) VALUES(@name, @surname,@lastname,@username,@hashedPassWrd,@salt,@ClinicBranch_idClinicBranch,@Roles_idRoles)";
-                comm.Parameters.AddWithValue("@name", "Angel");
-                comm.Parameters.AddWithValue("@surname", "Angelov");
-                comm.Parameters.AddWithValue("@lastname", "Mihailov");
-                comm.Parameters.AddWithValue("@username", "az");
-                comm.Parameters.AddWithValue("@hashedPassWrd", hashedpass);
-                comm.Parameters.AddWithValue("@salt", salt);
-                comm.Parameters.AddWithValue("@ClinicBranch_idClinicBranch", 1);
-                comm.Parameters.AddWithValue("@Roles_idRoles", 1);
-                comm.ExecuteNonQuery();
-                MessageBox.Show("Успешно добавен лаборант!");
-            }
-        }
-
-            private void login2(object sender, RoutedEventArgs e)
+       
+            private void login(object sender, RoutedEventArgs e)
         {
 
 

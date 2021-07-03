@@ -61,7 +61,7 @@ namespace Laboratory.Pages
                 //fill data into DataSet
                 laboratorydbDataSetTableAdapters.select_result_byTestIDTableAdapter resultTableAdapter = new laboratorydbDataSetTableAdapters.select_result_byTestIDTableAdapter();
                 resultTableAdapter.ClearBeforeFill = true;
-                int res = resultTableAdapter.Fill(dataset.select_result_byTestID, test_id, Properties.Settings.Default.labID, 1);
+                int res = resultTableAdapter.Fill(dataset.select_result_byTestID, test_id, 1);
 
                 if (res < 1)
                 {
@@ -73,10 +73,25 @@ namespace Laboratory.Pages
             }
         }
 
+        
+        
         private void testID2_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
+             Regex regex = new Regex("[^0-9]+");
+
+
+            if (regex.IsMatch(e.Text))
+            {
+                warningLB.Visibility = Visibility.Visible;
+            }
+            else
+            {
+
+                warningLB.Visibility = Visibility.Hidden;
+            }
+           
+
+
         }
     }
 }

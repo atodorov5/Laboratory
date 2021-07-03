@@ -25,7 +25,7 @@ namespace Laboratory.Pages
         public Edit_profile_Page()
         {
             InitializeComponent();
-           // load_chart();
+            load_chart();
         }
 
         private void Button_SavePass(object sender, RoutedEventArgs e)
@@ -76,7 +76,7 @@ namespace Laboratory.Pages
             //fill data into DataSet
             laboratorydbDataSetTableAdapters.user_reportTableAdapter userTableAdapter = new laboratorydbDataSetTableAdapters.user_reportTableAdapter();
             userTableAdapter.ClearBeforeFill = true;
-            userTableAdapter.Fill(dataset.user_report);
+            userTableAdapter.Fill(dataset.user_report,Properties.Settings.Default.userID);
 
             reportViewer2.RefreshReport();
         }

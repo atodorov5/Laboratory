@@ -3,5 +3,4 @@
     <BitmapImage x:Key="tube" UriSource="C:\Users\atodo\source\repos\Laboratory\Laboratory\Resources\Images\tube.png"></BitmapImage>
     <BitmapImage x:Key="noselection" UriSource="C:\Users\atodo\source\repos\Laboratory\Laboratory\Resources\Images\choice.png"></BitmapImage>
     
-
 </ResourceDictionary>

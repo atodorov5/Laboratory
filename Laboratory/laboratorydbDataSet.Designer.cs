@@ -2650,11 +2650,18 @@ namespace Laboratory {
                                 this.columnidTest,
                                 this.columnIdTestType}, true));
                 this.columnresult_value.MaxLength = 45;
+                this.columntype_name.AllowDBNull = false;
                 this.columntype_name.MaxLength = 45;
+                this.columnunit.AllowDBNull = false;
                 this.columnunit.MaxLength = 45;
+                this.columnp_name.AllowDBNull = false;
                 this.columnp_name.MaxLength = 45;
+                this.columnp_surname.AllowDBNull = false;
                 this.columnp_surname.MaxLength = 45;
+                this.columnpin.AllowDBNull = false;
                 this.columnpin.MaxLength = 10;
+                this.columntestDate.AllowDBNull = false;
+                this.columnp_lastname.AllowDBNull = false;
                 this.columnp_lastname.MaxLength = 45;
                 this.columnidTest.AutoIncrement = true;
                 this.columnidTest.AutoIncrementSeed = -1;
@@ -3790,13 +3797,13 @@ namespace Laboratory {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class user_reportDataTable : global::System.Data.TypedTableBase<user_reportRow> {
             
-            private global::System.Data.DataColumn columnYear;
+            private global::System.Data.DataColumn columntests;
             
-            private global::System.Data.DataColumn columnMonth;
+            private global::System.Data.DataColumn columntday;
             
-            private global::System.Data.DataColumn columnCount;
+            private global::System.Data.DataColumn columntmonth;
             
-            private global::System.Data.DataColumn columnLabAssistant_idLabAssistant;
+            private global::System.Data.DataColumn columntyear;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -3833,33 +3840,33 @@ namespace Laboratory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn YearColumn {
+            public global::System.Data.DataColumn testsColumn {
                 get {
-                    return this.columnYear;
+                    return this.columntests;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn MonthColumn {
+            public global::System.Data.DataColumn tdayColumn {
                 get {
-                    return this.columnMonth;
+                    return this.columntday;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn CountColumn {
+            public global::System.Data.DataColumn tmonthColumn {
                 get {
-                    return this.columnCount;
+                    return this.columntmonth;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn LabAssistant_idLabAssistantColumn {
+            public global::System.Data.DataColumn tyearColumn {
                 get {
-                    return this.columnLabAssistant_idLabAssistant;
+                    return this.columntyear;
                 }
             }
             
@@ -3900,13 +3907,13 @@ namespace Laboratory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public user_reportRow Adduser_reportRow(int Year, int Month, long Count, int LabAssistant_idLabAssistant) {
+            public user_reportRow Adduser_reportRow(long tests, long tday, long tmonth, long tyear) {
                 user_reportRow rowuser_reportRow = ((user_reportRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Year,
-                        Month,
-                        Count,
-                        LabAssistant_idLabAssistant};
+                        tests,
+                        tday,
+                        tmonth,
+                        tyear};
                 rowuser_reportRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowuser_reportRow);
                 return rowuser_reportRow;
@@ -3929,25 +3936,24 @@ namespace Laboratory {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnYear = base.Columns["Year"];
-                this.columnMonth = base.Columns["Month"];
-                this.columnCount = base.Columns["Count"];
-                this.columnLabAssistant_idLabAssistant = base.Columns["LabAssistant_idLabAssistant"];
+                this.columntests = base.Columns["tests"];
+                this.columntday = base.Columns["tday"];
+                this.columntmonth = base.Columns["tmonth"];
+                this.columntyear = base.Columns["tyear"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnYear = new global::System.Data.DataColumn("Year", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnYear);
-                this.columnMonth = new global::System.Data.DataColumn("Month", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMonth);
-                this.columnCount = new global::System.Data.DataColumn("Count", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCount);
-                this.columnLabAssistant_idLabAssistant = new global::System.Data.DataColumn("LabAssistant_idLabAssistant", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLabAssistant_idLabAssistant);
-                this.columnCount.AllowDBNull = false;
-                this.columnLabAssistant_idLabAssistant.AllowDBNull = false;
+                this.columntests = new global::System.Data.DataColumn("tests", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntests);
+                this.columntday = new global::System.Data.DataColumn("tday", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntday);
+                this.columntmonth = new global::System.Data.DataColumn("tmonth", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntmonth);
+                this.columntyear = new global::System.Data.DataColumn("tyear", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntyear);
+                this.columntests.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5079,12 +5085,7 @@ namespace Laboratory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string type_name {
                 get {
-                    try {
-                        return ((string)(this[this.tableselect_result_byTestID.type_nameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'type_name\' in table \'select_result_byTestID\' is DBNull.", e);
-                    }
+                    return ((string)(this[this.tableselect_result_byTestID.type_nameColumn]));
                 }
                 set {
                     this[this.tableselect_result_byTestID.type_nameColumn] = value;
@@ -5095,12 +5096,7 @@ namespace Laboratory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string unit {
                 get {
-                    try {
-                        return ((string)(this[this.tableselect_result_byTestID.unitColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'unit\' in table \'select_result_byTestID\' is DBNull.", e);
-                    }
+                    return ((string)(this[this.tableselect_result_byTestID.unitColumn]));
                 }
                 set {
                     this[this.tableselect_result_byTestID.unitColumn] = value;
@@ -5111,12 +5107,7 @@ namespace Laboratory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string p_name {
                 get {
-                    try {
-                        return ((string)(this[this.tableselect_result_byTestID.p_nameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'p_name\' in table \'select_result_byTestID\' is DBNull.", e);
-                    }
+                    return ((string)(this[this.tableselect_result_byTestID.p_nameColumn]));
                 }
                 set {
                     this[this.tableselect_result_byTestID.p_nameColumn] = value;
@@ -5127,12 +5118,7 @@ namespace Laboratory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string p_surname {
                 get {
-                    try {
-                        return ((string)(this[this.tableselect_result_byTestID.p_surnameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'p_surname\' in table \'select_result_byTestID\' is DBNull.", e);
-                    }
+                    return ((string)(this[this.tableselect_result_byTestID.p_surnameColumn]));
                 }
                 set {
                     this[this.tableselect_result_byTestID.p_surnameColumn] = value;
@@ -5143,12 +5129,7 @@ namespace Laboratory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string pin {
                 get {
-                    try {
-                        return ((string)(this[this.tableselect_result_byTestID.pinColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'pin\' in table \'select_result_byTestID\' is DBNull.", e);
-                    }
+                    return ((string)(this[this.tableselect_result_byTestID.pinColumn]));
                 }
                 set {
                     this[this.tableselect_result_byTestID.pinColumn] = value;
@@ -5159,12 +5140,7 @@ namespace Laboratory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public System.DateTime testDate {
                 get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableselect_result_byTestID.testDateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'testDate\' in table \'select_result_byTestID\' is DBNull.", e);
-                    }
+                    return ((global::System.DateTime)(this[this.tableselect_result_byTestID.testDateColumn]));
                 }
                 set {
                     this[this.tableselect_result_byTestID.testDateColumn] = value;
@@ -5207,12 +5183,7 @@ namespace Laboratory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string p_lastname {
                 get {
-                    try {
-                        return ((string)(this[this.tableselect_result_byTestID.p_lastnameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'p_lastname\' in table \'select_result_byTestID\' is DBNull.", e);
-                    }
+                    return ((string)(this[this.tableselect_result_byTestID.p_lastnameColumn]));
                 }
                 set {
                     this[this.tableselect_result_byTestID.p_lastnameColumn] = value;
@@ -5367,78 +5338,6 @@ namespace Laboratory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool Istype_nameNull() {
-                return this.IsNull(this.tableselect_result_byTestID.type_nameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Settype_nameNull() {
-                this[this.tableselect_result_byTestID.type_nameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsunitNull() {
-                return this.IsNull(this.tableselect_result_byTestID.unitColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetunitNull() {
-                this[this.tableselect_result_byTestID.unitColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool Isp_nameNull() {
-                return this.IsNull(this.tableselect_result_byTestID.p_nameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Setp_nameNull() {
-                this[this.tableselect_result_byTestID.p_nameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool Isp_surnameNull() {
-                return this.IsNull(this.tableselect_result_byTestID.p_surnameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Setp_surnameNull() {
-                this[this.tableselect_result_byTestID.p_surnameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IspinNull() {
-                return this.IsNull(this.tableselect_result_byTestID.pinColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetpinNull() {
-                this[this.tableselect_result_byTestID.pinColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IstestDateNull() {
-                return this.IsNull(this.tableselect_result_byTestID.testDateColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SettestDateNull() {
-                this[this.tableselect_result_byTestID.testDateColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Ismin_valueNull() {
                 return this.IsNull(this.tableselect_result_byTestID.min_valueColumn);
             }
@@ -5459,18 +5358,6 @@ namespace Laboratory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Setmax_valueNull() {
                 this[this.tableselect_result_byTestID.max_valueColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool Isp_lastnameNull() {
-                return this.IsNull(this.tableselect_result_byTestID.p_lastnameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Setp_lastnameNull() {
-                this[this.tableselect_result_byTestID.p_lastnameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6049,80 +5936,97 @@ namespace Laboratory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Year {
+            public long tests {
+                get {
+                    return ((long)(this[this.tableuser_report.testsColumn]));
+                }
+                set {
+                    this[this.tableuser_report.testsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long tday {
                 get {
                     try {
-                        return ((int)(this[this.tableuser_report.YearColumn]));
+                        return ((long)(this[this.tableuser_report.tdayColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Year\' in table \'user_report\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'tday\' in table \'user_report\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableuser_report.YearColumn] = value;
+                    this[this.tableuser_report.tdayColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Month {
+            public long tmonth {
                 get {
                     try {
-                        return ((int)(this[this.tableuser_report.MonthColumn]));
+                        return ((long)(this[this.tableuser_report.tmonthColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Month\' in table \'user_report\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'tmonth\' in table \'user_report\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableuser_report.MonthColumn] = value;
+                    this[this.tableuser_report.tmonthColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public long Count {
+            public long tyear {
                 get {
-                    return ((long)(this[this.tableuser_report.CountColumn]));
+                    try {
+                        return ((long)(this[this.tableuser_report.tyearColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'tyear\' in table \'user_report\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tableuser_report.CountColumn] = value;
+                    this[this.tableuser_report.tyearColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int LabAssistant_idLabAssistant {
-                get {
-                    return ((int)(this[this.tableuser_report.LabAssistant_idLabAssistantColumn]));
-                }
-                set {
-                    this[this.tableuser_report.LabAssistant_idLabAssistantColumn] = value;
-                }
+            public bool IstdayNull() {
+                return this.IsNull(this.tableuser_report.tdayColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsYearNull() {
-                return this.IsNull(this.tableuser_report.YearColumn);
+            public void SettdayNull() {
+                this[this.tableuser_report.tdayColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetYearNull() {
-                this[this.tableuser_report.YearColumn] = global::System.Convert.DBNull;
+            public bool IstmonthNull() {
+                return this.IsNull(this.tableuser_report.tmonthColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsMonthNull() {
-                return this.IsNull(this.tableuser_report.MonthColumn);
+            public void SettmonthNull() {
+                this[this.tableuser_report.tmonthColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetMonthNull() {
-                this[this.tableuser_report.MonthColumn] = global::System.Convert.DBNull;
+            public bool IstyearNull() {
+                return this.IsNull(this.tableuser_report.tyearColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SettyearNull() {
+                this[this.tableuser_report.tyearColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -9578,14 +9482,6 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[0].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "labID";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.Size = 2147483647;
-            param.IsNullable = true;
-            param.SourceVersion = global::System.Data.DataRowVersion.Current;
-            this._commandCollection[0].Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "test_mode";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
@@ -9599,7 +9495,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(laboratorydbDataSet.select_result_byTestIDDataTable dataTable, global::System.Nullable<int> testID, global::System.Nullable<int> labID, global::System.Nullable<int> test_mode) {
+        public virtual int Fill(laboratorydbDataSet.select_result_byTestIDDataTable dataTable, global::System.Nullable<int> testID, global::System.Nullable<int> test_mode) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((testID.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(testID.Value));
@@ -9607,17 +9503,11 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((labID.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(labID.Value));
+            if ((test_mode.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(test_mode.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            if ((test_mode.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[2].Value = ((int)(test_mode.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -9630,7 +9520,7 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual laboratorydbDataSet.select_result_byTestIDDataTable GetData(global::System.Nullable<int> testID, global::System.Nullable<int> labID, global::System.Nullable<int> test_mode) {
+        public virtual laboratorydbDataSet.select_result_byTestIDDataTable GetData(global::System.Nullable<int> testID, global::System.Nullable<int> test_mode) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((testID.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(testID.Value));
@@ -9638,17 +9528,11 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((labID.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(labID.Value));
+            if ((test_mode.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(test_mode.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            if ((test_mode.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[2].Value = ((int)(test_mode.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             laboratorydbDataSet.select_result_byTestIDDataTable dataTable = new laboratorydbDataSet.select_result_byTestIDDataTable();
             this.Adapter.Fill(dataTable);
@@ -11057,10 +10941,10 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "user_report";
-            tableMapping.ColumnMappings.Add("Year", "Year");
-            tableMapping.ColumnMappings.Add("Month", "Month");
-            tableMapping.ColumnMappings.Add("Count", "Count");
-            tableMapping.ColumnMappings.Add("LabAssistant_idLabAssistant", "LabAssistant_idLabAssistant");
+            tableMapping.ColumnMappings.Add("tests", "tests");
+            tableMapping.ColumnMappings.Add("tday", "tday");
+            tableMapping.ColumnMappings.Add("tmonth", "tmonth");
+            tableMapping.ColumnMappings.Add("tyear", "tyear");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -11077,16 +10961,30 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "`laboratorydb`.`user_report_date`";
+            this._commandCollection[0].CommandText = "`laboratorydb`.`user_test_resport`";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
+            global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "p_labID";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.Size = 2147483647;
+            param.IsNullable = true;
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[0].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(laboratorydbDataSet.user_reportDataTable dataTable) {
+        public virtual int Fill(laboratorydbDataSet.user_reportDataTable dataTable, global::System.Nullable<int> p_labID) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((p_labID.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(p_labID.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -11098,8 +10996,14 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual laboratorydbDataSet.user_reportDataTable GetData() {
+        public virtual laboratorydbDataSet.user_reportDataTable GetData(global::System.Nullable<int> p_labID) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((p_labID.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(p_labID.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             laboratorydbDataSet.user_reportDataTable dataTable = new laboratorydbDataSet.user_reportDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

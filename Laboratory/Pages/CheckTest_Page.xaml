@@ -32,9 +32,9 @@
 
 
 
-        <TextBox Validation.ErrorTemplate="{StaticResource errorTemplate}" VerticalAlignment="Center" FontSize="20" Margin="10,107,0,665" Name="testID" HorizontalAlignment="Left" Width="173">
+        <TextBox Validation.ErrorTemplate="{StaticResource errorTemplate}"  VerticalAlignment="Center" FontSize="20" Margin="10,107,0,665" Name="testID" HorizontalAlignment="Left" Width="173">
             <TextBox.Text>
-                <Binding Path="idTest" TargetNullValue=" " StringFormat="{}{0:#}" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="idTest" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         <validationRules:NumericValidationRule ValidatesOnTargetUpdated="True"  />
                     </Binding.ValidationRules>
@@ -43,6 +43,7 @@
         </TextBox>
 
         <Image HorizontalAlignment="Left" Height="153" Margin="15,573,0,0" VerticalAlignment="Top" Width="179" Source="{StaticResource tube}" />
+        <Label Name="warningLB" Content="!" Visibility="Hidden" HorizontalAlignment="Left" Foreground="Red" FontSize="20" Margin="180,40,0,0" VerticalAlignment="Top" Width="18"/>
 
 
     </Grid>
