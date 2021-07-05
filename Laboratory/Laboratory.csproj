@@ -185,7 +185,7 @@
     <Compile Include="Pages\Test_values_Page.xaml.cs">
       <DependentUpon>Test_values_Page.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\UserWindow.xaml.cs">
+    <Compile Include="Windows\UserWindow.xaml.cs">
       <DependentUpon>UserWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Test.cs" />
@@ -260,7 +260,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\UserWindow.xaml">
+    <Page Include="Windows\UserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

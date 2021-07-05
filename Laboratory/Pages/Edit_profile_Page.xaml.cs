@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -30,6 +31,7 @@ namespace Laboratory.Pages
 
         private void Button_SavePass(object sender, RoutedEventArgs e)
         {
+            
             laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter retrieve_UsersTableAdapter = new laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter();
             string salt;
             retrieve_UsersTableAdapter.get_userSalt(Properties.Settings.Default.userID,out salt);
@@ -37,27 +39,44 @@ namespace Laboratory.Pages
 
             string hashed_old = Password_salt.GenerateSHA256Hash(old_pass.Password, salt);
 
-
-            
+                        
             if (new_pass.Password.Equals(new_pass2.Password))
             {
-                string new_salt = Password_salt.CreateSalt(10);
-                string hashed_new = Password_salt.GenerateSHA256Hash(new_pass.Password, new_salt);
-                int res = retrieve_UsersTableAdapter.change_password(Properties.Settings.Default.userID, hashed_old, new_salt, hashed_new);
-                if (res < 1)
-                    MessageBox.Show("Грешна парола!");
-                else
+                if (passwordRequirements(new_pass.Password))
                 {
-                    MessageBox.Show("Успешно сменена парола!");
-                    old_pass.Clear();
-                    new_pass.Clear();
-                    new_pass2.Clear();
+                    string new_salt = Password_salt.CreateSalt(10);
+                    string hashed_new = Password_salt.GenerateSHA256Hash(new_pass.Password, new_salt);
+                    int res = retrieve_UsersTableAdapter.change_password(Properties.Settings.Default.userID, hashed_old, new_salt, hashed_new);
+                    if (res < 1)
+                        MessageBox.Show("Грешна парола!");
+                    else
+                    {
+                        MessageBox.Show("Успешно сменена парола!");
+                        old_pass.Clear();
+                        new_pass.Clear();
+                        new_pass2.Clear();
+                        
+                    }
                 }
+                else
+                    MessageBox.Show("Новата парола трябва да съръдажа поне 1 главна буква и поне 1 число! /n Дължината на паролата трябва да е минимун 8 символа!");
             }
             else
                 MessageBox.Show("Нова парола не съвпада!");
+  
         }
 
+        private bool passwordRequirements(string password)
+        {
+
+            var rule = new Regex(@"^(?=.{8,16}$)(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).*$");
+            Match match = rule.Match(password);
+            if (match.Success)
+                return true;
+
+            return false;
+        }
+      
         private void load_chart()
         {
             

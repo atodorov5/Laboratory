@@ -82,7 +82,7 @@
 
 
         <Grid Grid.Row="0" Grid.Column="1" DataContext="{StaticResource clinicbranchViewSource}">
-            <Label Content="Референтни стойности за избрано изследване" HorizontalAlignment="Center" FontSize="20" Margin="113,0,113,345.8"/>
+            <Label Content="Референтни стойности за избрано изследване" Name="ref_val_lb" HorizontalAlignment="Center" FontSize="20" Margin="113,0,113,345.8"/>
             <DataGrid x:Name="ref_valueDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource ref_valueViewSource}}" Margin="10,45,10.4,45.4" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserAddRows="False" IsReadOnly="True">
                 <DataGrid.ContextMenu>
                     <ContextMenu>

@@ -31,6 +31,8 @@ namespace Laboratory.Pages
             InitializeComponent();
             log4net.Config.XmlConfigurator.Configure();
             testtypeListView.UnselectAll();
+            type_groupDataGrid.UnselectAll();
+           
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -48,18 +50,20 @@ namespace Laboratory.Pages
             CollectionViewSource bloodtypeViewSource = (CollectionViewSource)FindResource("bloodtypeViewSource");
             bloodtypeViewSource.View.MoveCurrentToFirst();
 
+            laboratorydbDataSetTableAdapters.type_groupTableAdapter groupTableAdapter = new laboratorydbDataSetTableAdapters.type_groupTableAdapter();
+            groupTableAdapter.Fill(laboratoryDataSet.type_group);
+            CollectionViewSource groupViewSource = (CollectionViewSource)FindResource("type_groupViewSource");
+            groupViewSource.View.MoveCurrentToFirst();
 
-           
+
         }
 
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
+  
         private void Button_ClearSelection(object sender, RoutedEventArgs e)
         {
             testtypeListView.UnselectAll();
+            type_groupDataGrid.UnselectAll();
+            type_groupDataGrid.Items.Refresh();
         }
 
         private void Button_CheckUser(object sender, RoutedEventArgs e)
@@ -151,15 +155,15 @@ namespace Laboratory.Pages
         
         }
 
-        private void Button_PKK(object sender, RoutedEventArgs e)
+        private void Button_SelectGroup(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
             
             foreach (DataRowView item in testtypeListView.Items)
             {
-                Laboratory.laboratorydbDataSetTableAdapters.type_groupTableAdapter groupTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.type_groupTableAdapter();
+                laboratorydbDataSetTableAdapters.type_groupTableAdapter groupTableAdapter = new laboratorydbDataSetTableAdapters.type_groupTableAdapter();
                 int group_id = (int)groupTableAdapter.get_test_by_group(button.Content.ToString());
-
+                
                 if ((int)item[4] == group_id)
                 {
                     testtypeListView.SelectedItems.Add(item);
@@ -167,7 +171,30 @@ namespace Laboratory.Pages
             }
         }
 
-       
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            foreach (DataRowView item in testtypeListView.Items)
+            {               
+                DataRowView group_id = (DataRowView)type_groupDataGrid.SelectedItem;
+                if ((int)item[4] == (int)group_id[0])
+                {
+                    testtypeListView.SelectedItems.Add(item);
+                }
+            }
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+            foreach (DataRowView item in testtypeListView.Items)
+            {                                              
+                DataRowView group_id = (DataRowView)type_groupDataGrid.SelectedItem;
+                if ((int)item[4] == (int)group_id[0])
+                {
+                    testtypeListView.SelectedItems.Remove(item);
+                }
+            }
+        }
     }
 
 

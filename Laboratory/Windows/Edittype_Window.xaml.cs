@@ -65,12 +65,13 @@ namespace Laboratory.Windows
         private void Button_Edit(object sender, RoutedEventArgs e)
         {
 
-            Laboratory.laboratorydbDataSet laboratorydbDataSet = ((Laboratory.laboratorydbDataSet)(this.FindResource("laboratorydbDataSet")));
+            Laboratory.laboratorydbDataSet laboratorydbDataSet = (laboratorydbDataSet)(this.FindResource("laboratorydbDataSet"));
             // Load data into the table type_group. You can modify this code as needed.
             Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter laboratorydbDataSettype_groupTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter();
-            laboratorydbDataSettype_groupTableAdapter.edit_testype((int)row[0],test_nameTB.Text,test_valueTB.Text,Convert.ToDouble( test_priceTB.Text),(int)type_groupComboBox.SelectedValue);
+            laboratorydbDataSettype_groupTableAdapter.edit_testtype((int)row[0],test_nameTB.Text,test_valueTB.Text,Convert.ToDouble( test_priceTB.Text),(int)type_groupComboBox.SelectedValue);
 
-            this.Close();
+            DialogResult = true;
+            Close();
         
         }
     }

@@ -55,9 +55,13 @@ namespace Laboratory.Administrator
 
         private void updateViewRefValues(int id)
         {
-            Laboratory.laboratorydbDataSetTableAdapters.ref_valueTableAdapter refval_TableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.ref_valueTableAdapter();
+            laboratorydbDataSetTableAdapters.ref_valueTableAdapter refval_TableAdapter = new laboratorydbDataSetTableAdapters.ref_valueTableAdapter();
             ref_valueDataGrid.ItemsSource = null;
             ref_valueDataGrid.ItemsSource = refval_TableAdapter.GetDataByTypeID(id);
+            ref_valueDataGrid.Items.Refresh();
+            System.Windows.Data.CollectionViewSource ref_valViewSource = (System.Windows.Data.CollectionViewSource)this.FindResource("ref_valueViewSource");
+            ref_valViewSource.View.MoveCurrentToFirst();
+            ref_valViewSource.View.Refresh();
         }
 
         private void add_testtype(object sender, RoutedEventArgs e)
@@ -150,11 +154,11 @@ namespace Laboratory.Administrator
             type_groupTableAdapter.Fill(laboratoryDataSet.type_group);
             System.Windows.Data.CollectionViewSource type_groupreViewSource = (System.Windows.Data.CollectionViewSource)this.FindResource("type_groupViewSource");
             type_groupreViewSource.View.MoveCurrentToFirst();
-
+            /*
             Laboratory.laboratorydbDataSetTableAdapters.ref_valueTableAdapter ref_valTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.ref_valueTableAdapter();
             ref_valTableAdapter.FillByTypeID(laboratoryDataSet.ref_value, 2);
             System.Windows.Data.CollectionViewSource ref_valViewSource = (System.Windows.Data.CollectionViewSource)this.FindResource("ref_valueViewSource");
-            ref_valViewSource.View.MoveCurrentToFirst();
+            ref_valViewSource.View.MoveCurrentToFirst();*/
         }
 
         private void edit_user(object sender, RoutedEventArgs e)
@@ -231,22 +235,57 @@ namespace Laboratory.Administrator
 
         private void ref_valueDataGrid_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+           
             laboratorydbDataSet laboratoryDataSet = (laboratorydbDataSet)this.FindResource("laboratorydbDataSet");
+
             DataRowView row = (DataRowView)testtypeDataGrid.SelectedItems[0];  
+
             laboratorydbDataSetTableAdapters.ref_valueTableAdapter ref_valTableAdapter = new laboratorydbDataSetTableAdapters.ref_valueTableAdapter();
+            
             ref_valTableAdapter.FillByTypeID(laboratoryDataSet.ref_value, (int)row[0]);
+
             System.Windows.Data.CollectionViewSource ref_valViewSource = (System.Windows.Data.CollectionViewSource)this.FindResource("ref_valueViewSource");
             ref_valViewSource.View.MoveCurrentToFirst();
+            ref_valViewSource.View.Refresh();
+
+
+            ref_val_lb.Content = "Референтни стойности за " + row[1];
         }
 
         private void edit_refVal(object sender, RoutedEventArgs e)
         {
-            DataRowView row = (DataRowView)ref_valueDataGrid.SelectedItems[0];
+            if (ref_valueDataGrid.SelectedItems.Count<1)
+            {
+                MessageBox.Show("Изберете стойност!");
+            }
+            else
+            {
+                DataRowView row = (DataRowView)ref_valueDataGrid.SelectedItems[0];
 
-            Ref_Values_Window ref_Values_Window = new Ref_Values_Window(row);
-            ref_Values_Window.ShowDialog();
+                Ref_Values_Window ref_Values_Window = new Ref_Values_Window(row);
+                ref_Values_Window.ShowDialog();
 
-            updateViewRefValues((int)row[6]);
+
+                if (ref_Values_Window.DialogResult.HasValue && ref_Values_Window.DialogResult.Value)
+                {
+               
+
+                    laboratorydbDataSet laboratoryDataSet = (laboratorydbDataSet)this.FindResource("laboratorydbDataSet");
+
+                    DataRowView row2 = (DataRowView)testtypeDataGrid.SelectedItems[0];
+
+                    laboratorydbDataSetTableAdapters.ref_valueTableAdapter ref_valTableAdapter = new laboratorydbDataSetTableAdapters.ref_valueTableAdapter();
+
+                    ref_valTableAdapter.FillByTypeID(laboratoryDataSet.ref_value, (int)row2[0]);
+
+                    System.Windows.Data.CollectionViewSource ref_valViewSource = (System.Windows.Data.CollectionViewSource)this.FindResource("ref_valueViewSource");
+                    ref_valViewSource.View.MoveCurrentToFirst();
+                    ref_valViewSource.View.Refresh();
+                }
+
+                
+            }
+
         }
     }
 }

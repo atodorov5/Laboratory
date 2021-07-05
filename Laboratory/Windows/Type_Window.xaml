@@ -34,11 +34,11 @@
         <TextBox x:Name="test_maxTB" HorizontalAlignment="Left" Height="23" Margin="126,233,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186"/>
         <Label Content="Мин. стойност Ж" Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=gender_checkBox}" HorizontalAlignment="Left" Margin="9,268,0,0" VerticalAlignment="Top" Width="112"/>
         <TextBox x:Name="test_min2TB"  HorizontalAlignment="Left" Height="23" Margin="126,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=gender_checkBox}"/>
-        <Button Style="{StaticResource GelButton}" IsEnabled="True" Content="Добави" Click="add_type" HorizontalAlignment="Left" Margin="126,390,0,0" VerticalAlignment="Top" Width="75" />
-        <Label Content="Макс. стойност Ж"  HorizontalAlignment="Left" Margin="9,299,0,0" VerticalAlignment="Top" Width="112" RenderTransformOrigin="0.502,1.484" Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=gender_checkBox}"/>
+       
         <TextBox x:Name="test_max2TB"    HorizontalAlignment="Left" Height="23" Margin="127,302,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=gender_checkBox}"/>
         <Label Content="Група" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top"/>
-
+        <Button Style="{StaticResource GelButton}" IsEnabled="True" Content="Добави" Click="add_type" HorizontalAlignment="Left" Margin="126,390,0,0" VerticalAlignment="Top" Width="75" />
+        <Label Content="Макс. стойност Ж"  HorizontalAlignment="Left" Margin="9,299,0,0" VerticalAlignment="Top" Width="112" RenderTransformOrigin="0.502,1.484" Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=gender_checkBox}"/>
 
         <ComboBox x:Name="type_groupComboBox" DisplayMemberPath="group_name" ItemsSource="{Binding}" Margin="127,137,12.8,272" SelectedValuePath="idtype_group">
             <ComboBox.ItemsPanel>

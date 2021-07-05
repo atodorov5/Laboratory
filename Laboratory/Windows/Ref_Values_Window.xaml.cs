@@ -25,7 +25,8 @@ namespace Laboratory.Windows
         {
             InitializeComponent();
             this.row = r;
-            titleLabel.Content = "Реф. стойности за " + row[5].ToString();
+            titleLabel.Content = "Реф. стойности за " + row[1].ToString();
+
             if (row[1].ToString() == "1")
                 genderLb.Content = "Жени:";
             else if (row[1].ToString() == "0")
@@ -40,6 +41,7 @@ namespace Laboratory.Windows
             
             laboratorydbDataSetTableAdapters.ref_valueTableAdapter ref_valTableAdapter = new laboratorydbDataSetTableAdapters.ref_valueTableAdapter();
             ref_valTableAdapter.edit_ref_value((int)row[0],Convert.ToDouble( allMin.Text), Convert.ToDouble(allMax.Text));
+            DialogResult = true;
             this.Close();
         }
     }
