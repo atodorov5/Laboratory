@@ -21,11 +21,11 @@ namespace Laboratory.Windows
     public partial class Ref_Values_Window : Window
     {
         DataRowView row;
-        public Ref_Values_Window(DataRowView r)
+        public Ref_Values_Window(DataRowView r,string t)
         {
             InitializeComponent();
             this.row = r;
-            titleLabel.Content = "Реф. стойности за " + row[1].ToString();
+            titleLabel.Content = t;
 
             if (row[1].ToString() == "1")
                 genderLb.Content = "Жени:";
@@ -42,6 +42,7 @@ namespace Laboratory.Windows
             laboratorydbDataSetTableAdapters.ref_valueTableAdapter ref_valTableAdapter = new laboratorydbDataSetTableAdapters.ref_valueTableAdapter();
             ref_valTableAdapter.edit_ref_value((int)row[0],Convert.ToDouble( allMin.Text), Convert.ToDouble(allMax.Text));
             DialogResult = true;
+            
             this.Close();
         }
     }

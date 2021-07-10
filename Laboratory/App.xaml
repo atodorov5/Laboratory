@@ -44,6 +44,12 @@
                     </ControlTemplate>
                 </ResourceDictionary>
 
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="pack://application:,,,/ToastNotifications.Messages;component/Themes/Default.xaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

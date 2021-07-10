@@ -2,6 +2,7 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Laboratory.Administrator"
      xmlns:Laboratory="clr-namespace:Laboratory" x:Class="Laboratory.Administrator.admin"
@@ -9,8 +10,7 @@
     
       >
     <Page.Resources>
-        <Laboratory:laboratorydbDataSet x:Key="laboratorydbDataSet"/>
-        <CollectionViewSource x:Key="clinicbranchViewSource" Source="{Binding clinicbranch, Source={StaticResource laboratorydbDataSet}}"/>
+        <Laboratory:laboratorydbDataSet x:Key="laboratorydbDataSet"/>       
         <CollectionViewSource x:Key="testtypeViewSource" Source="{Binding testtype, Source={StaticResource laboratorydbDataSet}}"/>
         <CollectionViewSource x:Key="retrieve_usersViewSource" Source="{Binding retrieve_users, Source={StaticResource laboratorydbDataSet}}"/>
         <CollectionViewSource x:Key="type_groupViewSource" Source="{Binding type_group, Source={StaticResource laboratorydbDataSet}}"/>
@@ -44,6 +44,7 @@
                         <MenuItem Header="Добави" Click="add_testtype"></MenuItem>
                         <MenuItem Header="Редактиране" Click="edit_testtype"></MenuItem>
                         <MenuItem Header="Изриване" Click="delete_testtype"></MenuItem>
+                        <MenuItem Header="Редактиране на реф.стойности" Click="load_ref_val"></MenuItem>
                     </ContextMenu>
                 </DataGrid.ContextMenu>
                 <DataGrid.Columns>
@@ -81,7 +82,7 @@
 
 
 
-        <Grid Grid.Row="0" Grid.Column="1" DataContext="{StaticResource clinicbranchViewSource}">
+        <Grid Grid.Row="0" Grid.Column="1">
             <Label Content="Референтни стойности за избрано изследване" Name="ref_val_lb" HorizontalAlignment="Center" FontSize="20" Margin="113,0,113,345.8"/>
             <DataGrid x:Name="ref_valueDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource ref_valueViewSource}}" Margin="10,45,10.4,45.4" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserAddRows="False" IsReadOnly="True">
                 <DataGrid.ContextMenu>

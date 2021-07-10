@@ -84,6 +84,9 @@
     <Reference Include="MySql.Data, Version=8.0.25.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.25\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Notifications.Wpf, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Notifications.Wpf.0.1.1\lib\net461\Notifications.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="PasswordGenerator, Version=2.0.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PasswordGenerator.2.0.5\lib\netstandard2.0\PasswordGenerator.dll</HintPath>
     </Reference>
@@ -137,6 +140,12 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="ToastNotifications, Version=2.5.1.0, Culture=neutral, PublicKeyToken=e89d9d7314a7c797, processorArchitecture=MSIL">
+      <HintPath>..\packages\ToastNotifications.2.5.1\lib\net40\ToastNotifications.dll</HintPath>
+    </Reference>
+    <Reference Include="ToastNotifications.Messages, Version=2.5.1.0, Culture=neutral, PublicKeyToken=e89d9d7314a7c797, processorArchitecture=MSIL">
+      <HintPath>..\packages\ToastNotifications.Messages.2.5.1\lib\net40\ToastNotifications.Messages.dll</HintPath>
+    </Reference>
     <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.25\lib\net452\Ubiety.Dns.Core.dll</HintPath>
     </Reference>
@@ -158,6 +167,7 @@
       <DependentUpon>admin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\DBConfig.cs" />
+    <Compile Include="Data\Notification.cs" />
     <Compile Include="Data\Password_salt.cs" />
     <Compile Include="laboratorydbDataSet.cs">
       <DependentUpon>laboratorydbDataSet.xsd</DependentUpon>
@@ -193,17 +203,11 @@
     <Compile Include="ViewModel\TestCollection.cs" />
     <Compile Include="Validation\NumericValidationRule .cs" />
     <Compile Include="Validation\TextValidationRule.cs" />
-    <Compile Include="Windows\Add_clinic_Window.xaml.cs">
-      <DependentUpon>Add_clinic_Window.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\Add_user_Window.xaml.cs">
       <DependentUpon>Add_user_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Edittype_Window.xaml.cs">
       <DependentUpon>Edittype_Window.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Edit_clinic_Window.xaml.cs">
-      <DependentUpon>Edit_clinic_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Edit_user_Window.xaml.cs">
       <DependentUpon>Edit_user_Window.xaml</DependentUpon>
@@ -268,19 +272,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Add_clinic_Window.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Windows\Add_user_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Edittype_Window.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\Edit_clinic_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Laboratory.Data;
 using Microsoft.Reporting.WinForms;
+using Notifications.Wpf;
 
 namespace Laboratory.Pages
 {
@@ -28,16 +29,17 @@ namespace Laboratory.Pages
             InitializeComponent();
             load_chart();
         }
-
+        Notification notification = new Notification();
         private void Button_SavePass(object sender, RoutedEventArgs e)
         {
-            
+            var notificationManager = new NotificationManager();
+
             laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter retrieve_UsersTableAdapter = new laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter();
             string salt;
             retrieve_UsersTableAdapter.get_userSalt(Properties.Settings.Default.userID,out salt);
+            Password_salt pass_gen = new Password_salt();
 
-
-            string hashed_old = Password_salt.GenerateSHA256Hash(old_pass.Password, salt);
+            string hashed_old = pass_gen.GenerateSHA256Hash(old_pass.Password, salt);
 
                         
             if (new_pass.Password.Equals(new_pass2.Password))
@@ -45,13 +47,21 @@ namespace Laboratory.Pages
                 if (passwordRequirements(new_pass.Password))
                 {
                     string new_salt = Password_salt.CreateSalt(10);
-                    string hashed_new = Password_salt.GenerateSHA256Hash(new_pass.Password, new_salt);
+                    string  hashed_new = pass_gen.GenerateSHA256Hash(new_pass.Password, new_salt);
                     int res = retrieve_UsersTableAdapter.change_password(Properties.Settings.Default.userID, hashed_old, new_salt, hashed_new);
                     if (res < 1)
                         MessageBox.Show("Грешна парола!");
                     else
                     {
-                        MessageBox.Show("Успешно сменена парола!");
+                        
+
+                        notificationManager.Show(new NotificationContent
+                        {
+                            Title = "Смяна на парола",
+                            Message = "Паролата е сменена успешно!",
+                            Type = NotificationType.Success
+                        });
+
                         old_pass.Clear();
                         new_pass.Clear();
                         new_pass2.Clear();
@@ -59,10 +69,16 @@ namespace Laboratory.Pages
                     }
                 }
                 else
-                    MessageBox.Show("Новата парола трябва да съръдажа поне 1 главна буква и поне 1 число! /n Дължината на паролата трябва да е минимун 8 символа!");
+                {
+                    notification.show("Новата парола трябва да съръдажа поне 1 главна буква и поне 1 число! Дължината на паролата трябва да е минимун 8 символа!", 'w');
+
+                }
+                   
+
             }
             else
-                MessageBox.Show("Нова парола не съвпада!");
+                notification.show("Нова парола не съвпада!", 'e');
+           
   
         }
 

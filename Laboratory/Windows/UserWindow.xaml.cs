@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Laboratory.Pages;
+using System.Diagnostics;
 
 namespace Laboratory
 {
@@ -45,7 +46,7 @@ namespace Laboratory
         {
             LoginWindow login = new LoginWindow();
             login.Show();
-            this.Close();
+            Close();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -72,6 +73,12 @@ namespace Laboratory
         private void MenuItem_Edit_Pwrd(object sender, RoutedEventArgs e)
         {
             userMainFrame.Content = new Edit_profile_Page();
+
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
 
         }
     }

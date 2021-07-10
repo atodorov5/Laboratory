@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:Laboratory.Pages"
       mc:Ignorable="d" Loaded="Page_Loaded"
       xmlns:local2="clr-namespace:Laboratory"
+     
       d:DesignHeight="750" d:DesignWidth="800"
        xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
       Title="Edit_profile_Page">
@@ -91,6 +92,7 @@
             <Label HorizontalContentAlignment="Center">
                 <TextBlock FontSize="8" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow">Паролата трябва да съдържа поне 1 главна буква и поне 1 цифра! Дължината на паролата трябва да е минимун 8 символа!</TextBlock>
             </Label>
+          
         </StackPanel>
     </Grid>
 </Page>

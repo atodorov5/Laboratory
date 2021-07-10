@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Laboratory.Pages"
       xmlns:Laboratory="clr-namespace:Laboratory" x:Class="Laboratory.Pages.Enter_test_Page"
+ 
       mc:Ignorable="d"  Loaded="Page_Loaded"
       Title="Enter_test_Page"  >
 

@@ -61,13 +61,13 @@ namespace Laboratory.Windows
         private void save_user(object sender, RoutedEventArgs e)
         {
 
-            Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter USERTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter();
+            laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter USERTableAdapter = new laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter();
             bool stat = true;
             if ((bool)status_user.IsChecked)
                 stat = false;
-            USERTableAdapter.update_users(firstnameTB.Text, surnameTB.Text, lastnameTB.Text, pinTB.Text, addressTB.Text, phoneTB.Text,(int) labCB.SelectedValue,(int) rolesComboBox.SelectedValue, stat);
+            USERTableAdapter.update_users((int)row.Row.ItemArray[0], pinTB.Text,firstnameTB.Text, surnameTB.Text, lastnameTB.Text, addressTB.Text, phoneTB.Text,(int) labCB.SelectedValue,(int) rolesComboBox.SelectedValue, stat);
 
-            this.Close();
+            Close();
         }
     }
 }

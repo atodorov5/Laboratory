@@ -7803,8 +7803,16 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
             this._commandCollection[5].Parameters.Add(param);
             this._commandCollection[6] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = "`laboratorydb`.`update_users`";
+            this._commandCollection[6].CommandText = "`laboratorydb`.`update_user`";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.StoredProcedure;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "p_userID";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.Size = 2147483647;
+            param.IsNullable = true;
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[6].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "p_pin";
             param.DbType = global::System.Data.DbType.String;
@@ -8221,61 +8229,67 @@ namespace Laboratory.laboratorydbDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int update_users(string p_pin, string p_name1, string p_surname1, string p_lastname1, string p_address, string p_phone, global::System.Nullable<int> p_labid, global::System.Nullable<int> p_roleID, object stat) {
+        public virtual int update_users(global::System.Nullable<int> p_userID, string p_pin, string p_name1, string p_surname1, string p_lastname1, string p_address, string p_phone, global::System.Nullable<int> p_labid, global::System.Nullable<int> p_roleID, object stat) {
             global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[6];
-            if ((p_pin == null)) {
-                command.Parameters[0].Value = global::System.DBNull.Value;
+            if ((p_userID.HasValue == true)) {
+                command.Parameters[0].Value = ((int)(p_userID.Value));
             }
             else {
-                command.Parameters[0].Value = ((string)(p_pin));
+                command.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((p_name1 == null)) {
+            if ((p_pin == null)) {
                 command.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[1].Value = ((string)(p_name1));
+                command.Parameters[1].Value = ((string)(p_pin));
             }
-            if ((p_surname1 == null)) {
+            if ((p_name1 == null)) {
                 command.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[2].Value = ((string)(p_surname1));
+                command.Parameters[2].Value = ((string)(p_name1));
             }
-            if ((p_lastname1 == null)) {
+            if ((p_surname1 == null)) {
                 command.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[3].Value = ((string)(p_lastname1));
+                command.Parameters[3].Value = ((string)(p_surname1));
             }
-            if ((p_address == null)) {
+            if ((p_lastname1 == null)) {
                 command.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[4].Value = ((string)(p_address));
+                command.Parameters[4].Value = ((string)(p_lastname1));
             }
-            if ((p_phone == null)) {
+            if ((p_address == null)) {
                 command.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[5].Value = ((string)(p_phone));
+                command.Parameters[5].Value = ((string)(p_address));
             }
-            if ((p_labid.HasValue == true)) {
-                command.Parameters[6].Value = ((int)(p_labid.Value));
-            }
-            else {
+            if ((p_phone == null)) {
                 command.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((p_roleID.HasValue == true)) {
-                command.Parameters[7].Value = ((int)(p_roleID.Value));
+            else {
+                command.Parameters[6].Value = ((string)(p_phone));
+            }
+            if ((p_labid.HasValue == true)) {
+                command.Parameters[7].Value = ((int)(p_labid.Value));
             }
             else {
                 command.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((stat == null)) {
-                command.Parameters[8].Value = global::System.DBNull.Value;
+            if ((p_roleID.HasValue == true)) {
+                command.Parameters[8].Value = ((int)(p_roleID.Value));
             }
             else {
-                command.Parameters[8].Value = ((object)(stat));
+                command.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((stat == null)) {
+                command.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[9].Value = ((object)(stat));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 

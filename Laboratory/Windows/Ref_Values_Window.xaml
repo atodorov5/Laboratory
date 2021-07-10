@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Laboratory.Windows"
         mc:Ignorable="d"
         
-        Title="Ref_Values_Window" Height="200" Width="300">
+        Title="Референтни стойности" Height="200" Width="300">
     <StackPanel Orientation="Vertical">
         <Label Name="titleLabel" HorizontalContentAlignment="Center" Content="Реф. стойности за"></Label>
         <StackPanel Orientation="Horizontal" Margin="40,20,0,0">

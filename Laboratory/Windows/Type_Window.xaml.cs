@@ -1,5 +1,6 @@
 ﻿using log4net;
 using MySql.Data.MySqlClient;
+using Notifications.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,14 +34,23 @@ namespace Laboratory.Windows
         private void add_type(object sender, RoutedEventArgs e)
         {
             if (String.IsNullOrEmpty(test_nameTB.Text) || String.IsNullOrEmpty(test_minTB.Text) || String.IsNullOrEmpty(test_maxTB.Text) || String.IsNullOrEmpty(test_valueTB.Text) || String.IsNullOrEmpty(test_priceTB.Text))
-                MessageBox.Show("Въведете данни!");
+            {
+                var notificationManager = new NotificationManager();
+
+                notificationManager.Show(new NotificationContent
+                {
+                    Title = "Грешка",
+                    Message = "Въведете данни!",
+                    Type = NotificationType.Error
+                });
+            }
             else
             {
                 int? testtypeID;
-                
+
 
                 Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter testTypeTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter();
-                testTypeTableAdapter.add_testtype(test_nameTB.Text, test_valueTB.Text,Convert.ToDouble( test_priceTB.Text),(int) type_groupComboBox.SelectedValue, out testtypeID);
+                testTypeTableAdapter.add_testtype(test_nameTB.Text, test_valueTB.Text, Convert.ToDouble(test_priceTB.Text), (int)type_groupComboBox.SelectedValue, out testtypeID);
 
 
                 Laboratory.laboratorydbDataSetTableAdapters.QueriesTableAdapter queryTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.QueriesTableAdapter();
@@ -56,9 +66,16 @@ namespace Laboratory.Windows
 
 
 
-                    MessageBox.Show("Успешно!");
+                var notificationManager = new NotificationManager();
+                notificationManager.Show(new NotificationContent
+                {
+                    Title = "Успешно добавяне!",
+                    Message = test_nameTB.Text + " е запазен!",
+                    Type = NotificationType.Success
+                });
+                
                 log.Info("User " + Properties.Settings.Default.user + "added new test type " + test_nameTB.Text);
-                 }
+            }
 
 
 

@@ -2,6 +2,7 @@
 using Laboratory.Windows;
 using log4net;
 using MySql.Data.MySqlClient;
+using Notifications.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -20,6 +21,7 @@ namespace Laboratory.Administrator
     public partial class admin : Page
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        Notification notification = new Notification();
         public admin()
         {
             InitializeComponent();
@@ -41,9 +43,14 @@ namespace Laboratory.Administrator
 
         private void updateViewUsers()
         {
-            Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter bloodlabDataSetselect_typeTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter();
+            /*Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter bloodlabDataSetselect_typeTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter();
             retrieve_usersDataGrid.ItemsSource = null;
-            retrieve_usersDataGrid.ItemsSource = bloodlabDataSetselect_typeTableAdapter.GetData(Properties.Settings.Default.labID);
+            retrieve_usersDataGrid.ItemsSource = bloodlabDataSetselect_typeTableAdapter.GetData(Properties.Settings.Default.labID);*/
+            laboratorydbDataSet laboratoryDataSet = ((Laboratory.laboratorydbDataSet)(this.FindResource("laboratorydbDataSet")));
+            Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter retrieve_UsersTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter();
+            retrieve_UsersTableAdapter.Fill(laboratoryDataSet.retrieve_users, Properties.Settings.Default.labID);
+            System.Windows.Data.CollectionViewSource retrieve_usersViewSource = (System.Windows.Data.CollectionViewSource)(this.FindResource("retrieve_usersViewSource"));
+            retrieve_usersViewSource.View.MoveCurrentToFirst();
         }
 
         private void updateViewGroups()
@@ -101,16 +108,16 @@ namespace Laboratory.Administrator
                     DataRowView row = (DataRowView)testtypeDataGrid.SelectedItems[0];
                     int res = testTypeTA.delete_testtype((int)row[0]);
                     
-                    if (res <= 0)
-                    {
-                        MessageBox.Show("Изследването не може да бъде изтрито");
-                    }
+                    if (res <= 0)                   
+                        notification.show("Изследването не може да бъде изтрито!", 'e');
+                    
                     updateViewTestType();
                 }
                 catch(MySqlException ex)
                 {
                     log.Error(ex.Message);
-                    MessageBox.Show("Изследването не може да бъде изтрито!");
+                    notification.show("Изследването не може да бъде изтрито!", 'e');
+                    
                 }
 
             }
@@ -136,18 +143,18 @@ namespace Laboratory.Administrator
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
 
-            Laboratory.laboratorydbDataSet laboratoryDataSet = ((Laboratory.laboratorydbDataSet)(this.FindResource("laboratorydbDataSet")));
+            laboratorydbDataSet laboratoryDataSet = (laboratorydbDataSet)FindResource("laboratorydbDataSet");
             
             // Load data into the table bloodtype. You can modify this code as needed
             Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter testTypeTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.testtypeTableAdapter();
             testTypeTableAdapter.Fill(laboratoryDataSet.testtype);
-            System.Windows.Data.CollectionViewSource testtypeViewSource = (System.Windows.Data.CollectionViewSource)(this.FindResource("testtypeViewSource"));
+            System.Windows.Data.CollectionViewSource testtypeViewSource = (System.Windows.Data.CollectionViewSource)this.FindResource("testtypeViewSource");
             testtypeViewSource.View.MoveCurrentToFirst();
 
             // Load data into the table bloodtype. You can modify this code as needed
             Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter retrieve_UsersTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter();
             retrieve_UsersTableAdapter.Fill(laboratoryDataSet.retrieve_users,Properties.Settings.Default.labID);
-            System.Windows.Data.CollectionViewSource retrieve_usersViewSource = (System.Windows.Data.CollectionViewSource)(this.FindResource("retrieve_usersViewSource"));
+            System.Windows.Data.CollectionViewSource retrieve_usersViewSource = (System.Windows.Data.CollectionViewSource)this.FindResource("retrieve_usersViewSource");
             retrieve_usersViewSource.View.MoveCurrentToFirst();
             
             Laboratory.laboratorydbDataSetTableAdapters.type_groupTableAdapter type_groupTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.type_groupTableAdapter();
@@ -198,7 +205,8 @@ namespace Laboratory.Administrator
 
                 updateViewGroups();
             }
-
+            else
+                MessageBox.Show("Изберете група");
 
 
         }
@@ -210,16 +218,26 @@ namespace Laboratory.Administrator
             {
                 try
                 {
-                    Laboratory.laboratorydbDataSetTableAdapters.type_groupTableAdapter testGroupTA = new Laboratory.laboratorydbDataSetTableAdapters.type_groupTableAdapter();
-                    DataRowView row = (DataRowView)type_groupDataGrid.SelectedItems[0];
-                    int res = testGroupTA.delete_type_group((int)row[0]);
-
-                    if (res <= 0)
+                    if (MessageBox.Show( "Сигурни ли сте че желаете да изтриете " + rowview[1] + " ?", "Изтриване на група", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                     {
-                        MessageBox.Show("Групата не може да бъде изтрита!");
+                        laboratorydbDataSetTableAdapters.type_groupTableAdapter testGroupTA = new laboratorydbDataSetTableAdapters.type_groupTableAdapter();
+                        DataRowView row = (DataRowView)type_groupDataGrid.SelectedItems[0];
+                        int res = testGroupTA.delete_type_group((int)row[0]);
+
+                        if (res <= 0)
+                        {
+                            MessageBox.Show("Групата не може да бъде изтрита!");
+                        }
+
+                        updateViewGroups();
+                    }
+                    else
+                    {
+                       
                     }
 
-                    updateViewGroups();
+
+                  
                 }
                 catch (MySqlException ex)
                 {
@@ -232,37 +250,43 @@ namespace Laboratory.Administrator
                 MessageBox.Show("Изберете група");
 
         }
-
-        private void ref_valueDataGrid_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        string title;
+        private void load_ref_val(object sender, RoutedEventArgs e)
         {
-           
             laboratorydbDataSet laboratoryDataSet = (laboratorydbDataSet)this.FindResource("laboratorydbDataSet");
 
-            DataRowView row = (DataRowView)testtypeDataGrid.SelectedItems[0];  
+            DataRowView row = (DataRowView)testtypeDataGrid.SelectedItems[0];
 
             laboratorydbDataSetTableAdapters.ref_valueTableAdapter ref_valTableAdapter = new laboratorydbDataSetTableAdapters.ref_valueTableAdapter();
-            
+
             ref_valTableAdapter.FillByTypeID(laboratoryDataSet.ref_value, (int)row[0]);
 
             System.Windows.Data.CollectionViewSource ref_valViewSource = (System.Windows.Data.CollectionViewSource)this.FindResource("ref_valueViewSource");
             ref_valViewSource.View.MoveCurrentToFirst();
             ref_valViewSource.View.Refresh();
 
+            title = "Референтни стойности за " + row[1];
+            ref_val_lb.Content = title;
+        }
 
-            ref_val_lb.Content = "Референтни стойности за " + row[1];
+
+            private void ref_valueDataGrid_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+         {
+            load_ref_val(sender,e);
+           
         }
 
         private void edit_refVal(object sender, RoutedEventArgs e)
         {
             if (ref_valueDataGrid.SelectedItems.Count<1)
             {
-                MessageBox.Show("Изберете стойност!");
+                notification.show("Изберете стойност!", 'w');
             }
             else
             {
                 DataRowView row = (DataRowView)ref_valueDataGrid.SelectedItems[0];
-
-                Ref_Values_Window ref_Values_Window = new Ref_Values_Window(row);
+                
+                Ref_Values_Window ref_Values_Window = new Ref_Values_Window(row,title);
                 ref_Values_Window.ShowDialog();
 
 

@@ -574,10 +574,10 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
         <Source>Embedded</Source>
         <Value>icon_login</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>0.27994in</Top>
-        <Left>0.40184in</Left>
-        <Height>0.67967in</Height>
-        <Width>0.72857in</Width>
+        <Top>0.14661in</Top>
+        <Left>0.16945in</Left>
+        <Height>0.94729in</Height>
+        <Width>1.1331in</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -602,8 +602,8 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox18</rd:DefaultName>
-        <Top>0.27994in</Top>
-        <Left>1.49699in</Left>
+        <Top>0.15494in</Top>
+        <Left>1.37199in</Left>
         <Height>0.25in</Height>
         <Width>2.06944in</Width>
         <ZIndex>3</ZIndex>
@@ -690,8 +690,8 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
-        <Top>0.70961in</Top>
-        <Left>1.49699in</Left>
+        <Top>0.4689in</Top>
+        <Left>1.37199in</Left>
         <Height>0.25in</Height>
         <Width>3.11666in</Width>
         <ZIndex>5</ZIndex>
@@ -940,13 +940,13 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>13.25032cm</Height>
+    <Height>13.41965cm</Height>
     <Style />
   </Body>
   <Width>18.43452cm</Width>
   <Page>
     <PageFooter>
-      <Height>1.88271cm</Height>
+      <Height>3.08921cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1049,6 +1049,42 @@ L (low) - Резултат под долната референтна грани
           <Height>0.6cm</Height>
           <Width>3.35115cm</Width>
           <ZIndex>3</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox2">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Забележка:</Value>
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value> Лабораторните резултати не са диагноза, а основание за такова. Приеманета на каквито и да е било лекарствени средства без лекарско предписание, може да бъде опасно за вашето здраве.</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox2</rd:DefaultName>
+          <Top>1.72917cm</Top>
+          <Left>0.33807cm</Left>
+          <Height>0.93867cm</Height>
+          <Width>17.68772cm</Width>
+          <ZIndex>4</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Laboratory.Data
 {
-    class Password_salt
+    public class Password_salt
     {
-        public static String CreateSalt(int size)
+        public static string CreateSalt(int size)
         {
             var rng = new System.Security.Cryptography.RNGCryptoServiceProvider();
             var buff = new byte[size];
@@ -16,7 +16,7 @@ namespace Laboratory.Data
             return Convert.ToBase64String(buff);
         }
 
-        public static String GenerateSHA256Hash(String input, String salt)
+        public string GenerateSHA256Hash(string input, string salt)
         {
             byte[] bytes = System.Text.Encoding.UTF8.GetBytes(input + salt);
             System.Security.Cryptography.SHA256Managed sha256hashsring = new System.Security.Cryptography.SHA256Managed();

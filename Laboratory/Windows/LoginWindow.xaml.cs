@@ -47,8 +47,8 @@ namespace Laboratory
                 Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter retrieve_UsersTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter();
                 retrieve_UsersTableAdapter.login_procedure(usernameTB.Text,out hashedpass, out salt,out roleID, out userid, out labID);
 
-
-                if (Password_salt.GenerateSHA256Hash(passwordTB.Password.ToString(), salt) == hashedpass)
+                Password_salt pass_gen = new Password_salt();
+                if (pass_gen.GenerateSHA256Hash(passwordTB.Password.ToString(), salt) == hashedpass)
                 {
                     
                     Properties.Settings.Default.user = usernameTB.Text;

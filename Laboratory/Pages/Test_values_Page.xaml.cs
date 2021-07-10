@@ -1,4 +1,6 @@
-﻿using log4net;
+﻿using Laboratory.Data;
+using log4net;
+using Notifications.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -75,8 +77,9 @@ namespace Laboratory.Pages
 
             log.Info(Properties.Settings.Default.user + " обработи тест -" + test.idTest);
 
+            Notification notification = new Notification();
+            notification.show("Изследване " + test.idTest + " беше успешно записано!", 's');
 
-            MessageBox.Show("Изследването е обработено!");           
             TestCollection col3 = new TestCollection();
             list.ItemsSource = col3.fillColection();
 
@@ -86,6 +89,8 @@ namespace Laboratory.Pages
             tabctrl.Items.Refresh();
 
             sendEmail();
+
+            
 
 
 

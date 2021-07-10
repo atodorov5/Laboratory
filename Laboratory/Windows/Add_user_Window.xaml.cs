@@ -57,11 +57,12 @@ namespace Laboratory.Windows
             Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter retrieve_UsersTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.retrieve_usersTableAdapter();
             string salt = Password_salt.CreateSalt(10);
 
-            var pwd = new Password().LengthRequired(4).IncludeLowercase().IncludeNumeric();
+            var pwd = new Password().LengthRequired(8).IncludeLowercase().IncludeNumeric().IncludeUppercase();
             var result = pwd.Next();
-            MessageBox.Show("Pasword is " + result);
+            MessageBox.Show("Потребителско име: "+ usernameTB.Text + " Парола: " + result,"Данни", MessageBoxButton.OK);
 
-            string hashedpass = Password_salt.GenerateSHA256Hash(result, salt);
+            Password_salt pass_gen = new Password_salt();
+            string hashedpass = pass_gen.GenerateSHA256Hash(result, salt);
             retrieve_UsersTableAdapter.add_lab_user(firstnameTB.Text, surnameTB.Text, lastnameTB.Text, usernameTB.Text, pinTB.Text, addressTB.Text, phoneTB.Text, hashedpass, salt, (int)labCB.SelectedValue, (int)roleCB.SelectedValue);
             log.Info("Потребител-" + Properties.Settings.Default.user + " добави потребител " + usernameTB.Text);
             this.Close();
