@@ -10,7 +10,7 @@
     
       >
     <Page.Resources>
-        <Laboratory:laboratorydbDataSet x:Key="laboratorydbDataSet"/>       
+        <Laboratory:laboratorydbDataSet x:Key="laboratorydbDataSet"/>
         <CollectionViewSource x:Key="testtypeViewSource" Source="{Binding testtype, Source={StaticResource laboratorydbDataSet}}"/>
         <CollectionViewSource x:Key="retrieve_usersViewSource" Source="{Binding retrieve_users, Source={StaticResource laboratorydbDataSet}}"/>
         <CollectionViewSource x:Key="type_groupViewSource" Source="{Binding type_group, Source={StaticResource laboratorydbDataSet}}"/>
@@ -35,10 +35,7 @@
 
         <Grid Grid.Row="0" Grid.Column="0">
             <Label x:Name="tty" Content="Изследвания/Показатели" HorizontalAlignment="Center" FontSize="20" Margin="144,0,143.6,350.4" />
-            <Button Click="edit_testtype" Content="Редактирай" Height="30" Width="80" Margin="150,346,139.6,10.4" Style="{StaticResource GelButton}"/>
-            <Button Click="add_testtype" Content="Добави" Height="30" Width="70" Margin="20,346,279.6,10.4" Style="{StaticResource GelButton}"/>
-            <Button Click="delete_testtype" Content="Изтрий" Height="30" Width="70" Margin="290,346,9.6,10.4" Style="{StaticResource GelButton}"/>
-            <DataGrid CanUserAddRows="False" IsReadOnly="True" x:Name="testtypeDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,41,9.6,45.4" RowDetailsVisibilityMode="VisibleWhenSelected"  MouseDoubleClick="ref_valueDataGrid_MouseDoubleClick">
+            <DataGrid CanUserAddRows="False" IsReadOnly="True" x:Name="testtypeDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,41,9.2,10.4" RowDetailsVisibilityMode="VisibleWhenSelected"  MouseDoubleClick="ref_valueDataGrid_MouseDoubleClick">
                 <DataGrid.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Добави" Click="add_testtype"></MenuItem>
@@ -54,10 +51,19 @@
                     <DataGridTextColumn x:Name="group_type" Binding="{Binding group_name}" Header="Група" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
+            <Button Click="add_testtype"  Background="Transparent" BorderThickness="0" Margin="0,10,66.2,0" VerticalAlignment="Top" Height="24" HorizontalAlignment="Right" Width="23">
+                <Image Source="/Resources/Images/addIcon.png"></Image>
+            </Button>
+            <Button Click="delete_testtype" BorderThickness="0" Background="Transparent" Margin="0,10,10.2,0" VerticalAlignment="Top" Height="24" HorizontalAlignment="Right" Width="23">
+                <Image Source="/Resources/Images/deleteIcon.png"></Image>
+            </Button>
+            <Button Click="edit_testtype"  Background="Transparent" BorderThickness="0" Margin="0,10,38.2,0" VerticalAlignment="Top" Height="24" HorizontalAlignment="Right" Width="23">
+                <Image Source="/Resources/Images/editIcon.png"></Image>
+            </Button>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0">
             <Label FontSize="20" Content="Групи" Margin="153,0,152.6,348.6" HorizontalAlignment="Center"></Label>
-            <DataGrid x:Name="type_groupDataGrid" CanUserAddRows="False" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource type_groupViewSource}}" Margin="10,42,9.2,58.6" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid x:Name="type_groupDataGrid" CanUserAddRows="False" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource type_groupViewSource}}" Margin="10,42,9.2,26.4" RowDetailsVisibilityMode="VisibleWhenSelected">
                 <DataGrid.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Добави" Click="add_group"></MenuItem>
@@ -70,9 +76,15 @@
                     <DataGridTextColumn x:Name="group_nameColumn" Binding="{Binding group_name}" Header="Име на група" Width="*" IsReadOnly="True"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button Click="add_group" Content="Добави" Height="30" Width="70" Margin="10,332,451.2,23.6" Style="{StaticResource GelButton}"/>
-            <Button Click="edit_group" Content="Редактирай" Height="30" Width="80" Margin="234,332,217.2,0" Style="{StaticResource GelButton}" VerticalAlignment="Top"/>
-            <Button Click="delete_group" Content="Изтрий" Height="30" Width="80" Margin="441,332,10.2,23.6" Style="{StaticResource GelButton}"/>
+            <Button Click="add_group"  Background="Transparent" BorderThickness="0" Margin="0,10,66.2,0" VerticalAlignment="Top" Height="24" HorizontalAlignment="Right" Width="23">
+                <Image Source="/Resources/Images/addIcon.png"/>
+            </Button>
+            <Button Click="delete_group" BorderThickness="0" Background="Transparent" Margin="0,10,10.2,0" VerticalAlignment="Top" Height="24" HorizontalAlignment="Right" Width="23">
+                <Image Source="/Resources/Images/deleteIcon.png"/>
+            </Button>
+            <Button Click="edit_group" Background="Transparent" BorderThickness="0" Margin="0,10,38.2,0" VerticalAlignment="Top" Height="24" HorizontalAlignment="Right" Width="23">
+                <Image Source="/Resources/Images/editIcon.png"/>
+            </Button>
 
 
         </Grid>
@@ -84,7 +96,7 @@
 
         <Grid Grid.Row="0" Grid.Column="1">
             <Label Content="Референтни стойности за избрано изследване" Name="ref_val_lb" HorizontalAlignment="Center" FontSize="20" Margin="113,0,113,345.8"/>
-            <DataGrid x:Name="ref_valueDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource ref_valueViewSource}}" Margin="10,45,10.4,45.4" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserAddRows="False" IsReadOnly="True">
+            <DataGrid x:Name="ref_valueDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource ref_valueViewSource}}" Margin="10,45,10.4,26.4" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserAddRows="False" IsReadOnly="True">
                 <DataGrid.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Редактиране" Click="edit_refVal"></MenuItem>
@@ -92,13 +104,15 @@
                 </DataGrid.ContextMenu>
                 <DataGrid.Columns>
                     <DataGridTextColumn x:Name="idref_valueColumn" Binding="{Binding idref_value}" Header="idref value" Width="0" Visibility="Hidden"/>
-                    <DataGridTextColumn x:Name="ref_typeColumn" Binding="{Binding ref_type}" Header="Пол" Width="*"/>
+                    <DataGridTextColumn x:Name="ref_typeColumn" Binding="{Binding ref_type}" Header="Пол /0-мъж,1-жена/" Width="*"/>
                     <DataGridTextColumn x:Name="min_valueColumn" Binding="{Binding min_value}" Header="Мин" Width="*"/>
                     <DataGridTextColumn x:Name="max_valueColumn" Binding="{Binding max_value}" Header="Макс" Width="*"/>
                     <DataGridTextColumn x:Name="typ_nameColumn" Binding="{Binding type_name}" Header="type_name" Width="0" Visibility="Hidden"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button Click="edit_refVal" Content="Редактирай" Height="30" Margin="10,346,554.4,10.4" Style="{StaticResource GelButton}"/>
+            <Button  Click="edit_refVal" Background="Transparent" BorderThickness="0" Margin="0,10,10.4,0" VerticalAlignment="Top" Height="24" HorizontalAlignment="Right" Width="23">
+                <Image Source="/Resources/Images/editIcon.png"/>
+            </Button>
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="1" DataContext="{StaticResource retrieve_usersViewSource}">
@@ -107,13 +121,11 @@
                 <ColumnDefinition Width="7*"/>
             </Grid.ColumnDefinitions>
             <Label Content="Профили" HorizontalAlignment="Center" FontSize="20" Margin="132,0,76,348.6"/>
-            <Button Click="edit_user" Content="Редактирай" Height="30" Width="80" Margin="270,334,10,21.6" Style="{StaticResource GelButton}" Grid.ColumnSpan="2"/>
-            <Button Click="add_user" Content="Добави" Height="30" Width="70" Margin="10,334,224,21.6" Style="{StaticResource GelButton}"/>
-            <DataGrid x:Name="retrieve_usersDataGrid"  IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,42,10,56.6" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.ColumnSpan="2">
+            <DataGrid x:Name="retrieve_usersDataGrid"  IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,42,10.4,0" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.ColumnSpan="2"  VerticalAlignment="Top" Height="316">
                 <DataGrid.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Добави" Click="add_user"></MenuItem>
-                        <MenuItem Header="Редактиране" Click="edit_user"></MenuItem>                        
+                        <MenuItem Header="Редактиране" Click="edit_user"></MenuItem>
                     </ContextMenu>
                 </DataGrid.ContextMenu>
                 <DataGrid.Columns>
@@ -129,6 +141,13 @@
                     <DataGridTextColumn x:Name="active_statusColumn" Binding="{Binding active_status}" Header="Статус" Width="0.6*"/>
                 </DataGrid.Columns>
             </DataGrid>
+            <Button Click="add_user" Background="Transparent" BorderThickness="0" Margin="0,10,38.4,0" VerticalAlignment="Top" Height="24" HorizontalAlignment="Right" Width="23" Grid.Column="1">
+                <Image Source="/Resources/Images/addIcon.png"/>
+            </Button>
+
+            <Button Click="edit_user"  Background="Transparent" BorderThickness="0" Margin="0,10,10.4,0" VerticalAlignment="Top" Height="24" HorizontalAlignment="Right" Width="23" Grid.Column="1">
+                <Image Source="/Resources/Images/editIcon.png"/>
+            </Button>
 
         </Grid>
     </Grid>

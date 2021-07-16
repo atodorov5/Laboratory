@@ -380,28 +380,9 @@
                 </Style>
               </ChartArea>
             </ChartAreas>
-            <ChartLegends>
-              <ChartLegend Name="Default">
-                <Style>
-                  <BackgroundGradientType>None</BackgroundGradientType>
-                  <FontSize>8pt</FontSize>
-                </Style>
-                <Position>TopLeft</Position>
-                <ChartLegendTitle>
-                  <Caption />
-                  <Style>
-                    <FontSize>8pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </ChartLegendTitle>
-                <HeaderSeparatorColor>Black</HeaderSeparatorColor>
-                <ColumnSeparatorColor>Black</ColumnSeparatorColor>
-              </ChartLegend>
-            </ChartLegends>
             <ChartTitles>
               <ChartTitle Name="Default">
-                <Caption>Направени тестове </Caption>
+                <Caption>Направени тестове за последните 2 седмици</Caption>
                 <Style>
                   <BackgroundGradientType>None</BackgroundGradientType>
                   <FontSize>9pt</FontSize>
@@ -431,8 +412,8 @@
               </Style>
             </ChartNoDataMessage>
             <DataSetName>DataSet1</DataSetName>
-            <Height>3.805in</Height>
-            <Width>10.42167in</Width>
+            <Height>4.55395in</Height>
+            <Width>11.07568in</Width>
             <Style>
               <Border>
                 <Color>LightGrey</Color>
@@ -443,10 +424,10 @@
             </Style>
           </Chart>
         </ReportItems>
-        <Height>3.805in</Height>
+        <Height>4.55395in</Height>
         <Style />
       </Body>
-      <Width>10.42167in</Width>
+      <Width>11.07568in</Width>
       <Page>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>

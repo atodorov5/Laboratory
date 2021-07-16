@@ -21,7 +21,7 @@ namespace Laboratory.Administrator
     public partial class admin : Page
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        Notification notification = new Notification();
+        
         public admin()
         {
             InitializeComponent();
@@ -109,14 +109,14 @@ namespace Laboratory.Administrator
                     int res = testTypeTA.delete_testtype((int)row[0]);
                     
                     if (res <= 0)                   
-                        notification.show("Изследването не може да бъде изтрито!", 'e');
+                        MessageBox.Show("Изследването не може да бъде изтрито!");
                     
                     updateViewTestType();
                 }
                 catch(MySqlException ex)
                 {
                     log.Error(ex.Message);
-                    notification.show("Изследването не може да бъде изтрито!", 'e');
+                    MessageBox.Show("Изследването не може да бъде изтрито!");
                     
                 }
 
@@ -280,7 +280,7 @@ namespace Laboratory.Administrator
         {
             if (ref_valueDataGrid.SelectedItems.Count<1)
             {
-                notification.show("Изберете стойност!", 'w');
+                MessageBox.Show("Изберете стойност!");
             }
             else
             {

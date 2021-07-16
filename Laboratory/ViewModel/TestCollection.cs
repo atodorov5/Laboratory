@@ -111,6 +111,7 @@ namespace Laboratory
 
 
         }
+
         private bool Contains(object o)
         {
             if (Filter != null)

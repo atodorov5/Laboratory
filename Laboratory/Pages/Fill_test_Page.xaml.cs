@@ -30,31 +30,22 @@ namespace Laboratory.Pages
        
         public Fill_test_Page()
         {
-            InitializeComponent();
-           
+            InitializeComponent();          
 
-        }
- 
-
-        private void txtData_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-
-        }
-
-
-
+        }       
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            Laboratory.laboratorydbDataSet laboratorydbDataSet = ((Laboratory.laboratorydbDataSet)(this.FindResource("laboratorydbDataSet")));
-            // Load data into the table clinicbranch. You can modify this code as needed.
-            Laboratory.laboratorydbDataSetTableAdapters.retrieve_testTableAdapter testTableAdapter = new Laboratory.laboratorydbDataSetTableAdapters.retrieve_testTableAdapter();
+            load_pending();
+        }
+
+        public void load_pending()
+        {
+            laboratorydbDataSet laboratorydbDataSet = (laboratorydbDataSet)this.FindResource("laboratorydbDataSet");
+            laboratorydbDataSetTableAdapters.retrieve_testTableAdapter testTableAdapter = new laboratorydbDataSetTableAdapters.retrieve_testTableAdapter();
             testTableAdapter.FillPendingTests(laboratorydbDataSet.retrieve_test);
-            System.Windows.Data.CollectionViewSource testViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("retrieve_testViewSource")));
+            CollectionViewSource testViewSource = (CollectionViewSource)this.FindResource("retrieve_testViewSource");
             testViewSource.View.MoveCurrentToFirst();
-           
-            
         }
         private void newtab_test_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -62,22 +53,27 @@ namespace Laboratory.Pages
             TabItem newTabItem = new TabItem
             {
                 Header = "ТЕСТ-Реф.№" + item.idTest,
-                Name = "Test"
+                Name = "Test" + item.idTest
             };
+                      
+            if (tabctrl.Items.OfType<TabItem>().SingleOrDefault(n => n.Name == "Test" + item.idTest) == null)
+            {
+
+                Grid g = new Grid();
+                Frame f = new Frame();
+                f.Content = new Test_values_Page(item, tabctrl, retrieve_testListView);
+                g.Children.Add(f);
+                newTabItem.Content = g;
+            
+                tabctrl.Items.Add(newTabItem);
+
+                Dispatcher.BeginInvoke(new Action(() => tabctrl.SelectedItem = newTabItem));
+            }
+            else
+                tabctrl.SelectedItem = tabctrl.Items.OfType<TabItem>().SingleOrDefault(n => n.Name == "Test" + item.idTest);
+
             
 
-            Grid g = new Grid();
-            Frame f = new Frame();
-            f.Content = new Test_values_Page(item, tabctrl, retrieve_testListView);
-            g.Children.Add(f);
-            newTabItem.Content = g;
-            
-            tabctrl.Items.Add(newTabItem);
-
-
-
-            
-            Dispatcher.BeginInvoke(new Action(() => tabctrl.SelectedItem = newTabItem));
         }
 
 

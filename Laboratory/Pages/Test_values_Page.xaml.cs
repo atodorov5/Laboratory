@@ -77,8 +77,8 @@ namespace Laboratory.Pages
 
             log.Info(Properties.Settings.Default.user + " обработи тест -" + test.idTest);
 
-            Notification notification = new Notification();
-            notification.show("Изследване " + test.idTest + " беше успешно записано!", 's');
+            
+            MessageBox.Show("Изследване " + test.idTest + " беше успешно записано!");
 
             TestCollection col3 = new TestCollection();
             list.ItemsSource = col3.fillColection();

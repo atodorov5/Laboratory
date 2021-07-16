@@ -7,6 +7,7 @@
       xmlns:Laboratory="clr-namespace:Laboratory" x:Class="Laboratory.Pages.Test_values_Page"
       mc:Ignorable="d" Loaded="Page_Loaded"
       d:DesignHeight="450" d:DesignWidth="800"
+    FontFamily="{StaticResource ResourceKey=Roboto}"
       Title="Test_values_Page">
     <Page.Resources>
         <Style TargetType="{x:Type Control}" x:Key="baseStyle">

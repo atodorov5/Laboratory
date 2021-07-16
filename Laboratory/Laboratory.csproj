@@ -167,7 +167,6 @@
       <DependentUpon>admin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\DBConfig.cs" />
-    <Compile Include="Data\Notification.cs" />
     <Compile Include="Data\Password_salt.cs" />
     <Compile Include="laboratorydbDataSet.cs">
       <DependentUpon>laboratorydbDataSet.xsd</DependentUpon>
@@ -318,6 +317,10 @@
     <EmbeddedResource Include="Reports\UserReport.rdlc" />
     <Resource Include="Resources\Images\chemical.png" />
     <Resource Include="cells.ico" />
+    <Resource Include="Resources\Images\deleteIcon.png" />
+    <Resource Include="Resources\Images\addIcon.png" />
+    <Resource Include="Resources\Images\editIcon.png" />
+    <Resource Include="Resources\Images\lab_probs.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -339,6 +342,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Reports\CheckTestReport.rdlc" />
+    <Resource Include="Fonts\Ubuntu-Regular.ttf" />
+    <Resource Include="Fonts\Caveat-VariableFont_wght.ttf" />
+    <Resource Include="Fonts\Roboto-Medium.ttf" />
+    <Resource Include="Fonts\Roboto-Regular.ttf" />
     <None Include="laboratorydbDataSet.xsc">
       <DependentUpon>laboratorydbDataSet.xsd</DependentUpon>
     </None>

@@ -2,5 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <BitmapImage x:Key="tube" UriSource="C:\Users\atodo\source\repos\Laboratory\Laboratory\Resources\Images\tube.png"></BitmapImage>
     <BitmapImage x:Key="noselection" UriSource="C:\Users\atodo\source\repos\Laboratory\Laboratory\Resources\Images\choice.png"></BitmapImage>
+    <BitmapImage x:Key="laborant" UriSource="C:\Users\atodo\source\repos\Laboratory\Laboratory\Resources\Images\lab_probs.png"></BitmapImage>
     
 </ResourceDictionary>

@@ -88,8 +88,7 @@ namespace Laboratory.Pages
             {
 
                 warningLB.Visibility = Visibility.Hidden;
-            }
-           
+            }         
 
 
         }

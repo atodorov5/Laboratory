@@ -27,24 +27,9 @@
         </WindowsFormsHost>
         <Label Content="Номер на изследване:" Margin="10,15,525,752" FontSize="16"></Label>
         <Button Click="Button_Check" Content="Търсене" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" Width="173" Style="{StaticResource GelButton}"/>
-        <TextBox PreviewTextInput="testID2_PreviewTextInput" FontSize="16" Name="testID2" HorizontalAlignment="Left" Height="23" Margin="10,48,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="173" RenderTransformOrigin="0.54,0.77"/>
-
-
-
-
-        <TextBox Validation.ErrorTemplate="{StaticResource errorTemplate}"  VerticalAlignment="Center" FontSize="20" Margin="10,107,0,665" Name="testID" HorizontalAlignment="Left" Width="173">
-            <TextBox.Text>
-                <Binding Path="idTest" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <validationRules:NumericValidationRule ValidatesOnTargetUpdated="True"  />
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
+        <TextBox PreviewTextInput="testID2_PreviewTextInput" FontSize="16" Name="testID" HorizontalAlignment="Left" Height="23" Margin="10,48,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="173" RenderTransformOrigin="0.54,0.77"/>
 
         <Image HorizontalAlignment="Left" Height="153" Margin="15,573,0,0" VerticalAlignment="Top" Width="179" Source="{StaticResource tube}" />
         <Label Name="warningLB" Content="!" Visibility="Hidden" HorizontalAlignment="Left" Foreground="Red" FontSize="20" Margin="180,40,0,0" VerticalAlignment="Top" Width="18"/>
-
-
     </Grid>
 </Page>

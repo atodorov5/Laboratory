@@ -8,6 +8,7 @@
       mc:Ignorable="d" Loaded="Page_Loaded" Height="764.8"
       d:DesignHeight="764.8" d:DesignWidth="800"
       xmlns:l="clr-namespace:Laboratory"
+     FontFamily="{StaticResource ResourceKey=Roboto}"
       Title="Необработени тестове">
 
     <Page.Resources>
@@ -91,8 +92,8 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <TextBox Name="text_filterTB"  Height="23" Margin="108,45,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding Path=Filter, UpdateSourceTrigger=PropertyChanged}"/>
-            <Label Content="Номер тест:" FontSize="16" HorizontalAlignment="Left"  Margin="10,40,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="98" Height="30"/>
+            <TextBox Name="text_filterTB"  Height="23" Margin="139,45,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding Path=Filter, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Content="Изследване №:" FontSize="16" HorizontalAlignment="Left"  Margin="10,40,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="129" Height="30"/>
         </Grid>
         <Grid Grid.Column="1">
             <TabControl x:Name="tabctrl" VerticalAlignment="Stretch"  HorizontalContentAlignment="Stretch" Margin="10,37,10,9.8">

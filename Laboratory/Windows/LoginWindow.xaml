@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Laboratory"
         mc:Ignorable="d"
-        Icon="C:\Users\atodo\Desktop\cells.png"
-        Title="Вход" Height="450" Width="350">
+        Title="Вход" Height="450" Width="350"
+        WindowStartupLocation="CenterScreen">
 
     <Grid>
         <Grid>
@@ -15,7 +15,7 @@
             <TextBox Name="usernameTB"  HorizontalAlignment="Left" Height="23" Margin="128,248,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="178" FontSize="16"/>
             <PasswordBox Name="passwordTB" HorizontalAlignment="Left" Margin="128,287,0,0" VerticalAlignment="Top" Width="178" Height="23"/>
 
-            <Image  HorizontalAlignment="Left" Height="177" Margin="89,24,0,0" VerticalAlignment="Top" Width="170" Source="{StaticResource tube}"/>
+            <Image  HorizontalAlignment="Left" Height="177" Margin="89,24,0,0" VerticalAlignment="Top" Width="170" Source="{StaticResource laborant}"/>
             <Label Name="loginError" Foreground="#FF6E6E" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="10,378,0,0" VerticalAlignment="Top" Width="322" Height="31" FontWeight="Bold"/>
             <Label Name="alo" Content="Вход в системата" FontSize="20" Margin="79,201,80,160" HorizontalContentAlignment="Center" />
             <Button Content="Вход"  HorizontalAlignment="Left" Margin="111,334,0,0" VerticalAlignment="Top" Width="120" Height="44" Click="login"  Style="{StaticResource GelButton}">

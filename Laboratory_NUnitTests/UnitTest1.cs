@@ -13,12 +13,7 @@ namespace Laboratory_NUnitTests
         {
         }
 
-        [Test]
-        public void Test_UserFullName()
-        {
-            Test test = new Test(1, "Ivan", "Ivanov", "Ivanov", "nasko@abv.ru");
-            Assert.AreEqual("Ivan Ivanov Ivanov", test.getFullName());
-        }
+       
         [Test]
         public void Test_Email()
         {

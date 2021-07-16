@@ -26,13 +26,13 @@ namespace Laboratory.Pages
     public partial class Enter_test_Page : Page
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        Test test;
         public Enter_test_Page()
         {
             InitializeComponent();
             log4net.Config.XmlConfigurator.Configure();
-            testtypeListView.UnselectAll();
-            type_groupDataGrid.UnselectAll();
-           
+        
+
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -51,10 +51,17 @@ namespace Laboratory.Pages
             bloodtypeViewSource.View.MoveCurrentToFirst();
 
             laboratorydbDataSetTableAdapters.type_groupTableAdapter groupTableAdapter = new laboratorydbDataSetTableAdapters.type_groupTableAdapter();
-            groupTableAdapter.Fill(laboratoryDataSet.type_group);
+            groupTableAdapter.FillByGroups(laboratoryDataSet.type_group);
             CollectionViewSource groupViewSource = (CollectionViewSource)FindResource("type_groupViewSource");
             groupViewSource.View.MoveCurrentToFirst();
 
+            testtypeListView.UnselectAll();
+            type_groupDataGrid.UnselectAll();
+
+
+        }
+        public void load_pending_test()
+        {
 
         }
 
@@ -76,6 +83,8 @@ namespace Laboratory.Pages
             var res = testTypeTableAdapter.GetData(user_pinTB.Text, out name, out surname, out lastname, out gender, out address, out email, out bloodType);
             if (name != null)
             {
+                Test test2 = new Test(0, user_nameTB.Text, user_surnameTB.Text, user_lastnameTB.Text, emailTB.Text);
+                test = test2;
                 user_nameTB.Text = name;
                 user_surnameTB.Text = surname;
                 user_lastnameTB.Text = lastname;

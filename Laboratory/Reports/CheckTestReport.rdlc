@@ -6,27 +6,27 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.58624in</Width>
+              <Width>1.6742in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.72911in</Width>
+              <Width>0.75038in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.73957in</Width>
+              <Width>0.76084in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.667in</Width>
+              <Width>0.69558in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.75113in</Width>
+              <Width>0.70295in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.41256in</Width>
+              <Width>1.42928in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.39167in</Height>
+              <Height>0.40834in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -38,7 +38,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Изследване/Показател</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -70,7 +72,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Резултат</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -102,7 +106,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Мерна единица</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -133,8 +139,23 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>ОТ</Value>
-                              <Style />
+                              <Value> Долна</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>граница</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -165,8 +186,10 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>ДО</Value>
-                              <Style />
+                              <Value>Горна граница</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -198,7 +221,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Статус</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -328,7 +353,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>min_value</rd:DefaultName>
@@ -358,7 +385,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>max_value</rd:DefaultName>
@@ -431,7 +460,7 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
           <TablixMembers>
             <TablixMember>
               <TablixHeader>
-                <Size>0.98425in</Size>
+                <Size>0.95821in</Size>
                 <CellContents>
                   <Textbox Name="Textbox37">
                     <CanGrow>true</CanGrow>
@@ -441,7 +470,9 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
                         <TextRuns>
                           <TextRun>
                             <Value>Група</Value>
-                            <Style />
+                            <Style>
+                              <FontWeight>Bold</FontWeight>
+                            </Style>
                           </TextRun>
                         </TextRuns>
                         <Style>
@@ -479,7 +510,7 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
                 </SortExpression>
               </SortExpressions>
               <TablixHeader>
-                <Size>0.98425in</Size>
+                <Size>0.95821in</Size>
                 <CellContents>
                   <Textbox Name="group_name">
                     <CanGrow>true</CanGrow>
@@ -520,10 +551,10 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>laboratorydbDataSet</DataSetName>
-        <Top>2.55278in</Top>
-        <Left>0.32114in</Left>
-        <Height>0.71667in</Height>
-        <Width>6.86986in</Width>
+        <Top>3.03957in</Top>
+        <Left>0.17229in</Left>
+        <Height>0.73334in</Height>
+        <Width>6.97142in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -555,7 +586,7 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox17</rd:DefaultName>
-        <Top>1.63in</Top>
+        <Top>1.97791in</Top>
         <Left>4.62888in</Left>
         <Height>0.25in</Height>
         <Width>2.56212in</Width>
@@ -574,8 +605,7 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
         <Source>Embedded</Source>
         <Value>icon_login</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>0.14661in</Top>
-        <Left>0.16945in</Left>
+        <Left>0.1331in</Left>
         <Height>0.94729in</Height>
         <Width>1.1331in</Width>
         <ZIndex>2</ZIndex>
@@ -602,7 +632,7 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox18</rd:DefaultName>
-        <Top>0.15494in</Top>
+        <Top>0.37785in</Top>
         <Left>1.37199in</Left>
         <Height>0.25in</Height>
         <Width>2.06944in</Width>
@@ -640,8 +670,8 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox22</rd:DefaultName>
-        <Top>0.70961in</Top>
-        <Left>5.02733in</Left>
+        <Top>0.69729in</Top>
+        <Left>5.08666in</Left>
         <Height>0.25in</Height>
         <Width>2.06944in</Width>
         <ZIndex>4</ZIndex>
@@ -690,7 +720,7 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
-        <Top>0.4689in</Top>
+        <Top>0.69181in</Top>
         <Left>1.37199in</Left>
         <Height>0.25in</Height>
         <Width>3.11666in</Width>
@@ -706,8 +736,8 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
         </Style>
       </Textbox>
       <Line Name="Line1">
-        <Top>1.16334in</Top>
-        <Left>0.17229in</Left>
+        <Top>1.08059in</Top>
+        <Left>0.125in</Left>
         <Height>0in</Height>
         <Width>7.01871in</Width>
         <ZIndex>6</ZIndex>
@@ -724,7 +754,7 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Пациент </Value>
+                <Value>Пациент: </Value>
                 <Style>
                   <FontSize>12pt</FontSize>
                 </Style>
@@ -764,7 +794,7 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox24</rd:DefaultName>
-        <Top>1.31056in</Top>
+        <Top>1.20559in</Top>
         <Left>0.17229in</Left>
         <Height>0.25in</Height>
         <Width>3.95in</Width>
@@ -798,11 +828,13 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox25</rd:DefaultName>
-        <Top>0.27994in</Top>
+        <Top>0.37785in</Top>
         <Left>5.29348in</Left>
         <Height>0.25in</Height>
         <Width>1.86262in</Width>
@@ -842,8 +874,8 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox26</rd:DefaultName>
-        <Top>1.31055in</Top>
-        <Left>5.29346in</Left>
+        <Top>1.20559in</Top>
+        <Left>5.29348in</Left>
         <Height>0.25in</Height>
         <Width>1.89754in</Width>
         <ZIndex>9</ZIndex>
@@ -880,10 +912,10 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox27</rd:DefaultName>
-        <Top>1.63in</Top>
+        <Top>1.53346in</Top>
         <Left>0.17229in</Left>
         <Height>0.25in</Height>
-        <Width>2.2in</Width>
+        <Width>3.95in</Width>
         <ZIndex>10</ZIndex>
         <Style>
           <Border>
@@ -896,7 +928,7 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
         </Style>
       </Textbox>
       <Line Name="Line2">
-        <Top>1.94944in</Top>
+        <Top>1.92235in</Top>
         <Left>0.17227in</Left>
         <Height>0in</Height>
         <Width>7.01873in</Width>
@@ -924,8 +956,8 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox35</rd:DefaultName>
-        <Top>2.12445in</Top>
-        <Left>2.23586in</Left>
+        <Top>2.59736in</Top>
+        <Left>2.11086in</Left>
         <Height>0.35889in</Height>
         <Width>3.28333in</Width>
         <ZIndex>12</ZIndex>
@@ -939,14 +971,104 @@ iif(Fields!result_value.Value&lt;Fields!min_value.Value,"L"," "))))</Value>
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox4">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Изследване №: </Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!idTest.Value</Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox4</rd:DefaultName>
+        <Top>5.05887cm</Top>
+        <Left>0.43762cm</Left>
+        <Height>0.6cm</Height>
+        <Width>4.73111cm</Width>
+        <ZIndex>13</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Забележка:</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value> Лабораторните резултати не са диагноза, а основание за такова. Приеманета на каквито и да е било лекарствени средства без лекарско предписание, може да бъде опасно за вашето здраве.</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox2</rd:DefaultName>
+        <Top>9.68197cm</Top>
+        <Left>0.43757cm</Left>
+        <Height>0.93867cm</Height>
+        <Width>17.44944cm</Width>
+        <ZIndex>14</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line4">
+        <Top>2.25312in</Top>
+        <Left>0.17229in</Left>
+        <Height>0in</Height>
+        <Width>7.01873in</Width>
+        <ZIndex>15</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
     </ReportItems>
-    <Height>13.41965cm</Height>
+    <Height>13.98583cm</Height>
     <Style />
   </Body>
-  <Width>18.43452cm</Width>
+  <Width>18.58269cm</Width>
   <Page>
     <PageFooter>
-      <Height>3.08921cm</Height>
+      <Height>1.75571cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1049,42 +1171,6 @@ L (low) - Резултат под долната референтна грани
           <Height>0.6cm</Height>
           <Width>3.35115cm</Width>
           <ZIndex>3</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="Textbox2">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>Забележка:</Value>
-                  <Style>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
-                </TextRun>
-                <TextRun>
-                  <Value> Лабораторните резултати не са диагноза, а основание за такова. Приеманета на каквито и да е било лекарствени средства без лекарско предписание, може да бъде опасно за вашето здраве.</Value>
-                  <Style />
-                </TextRun>
-              </TextRuns>
-              <Style />
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>1.72917cm</Top>
-          <Left>0.33807cm</Left>
-          <Height>0.93867cm</Height>
-          <Width>17.68772cm</Width>
-          <ZIndex>4</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
