@@ -90,7 +90,7 @@
             <PasswordBox Name="new_pass2"></PasswordBox>
             <Button Margin="0,10,0,0" Click="Button_SavePass" Style="{StaticResource GelButton}">Запази</Button>
             <Label HorizontalContentAlignment="Center">
-                <TextBlock FontSize="8" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow">Паролата трябва да съдържа поне 1 главна буква и поне 1 цифра! Дължината на паролата трябва да е минимун 8 символа!</TextBlock>
+                <TextBlock TextAlignment="Center" FontSize="10" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow">Паролата трябва да съдържа поне 1 главна буква и поне 1 цифра! Дължината на паролата трябва да е минимун 8 символа!</TextBlock>
             </Label>
           
         </StackPanel>

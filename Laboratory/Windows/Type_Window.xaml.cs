@@ -35,14 +35,7 @@ namespace Laboratory.Windows
         {
             if (String.IsNullOrEmpty(test_nameTB.Text) || String.IsNullOrEmpty(test_minTB.Text) || String.IsNullOrEmpty(test_maxTB.Text) || String.IsNullOrEmpty(test_valueTB.Text) || String.IsNullOrEmpty(test_priceTB.Text))
             {
-                var notificationManager = new NotificationManager();
-
-                notificationManager.Show(new NotificationContent
-                {
-                    Title = "Грешка",
-                    Message = "Въведете данни!",
-                    Type = NotificationType.Error
-                });
+                MessageBox.Show("Въведете данни!");
             }
             else
             {
@@ -63,16 +56,7 @@ namespace Laboratory.Windows
                 {
                     queryTableAdapter.add_ref_value("x", Convert.ToDouble(test_minTB.Text), Convert.ToDouble(test_maxTB.Text), testtypeID);
                 }
-
-
-
-                var notificationManager = new NotificationManager();
-                notificationManager.Show(new NotificationContent
-                {
-                    Title = "Успешно добавяне!",
-                    Message = test_nameTB.Text + " е запазен!",
-                    Type = NotificationType.Success
-                });
+                MessageBox.Show(test_nameTB.Text + " е запазен!", "Успешно добавяне!");
                 
                 log.Info("User " + Properties.Settings.Default.user + "added new test type " + test_nameTB.Text);
             }

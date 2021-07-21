@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -30,23 +31,44 @@ namespace Laboratory.Pages
        
         public Fill_test_Page()
         {
-            InitializeComponent();          
+            InitializeComponent();
 
-        }       
+        }
 
+
+
+        TestCollection col3;
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            load_pending();
+            if(col3 == null)
+                col3 = new TestCollection();
+            retrieve_testListView.ItemsSource = col3.fillColection();
+
+
+            CollectionViewSource.GetDefaultView(retrieve_testListView.ItemsSource).Filter = UserFilter;
+
         }
 
-        public void load_pending()
+        private void Filter_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            laboratorydbDataSet laboratorydbDataSet = (laboratorydbDataSet)this.FindResource("laboratorydbDataSet");
-            laboratorydbDataSetTableAdapters.retrieve_testTableAdapter testTableAdapter = new laboratorydbDataSetTableAdapters.retrieve_testTableAdapter();
-            testTableAdapter.FillPendingTests(laboratorydbDataSet.retrieve_test);
-            CollectionViewSource testViewSource = (CollectionViewSource)this.FindResource("retrieve_testViewSource");
-            testViewSource.View.MoveCurrentToFirst();
+            var view = (CollectionView)CollectionViewSource.GetDefaultView(retrieve_testListView.ItemsSource);
+            view.SortDescriptions.Add(new SortDescription("idTest", ListSortDirection.Ascending));
+
+
+            CollectionViewSource.GetDefaultView(retrieve_testListView.ItemsSource).Refresh();
+           
         }
+
+        private bool UserFilter(object item)
+        {
+            if (String.IsNullOrEmpty(text_filterTB.Text))
+                return true;
+
+            var test1 = (Test)item;
+
+            return test1.idTest.ToString().StartsWith(text_filterTB.Text, StringComparison.OrdinalIgnoreCase);
+        }
+
         private void newtab_test_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Test item = (Test)retrieve_testListView.SelectedItem;
@@ -70,14 +92,9 @@ namespace Laboratory.Pages
                 Dispatcher.BeginInvoke(new Action(() => tabctrl.SelectedItem = newTabItem));
             }
             else
-                tabctrl.SelectedItem = tabctrl.Items.OfType<TabItem>().SingleOrDefault(n => n.Name == "Test" + item.idTest);
-
-            
+                tabctrl.SelectedItem = tabctrl.Items.OfType<TabItem>().SingleOrDefault(n => n.Name == "Test" + item.idTest);            
 
         }
-
-
-
         private void Button_Close(object sender, RoutedEventArgs e)
         {
             TabItem tab = (TabItem)tabctrl.SelectedItem;
@@ -87,5 +104,6 @@ namespace Laboratory.Pages
 
         }
 
+     
     }
 }

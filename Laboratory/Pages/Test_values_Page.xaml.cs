@@ -82,18 +82,15 @@ namespace Laboratory.Pages
 
             TestCollection col3 = new TestCollection();
             list.ItemsSource = col3.fillColection();
+            
 
             TabItem tab = (TabItem)tabctrl.SelectedItem;
             tab.Template = null;
             tabctrl.Items.Remove(tab);
             tabctrl.Items.Refresh();
 
-            sendEmail();
-
-            
-
-
-
+            if(test.p_email!="")
+                sendEmail();
 
         }
 
@@ -120,7 +117,14 @@ namespace Laboratory.Pages
                 Body = body
             })
             {
-                smtp.Send(message);
+                try
+                {
+                    smtp.Send(message);
+                }
+                catch(SmtpException ex)
+                {
+                    log.Error(ex);
+                }
             }
         }
     }

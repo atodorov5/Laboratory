@@ -12,9 +12,9 @@ using System.Windows.Data;
 
 namespace Laboratory
 {
-    class TestCollection : INotifyPropertyChanged
+    public class TestCollection : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+       
 
         private string filter;
         public string Filter
@@ -29,11 +29,10 @@ namespace Laboratory
         }
         public  ObservableCollection<Test> Collection { get; set; }
 
- 
+    
         public ObservableCollection<Test> fillColection()
         {
             Collection = new ObservableCollection<Test>();
-            CollectionViewSource.GetDefaultView(Collection).Filter = new Predicate<object>(Contains);
 
             using (var conn = DBConfig.Connection)
             {
@@ -60,7 +59,7 @@ namespace Laboratory
                         };
                         Collection.Add(obj);
                     }
-
+                    
                 }
                 catch (MySqlException ex)
                 {
@@ -68,12 +67,14 @@ namespace Laboratory
                 }
              
             }
+            
+            CollectionViewSource.GetDefaultView(Collection).Filter = new Predicate<object>(Contains);
+            
             return Collection;
         }
         public TestCollection()
         {
             Collection = new ObservableCollection<Test>();
-            CollectionViewSource.GetDefaultView(Collection).Filter = new Predicate<object>(Contains);
 
             using (var conn = DBConfig.Connection)
             {
@@ -109,6 +110,8 @@ namespace Laboratory
 
             }
 
+            CollectionViewSource.GetDefaultView(Collection).Filter = new Predicate<object>(Contains);
+
 
         }
 
@@ -121,7 +124,9 @@ namespace Laboratory
             }
             return true;
         }
-       
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private void RaisePropertyChanged(string t)
         {
             if (PropertyChanged != null)

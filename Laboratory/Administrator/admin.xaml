@@ -96,7 +96,7 @@
 
         <Grid Grid.Row="0" Grid.Column="1">
             <Label Content="Референтни стойности за избрано изследване" Name="ref_val_lb" HorizontalAlignment="Center" FontSize="20" Margin="113,0,113,345.8"/>
-            <DataGrid x:Name="ref_valueDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource ref_valueViewSource}}" Margin="10,45,10.4,26.4" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserAddRows="False" IsReadOnly="True">
+            <DataGrid x:Name="ref_valueDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource ref_valueViewSource}}" Margin="10,45,10.4,10.4" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserAddRows="False" IsReadOnly="True">
                 <DataGrid.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Редактиране" Click="edit_refVal"></MenuItem>
@@ -133,12 +133,12 @@
                     <DataGridTextColumn x:Name="nameColumn" Binding="{Binding name}" Header="Име" Width="*"/>
                     <DataGridTextColumn x:Name="surnameColumn" Binding="{Binding surname}" Header="Презиме" Width="*"/>
                     <DataGridTextColumn x:Name="lastnameColumn" Binding="{Binding lastname}" Header="Фамилия" Width="*"/>
-                    <DataGridTextColumn x:Name="user_pinColumn" Binding="{Binding user_pin}" Header="ЕГН" Width="*"/>
+                    <DataGridTextColumn x:Name="user_pinColumn" Binding="{Binding user_pin}" Header="ЕГН" Width="0.7*"/>
                     <DataGridTextColumn x:Name="user_addressColumn" Binding="{Binding user_address}" Header="Адрес" Width="*"/>
                     <DataGridTextColumn x:Name="user_phoneColumn" Binding="{Binding user_phone}" Header="Телефон" Width="*"/>
-                    <DataGridTextColumn x:Name="townColumn1" Binding="{Binding license}" Header="ЛАБ РЦЗ" Width="0.8*"/>
+                    <DataGridTextColumn x:Name="townColumn1" Binding="{Binding license}" Header="ЛАБ РЦЗ" Width="0.8*" Visibility="Hidden"/>
                     <DataGridTextColumn x:Name="roleNameColumn" Binding="{Binding RoleName}" Header="Роля" Width="*" />
-                    <DataGridTextColumn x:Name="active_statusColumn" Binding="{Binding active_status}" Header="Статус" Width="0.6*"/>
+                    <DataGridTextColumn x:Name="active_statusColumn" Binding="{Binding active_status}" Header="Статус" Width="0.5*"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Button Click="add_user" Background="Transparent" BorderThickness="0" Margin="0,10,38.4,0" VerticalAlignment="Top" Height="24" HorizontalAlignment="Right" Width="23" Grid.Column="1">

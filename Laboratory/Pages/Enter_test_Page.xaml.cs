@@ -100,7 +100,11 @@ namespace Laboratory.Pages
                 
             }
             else
+            {
+                clean_controls();
                 MessageBox.Show("Пациентът не е намерен!");
+            }
+                
 
 
         }

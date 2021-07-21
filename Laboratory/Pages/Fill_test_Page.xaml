@@ -24,7 +24,10 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" DataContext="{StaticResource ViewModel}">
             <Label Content="Необработени Тестове" FontSize="20" HorizontalContentAlignment="Center" Height="35" VerticalAlignment="Top"/>
-            <ListView x:Name="retrieve_testListView" IsTextSearchEnabled="True"  TextSearch.TextPath="refNumber" TextSearch.Text="text_filterTB"  ItemsSource="{Binding Collection}" Margin="10,73,10,9.8" SelectionMode="Single" MouseDoubleClick="newtab_test_MouseDoubleClick">
+            <TextBox Name="text_filterTB" TextChanged="Filter_OnTextChanged" FontSize="16" Height="23" Margin="139,45,10,0" VerticalAlignment="Top" />
+            <Label Content="Изследване №:" FontSize="16" HorizontalAlignment="Left"  Margin="10,40,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="129" Height="30"/>
+
+            <ListView x:Name="retrieve_testListView" ItemsSource="{Binding Collection}" Margin="10,73,10,9.8" SelectionMode="Single" MouseDoubleClick="newtab_test_MouseDoubleClick">
 
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
@@ -92,9 +95,7 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <TextBox Name="text_filterTB"  Height="23" Margin="139,45,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding Path=Filter, UpdateSourceTrigger=PropertyChanged}"/>
-            <Label Content="Изследване №:" FontSize="16" HorizontalAlignment="Left"  Margin="10,40,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="129" Height="30"/>
-        </Grid>
+           </Grid>
         <Grid Grid.Column="1">
             <TabControl x:Name="tabctrl" VerticalAlignment="Stretch"  HorizontalContentAlignment="Stretch" Margin="10,37,10,9.8">
 

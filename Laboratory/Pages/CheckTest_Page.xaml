@@ -10,18 +10,20 @@
       mc:Ignorable="d" 
       Title="CheckTest_Page" d:DesignHeight="800" 
       xmlns:ui="using:Microsoft.Toolkit.Uwp.UI"
+      Loaded="Page_Loaded"
       >
-      
+
     <Page.Resources>
         <local2:laboratorydbDataSet x:Key="laboratorydbDataSet"/>
-       
+        <CollectionViewSource x:Key="retrieve_testViewSource" Source="{Binding retrieve_test, Source={StaticResource laboratorydbDataSet}}"/>
+        <CollectionViewSource x:Key="retrieve_usersViewSource" Source="{Binding se, Source={StaticResource laboratorydbDataSet}}"/>
     </Page.Resources>
 
-   
 
 
 
-    <Grid Margin="10,0,10,0">
+
+    <Grid Margin="10,0,10,0" DataContext="{StaticResource retrieve_testViewSource}">
         <WindowsFormsHost   Margin="194,10,10,0" Height="740" VerticalAlignment="Top">
             <rv:ReportViewer x:Name="reportViewer"/>
         </WindowsFormsHost>
@@ -31,5 +33,23 @@
 
         <Image HorizontalAlignment="Left" Height="153" Margin="15,573,0,0" VerticalAlignment="Top" Width="179" Source="{StaticResource tube}" />
         <Label Name="warningLB" Content="!" Visibility="Hidden" HorizontalAlignment="Left" Foreground="Red" FontSize="20" Margin="180,40,0,0" VerticalAlignment="Top" Width="18"/>
+
+        <DataGrid CanUserAddRows="False" IsReadOnly="True"  MouseDoubleClick="retrieve_testDataGrid_MouseDoubleClick" x:Name="retrieve_testDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,238,0,248" RowDetailsVisibilityMode="VisibleWhenSelected" HorizontalAlignment="Left" Width="173">
+            <DataGrid.Columns>
+                <DataGridTextColumn  x:Name="idTestColumn" Binding="{Binding idTest}" Header="№" Width="0.4*"/>
+                <DataGridTemplateColumn x:Name="testDateColumn" Header="Дата" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding testDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox Name="userPin" HorizontalAlignment="Left" Height="23" Margin="10,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="173"/>
+        <Button Style="{StaticResource GelButton}" Click="Button_CheckByPIn" Content="Търсене" HorizontalAlignment="Left" Margin="10,191,0,0" VerticalAlignment="Top" Width="173"/>
+        <Label Content="ЕГН на пациент:" Margin="10,130,525,637" FontSize="16"/>
+        <Separator HorizontalAlignment="Left" Height="23" Margin="10,107,0,0" VerticalAlignment="Top" Width="173"/>
     </Grid>
 </Page>
